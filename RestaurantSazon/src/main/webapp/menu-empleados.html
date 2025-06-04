@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Menú de Empleados</title>
+  <link rel="stylesheet" href="menu-empleados.css" />
+</head>
+<body>
+  <div class="container">
+
+    <!-- Fondo -->
+    <div class="background"></div>
+
+    <!-- Barra superior -->
+    <header class="top-bar">
+      <div class="title">El Sazón de Cantera y Plata</div>
+      <nav class="menu">
+        <ul>
+          <li><a href="#" id="chatSoporte">Chat con Soporte</a></li>
+          <li>
+            Regístrate
+            <ul class="submenu">
+              <li><a href="#" id="menuUsuario">Usuario</a></li>
+              <li><a href="#" id="menuPersonal">Personal</a></li>
+              <li><a href="#" id="menuAdmin">Administrador</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <div class="window-controls">
+        <button id="minimizar">–</button>
+        <button id="cerrar">✖</button>
+      </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <main class="main-content">
+      <button id="btnPedidos">Revisar Pedidos</button>
+    </main>
+
+    <!-- Texto inferior -->
+    <footer class="footer-text">
+      Menú de Empleados
+    </footer>
+  </div>
+
+  <script src="menu-empleados.js"></script>
+</body>
+</html>

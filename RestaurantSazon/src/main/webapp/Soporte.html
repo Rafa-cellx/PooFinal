@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>LoginView</title>
+  <link rel="stylesheet" href="Soporte.css" />
+</head>
+<body>
+
+  <div class="barra-superior">
+    <span>El Sazón de Cantera y Plata</span>
+    <div class="menu">
+      <div>
+        <a href="#">Chat con Soporte</a>
+      </div>
+      <div>
+        <a href="#">Regístrate</a>
+        <div class="submenu">
+          <a href="#">Usuario</a>
+          <a href="#">Personal</a>
+          <a href="#">Administrador</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ventana">
+    <button onclick="cerrarVentana()">✖</button>
+    <button onclick="minimizarVentana()">-</button>
+  </div>
+
+  <div class="bienvenida">¡Bienvenido!</div>
+
+  <div class="mensaje-label">¡Bienvenido! ¿En qué podemos ayudarte?</div>
+
+  <div class="chat">
+    <div id="chatHistorial" style="background:white; height:250px; border:1px solid lightgray; overflow-y:scroll; margin-bottom:10px;"></div>
+    <div>
+      <input type="text" id="mensajeUsuario" placeholder="Escribe un mensaje..." />
+      <button onclick="enviarMensaje()">Enviar</button>
+    </div>
+  </div>
+
+  <div class="logo">
+    <img src="Imagenes/logo.png" alt="Logo" />
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

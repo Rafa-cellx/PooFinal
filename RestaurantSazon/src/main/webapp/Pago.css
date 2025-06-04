@@ -1,0 +1,241 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body, html {
+  height: 100%;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  color: saddlebrown;
+}
+
+.ventana {
+  position: relative;
+  width: 550px;
+  height: 500px;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.3);
+  overflow: hidden;
+  background: none;
+}
+
+/* Fondo */
+.fondo {
+  position: absolute;
+  inset: 0;
+  background-image: url('Imagenes/fondo.png');
+  background-size: cover;
+  background-position: center;
+  filter: brightness(1);
+  z-index: 0;
+  border-radius: 10px;
+}
+
+/* Barra superior */
+.barra-superior {
+  position: relative;
+  height: 20px;
+  background: rgba(255,165,0,0.5);
+  border-radius: 0 0 10px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
+  font-family: 'Akhbar MT', serif;
+  font-size: 10px;
+  font-weight: bold;
+  color: white;
+  user-select: none;
+  z-index: 2;
+}
+
+.barra-superior .titulo {
+  font-weight: 900;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 10px;
+}
+
+.menu li {
+  position: relative;
+}
+
+.menu li a {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.submenu-lista {
+  display: none;
+  position: absolute;
+  top: 120%;
+  left: 0;
+  background: rgba(255,165,0,0.8);
+  border-radius: 6px;
+  padding: 5px 0;
+  min-width: 110px;
+  z-index: 3;
+}
+
+.submenu:hover .submenu-lista {
+  display: block;
+}
+
+.submenu-lista li {
+  padding: 4px 10px;
+}
+
+.submenu-lista li a {
+  font-weight: normal;
+  color: white;
+}
+
+/* Botones minimizar y cerrar */
+.controles-ventana {
+  position: absolute;
+  top: 25px;
+  right: 10px;
+  display: flex;
+  gap: 6px;
+  z-index: 3;
+}
+
+.controles-ventana button {
+  width: 22px;
+  height: 20px;
+  border: none;
+  background-color: #c86d05;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 3px;
+  user-select: none;
+  line-height: 15px;
+  padding-top: 2px;
+}
+
+/* Contenido principal */
+.contenido {
+  position: relative;
+  z-index: 2;
+  padding: 50px 20px 20px 20px;
+  height: calc(100% - 70px);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.contenido h1 {
+  font-size: 22px;
+  font-weight: 900;
+  text-align: center;
+  color: saddlebrown;
+  margin-bottom: 12px;
+}
+
+/* Lista de platillos */
+.lista-platillos {
+  margin-bottom: 12px;
+}
+
+.platillo {
+  display: flex;
+  gap: 10px;
+  margin: 3px 0;
+  color: saddlebrown;
+  font-weight: 600;
+}
+
+.cantidad {
+  width: 35px;
+}
+
+.nombre {
+  flex-grow: 1;
+}
+
+.subtotal {
+  width: 70px;
+  text-align: right;
+}
+
+/* Formularios */
+label {
+  font-weight: 900;
+  margin-top: 12px;
+  color: saddlebrown;
+}
+
+input[type="text"], select {
+  width: 100%;
+  max-width: 490px;
+  padding: 5px 8px;
+  margin-top: 3px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+input[type="text"]:focus, select:focus {
+  outline: none;
+  border-color: #FFA500;
+}
+
+/* Mensajes */
+.error {
+  color: red;
+  font-size: 12px;
+  margin-left: 8px;
+  margin-top: 3px;
+}
+
+.info-metodo {
+  margin-left: 8px;
+  font-style: italic;
+  color: saddlebrown;
+  margin-top: 3px;
+}
+
+/* Total */
+.total {
+  margin-top: 15px;
+  margin-bottom: 10px;
+  text-align: right;
+  font-weight: 900;
+  font-size: 18px;
+  color: saddlebrown;
+}
+
+/* Botón Confirmar */
+#confirmar {
+  width: 150px;
+  padding: 10px 0;
+  background-color: #4caf50;
+  color: white;
+  font-weight: 900;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  align-self: center;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  transition: background-color 0.3s ease;
+}
+
+#confirmar:hover {
+  background-color: #388e3c;
+}

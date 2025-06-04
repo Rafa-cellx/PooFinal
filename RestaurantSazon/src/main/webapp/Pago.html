@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pago</title>
+<link rel="stylesheet" href="Pago.css" />
+</head>
+<body>
+
+<div class="ventana">
+
+  <!-- Fondo -->
+  <div class="fondo"></div>
+
+  <!-- Barra superior -->
+  <header class="barra-superior">
+    <div class="titulo">El Sazón de Cantera y Plata</div>
+    <nav>
+      <ul class="menu">
+        <li><a href="#" id="chatSoporte">Chat con Soporte</a></li>
+        <li><a href="#" id="carrito">Carrito</a></li>
+        <li class="submenu">
+          <a href="#">Regístrate ▾</a>
+          <ul class="submenu-lista">
+            <li><a href="#" id="usuario">Usuario</a></li>
+            <li><a href="#" id="personal">Personal</a></li>
+            <li><a href="#" id="administrador">Administrador</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Botones minimizar y cerrar -->
+  <div class="controles-ventana">
+    <button id="minimizar">–</button>
+    <button id="cerrar">✖</button>
+  </div>
+
+  <!-- Contenido principal -->
+  <main class="contenido">
+    <h1>Confirma tu pedido</h1>
+
+    <!-- Lista de platillos -->
+    <div class="lista-platillos">
+      <div class="platillo">
+        <span class="cantidad">2</span>
+        <span class="nombre">Taco al pastor</span>
+        <span class="subtotal">$50.00</span>
+      </div>
+      <div class="platillo">
+        <span class="cantidad">1</span>
+        <span class="nombre">Quesadilla</span>
+        <span class="subtotal">$40.00</span>
+      </div>
+    </div>
+
+    <!-- Dirección -->
+    <label for="direccion">Dirección de entrega:</label>
+    <input type="text" id="direccion" placeholder="Ej: Calle 123, #45-B" />
+    <p id="errorDireccion" class="error" hidden>⚠ La dirección es muy corta o contiene caracteres inválidos.</p>
+
+    <!-- Método de pago -->
+    <label for="metodoPago">Método de pago:</label>
+    <select id="metodoPago">
+      <option disabled selected>Selecciona uno</option>
+      <option>Efectivo</option>
+      <option>Tarjeta de débito</option>
+      <option>Tarjeta de crédito</option>
+      <option>Transferencia bancaria</option>
+    </select>
+    <p id="infoMetodoPago" class="info-metodo"></p>
+
+    <!-- Total -->
+    <p class="total">Total: $90.00</p>
+
+    <!-- Botón confirmar -->
+    <button id="confirmar">Confirmar pedido</button>
+  </main>
+
+</div>
+
+</body>
+</html>
