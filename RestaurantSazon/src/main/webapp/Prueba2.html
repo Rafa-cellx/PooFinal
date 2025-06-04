@@ -2,13 +2,13 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <!-- Esto pone el titulo a la pagina -->
     <title>Prueba</title>
-    <link rel="stylesheet" href="login.css"> <!-- Asegúrate que esta ruta sea correcta -->
+  
 </head>
 <body>
     <div class="login-container">
         <h2>Iniciar Sesión</h2>
-        <form action="LoginServlet" method="post"> <!-- 'LoginServlet' debe ser tu servlet -->
             <label for="usuario">Usuario:</label>
             <input type="text" id="usuario" name="usuario" required>
 
@@ -16,7 +16,6 @@
             <input type="password" id="password" name="password" required>
 
             <button type="submit">Ingresar</button>
-        </form>
     </div>
 </body>
 </html>
