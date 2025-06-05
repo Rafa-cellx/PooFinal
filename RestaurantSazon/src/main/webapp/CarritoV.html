@@ -4,22 +4,29 @@
     <meta charset="UTF-8">
     <title>Carrito</title>
     <style>
+        /* Estilos generales */
         body {
             margin: 0;
             font-family: Arial, sans-serif;
             background-image: url('imagenes/fondo.png');
             background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
 
+        /* Contenedor principal */
         .ventana {
-            max-width: 400px;
-            margin: 20px auto;
+            width: 400px;
             background-color: rgba(255,255,255,0.9);
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            position: relative;
         }
 
+        /* Barra superior */
         .barra-superior {
             background: rgba(255, 165, 0, 0.5);
             color: white;
@@ -31,8 +38,10 @@
             font-family: 'Akhbar MT', sans-serif;
         }
 
+        /* Menú de navegación */
         .menu {
             font-size: 11px;
+            position: relative;
         }
 
         .menu a {
@@ -42,12 +51,36 @@
             text-decoration: none;
         }
 
+        /* Submenú de registro */
+        .submenu {
+            position: absolute;
+            right: 0;
+            background: #FFBA5D;
+            padding: 5px;
+            display: none;
+            width: 120px;
+            z-index: 10;
+        }
+
+        .submenu a {
+            display: block;
+            color: #333;
+            padding: 3px 0;
+            margin: 0;
+        }
+
+        .menu-registro:hover .submenu {
+            display: block;
+        }
+
+        /* Contenido del carrito */
         .contenido {
             padding: 15px;
             max-height: 300px;
             overflow-y: auto;
         }
 
+        /* Items del carrito */
         .item {
             border: 1px solid gray;
             padding: 10px;
@@ -77,10 +110,12 @@
             font-size: 12px;
         }
 
+        /* Sección de total */
         .total {
             text-align: right;
             padding: 10px;
             font-size: 16px;
+            border-top: 1px solid #ddd;
         }
 
         .total span:first-child {
@@ -93,10 +128,12 @@
             color: orangered;
         }
 
+        /* Botones de acción */
         .acciones {
             display: flex;
             justify-content: flex-end;
             padding: 10px;
+            border-top: 1px solid #ddd;
         }
 
         .btn {
@@ -109,6 +146,12 @@
             border-radius: 5px;
         }
 
+        .btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        /* Controles de ventana */
         .control {
             position: absolute;
             top: 10px;
@@ -126,125 +169,82 @@
             font-weight: bold;
         }
 
+        /* Efectos hover */
+        .btn:hover:not(:disabled), .control button:hover {
+            background-color: #a55a04;
+        }
+
+        .menu a:hover {
+            text-decoration: underline;
+        }
+
+        .submenu a:hover {
+            background-color: rgba(255,255,255,0.3);
+        }
     </style>
 </head>
 <body>
 
 <div class="ventana">
+    <!-- Controles de ventana (simulados) -->
+    <div class="control">
+        <button>−</button>
+        <button>✖</button>
+    </div>
 
+    <!-- Barra superior con menú -->
     <div class="barra-superior">
         <div>El Sazón de Cantera y Plata</div>
         <div class="menu">
-            <a href="#" onclick="abrirChat()">Chat con Soporte</a>
-            <div style="display: inline-block; position: relative;">
+            <a href="soporte.html">Chat con Soporte</a>
+            <div class="menu-registro">
                 <a href="#">Regístrate ▼</a>
-                <div style="position: absolute; background: #FFBA5D; padding: 5px; display: none;" id="registro-menu">
-                    <a href="#" onclick="registro('usuario')">Usuario</a><br>
-                    <a href="#" onclick="registro('personal')">Personal</a><br>
-                    <a href="#" onclick="registro('admin')">Administrador</a>
+                <div class="submenu">
+                    <a href="registro-usuario.html">Usuario</a>
+                    <a href="registro-personal.html">Personal</a>
+                    <a href="registro-admin.html">Administrador</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="contenido" id="carrito">
-        <!-- Platillos se agregan aquí dinámicamente -->
+    <!-- Contenido del carrito (datos estáticos) -->
+    <div class="contenido">
+        <!-- Item 1 -->
+        <div class="item">
+            <img src="imagenes/taco.jpg" alt="Tacos al Pastor">
+            <div class="item-info">
+                <h4>Tacos al Pastor</h4>
+                <p><em>Deliciosos tacos con piña</em></p>
+                <p>Cantidad: 2</p>
+                <p>Precio: $25.00</p>
+                <p><strong>Subtotal: $50.00</strong></p>
+            </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="item">
+            <img src="imagenes/jamaica.jpg" alt="Agua de Jamaica">
+            <div class="item-info">
+                <h4>Agua de Jamaica</h4>
+                <p><em>Refrescante bebida natural</em></p>
+                <p>Cantidad: 1</p>
+                <p>Precio: $15.00</p>
+                <p><strong>Subtotal: $15.00</strong></p>
+            </div>
+        </div>
     </div>
 
+    <!-- Total -->
     <div class="total">
-        <span>Total:</span> <span id="total">$0.00</span>
+        <span>Total:</span> <span>$65.00</span>
     </div>
 
+    <!-- Botones de acción -->
     <div class="acciones">
-        <button class="btn" onclick="pagar()" id="btnPagar" disabled>Pagar</button>
+        <a href="pago.html" class="btn">Pagar</a>
     </div>
 </div>
-
-<div class="control">
-    <button onclick="minimizar()">−</button>
-    <button onclick="cerrar()">✖</button>
-</div>
-
-<script>
-    // Simulación de productos en el carrito
-    const carrito = [
-        {
-            nombre: "Tacos al Pastor",
-            descripcion: "Deliciosos tacos con piña",
-            cantidad: 2,
-            precio: 25.00,
-            imagen: "imagenes/taco.jpg"
-        },
-        {
-            nombre: "Agua de Jamaica",
-            descripcion: "Refrescante bebida natural",
-            cantidad: 1,
-            precio: 15.00,
-            imagen: "imagenes/jamaica.jpg"
-        }
-    ];
-
-    const contenedor = document.getElementById("carrito");
-    const totalSpan = document.getElementById("total");
-    const btnPagar = document.getElementById("btnPagar");
-
-    function renderizarCarrito() {
-        let total = 0;
-        contenedor.innerHTML = "";
-
-        carrito.forEach(item => {
-            const subtotal = item.precio * item.cantidad;
-            total += subtotal;
-
-            const div = document.createElement("div");
-            div.className = "item";
-            div.innerHTML = `
-                <img src="${item.imagen}" alt="${item.nombre}">
-                <div class="item-info">
-                    <h4>${item.nombre}</h4>
-                    <p><em>${item.descripcion}</em></p>
-                    <p>Cantidad: ${item.cantidad}</p>
-                    <p>Precio: $${item.precio.toFixed(2)}</p>
-                    <p><strong>Subtotal: $${subtotal.toFixed(2)}</strong></p>
-                </div>
-            `;
-            contenedor.appendChild(div);
-        });
-
-        totalSpan.textContent = `$${total.toFixed(2)}`;
-        btnPagar.disabled = total <= 0;
-    }
-
-    function pagar() {
-        alert("Procediendo al pago...");
-    }
-
-    function minimizar() {
-        alert("Minimizar ventana (simulado)");
-    }
-
-    function cerrar() {
-        alert("Cerrar ventana (simulado)");
-    }
-
-    function abrirChat() {
-        alert("Abriendo chat con soporte...");
-    }
-
-    function registro(tipo) {
-        alert("Registro como: " + tipo);
-    }
-
-    // Mostrar menú de registro al pasar mouse (estilo básico)
-    document.querySelector('.menu div').addEventListener('mouseover', () => {
-        document.getElementById('registro-menu').style.display = 'block';
-    });
-    document.querySelector('.menu div').addEventListener('mouseleave', () => {
-        document.getElementById('registro-menu').style.display = 'none';
-    });
-
-    renderizarCarrito();
-</script>
 
 </body>
 </html>
