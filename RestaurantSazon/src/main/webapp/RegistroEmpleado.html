@@ -129,6 +129,21 @@
   .campo input::placeholder {
     color: white;
   }
+  .link-login {
+  display: block;
+  margin-top: 10px;
+  color: #A0522D; /* color café, similar al botón */
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+  text-align: center;
+}
+
+.link-login:hover {
+  color: #e5b471; /* cambio de color al pasar el mouse */
+}
+  
 
   .condiciones {
     font-size: 13px;
@@ -149,6 +164,7 @@
     cursor: pointer;
     font-size: 14px;
   }
+  
 </style>
 
 </head>
@@ -180,7 +196,7 @@
 
       <div class="contenido-blanco">
         <div class="formulario">
-          <h2>Registro Personal</h2>
+          <h2>Registro de Empleado</h2>
           <div class="campo"><input type="text" placeholder="Nombre" /></div>
           <div class="campo"><input type="text" placeholder="Apellido" /></div>
           <div class="campo"><input type="text" placeholder="ID de Empleado" /></div>
@@ -192,9 +208,13 @@
           </div>
 
           <button class="registrarse-btn">DAR DE ALTA</button>
-        </div>
+		  <a href="LoginView.html" class="link-login">¿Ya tienes cuenta?</a>
+
+          </div>
       </div>
     </div>
   </div>
+  <div style="text-align: center; margin: 20px 0;">
+</div>
 </body>
 </html>
