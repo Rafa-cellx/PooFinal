@@ -149,6 +149,21 @@
       cursor: pointer;
       font-size: 14px;
     }
+    .link-login {
+	  display: block;
+	  margin-top: 10px;
+	  color: #A0522D; /* color café, similar al botón */
+	  text-decoration: underline;
+	  cursor: pointer;
+	  font-weight: bold;
+	  font-size: 14px;
+	  text-align: center;
+	}
+
+.link-login:hover {
+  color: #e5b471; /* cambio de color al pasar el mouse */
+}
+    
   </style>
 </head>
 <body>
@@ -179,7 +194,7 @@
 
       <div class="contenido-blanco">
         <div class="formulario">
-          <h2>Registro Usuario</h2>
+          <h2>Registro de Usuario</h2>
           <div class="campo"><input type="text" placeholder="Nombre" /></div>
           <div class="campo"><input type="text" placeholder="Apellido" /></div>
           <div class="campo"><input type="text" placeholder="Número de celular" /></div>
@@ -190,8 +205,8 @@
             Al hacer clic en "Registrarte", aceptas nuestras Condiciones, la Política de privacidad y la Política de cookies.<br/>
             Es posible que te enviemos notificaciones por SMS, que puedes desactivar cuando quieras.
           </div>
-
           <button class="registrarse-btn">REGISTRARTE</button>
+		  <a href="LoginView.html" class="link-login">¿Ya tienes cuenta?</a>          
         </div>
       </div>
     </div>
