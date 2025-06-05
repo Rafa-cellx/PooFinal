@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Registro Usuario</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: url('Imagenes/fondo.png') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    .ventana {
+      width: 830px;
+      margin: 60px auto;
+      background-color: transparent;
+      position: relative;
+    }
+
+    .barra-superior {
+      width: 100%;
+      height: 30px;
+      background-color: rgba(255, 165, 0, 0.5);
+      border-radius: 0 0 10px 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .barra-superior h1 {
+      font-family: 'Akhbar MT', sans-serif;
+      font-size: 18px;
+      font-weight: bold;
+      color: white;
+      margin: 0;
+    }
+
+    .menu select {
+      background: #EBAF5D;
+      color: white;
+      font-weight: bold;
+      padding: 8px;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    .contenido {
+      margin-top: 50px;
+      border-radius: 15px;
+      overflow: hidden;
+    }
+
+    .contenido-naranja {
+      background-color: rgba(255, 165, 0, 0.5);
+      padding: 30px;
+      text-align: center;
+    }
+
+    .contenido-blanco {
+      background-color: rgba(255,255,255,0.7);
+      padding: 30px;
+    }
+
+    .bienvenida {
+      text-align: center;
+      font-family: 'Pristina', cursive;
+      font-size: 50px;
+      font-weight: bold;
+      color: white;
+      margin: 30px 0 0 0;
+    }
+
+    .formulario {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .formulario h2 {
+      color: #b96300;
+      font-size: 24px;
+      margin: 15px 0;
+    }
+
+    .formulario .logo {
+      width: 160px;
+      height: auto;
+    }
+
+    .mensaje {
+      text-align: center;
+      font-size: 20px;
+      color: white;
+      margin: 20px 0;
+    }
+
+    .campo {
+      background: linear-gradient(to right, #A0522D, #e5b471);
+      border-radius: 10px;
+      margin: 10px 0;
+      width: 320px;
+      height: 35px;
+      display: flex;
+      align-items: center;
+    }
+
+    .campo input {
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: transparent;
+      color: white;
+      padding: 0 10px;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .campo input::placeholder {
+      color: white;
+    }
+
+    .condiciones {
+      font-size: 13px;
+      color: gray;
+      text-align: center;
+      margin-top: 15px;
+      max-width: 350px;
+    }
+
+    .registrarse-btn {
+      margin-top: 15px;
+      padding: 8px 20px;
+      background-color: #A0522D;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="barra-superior">
+    <h1>El Sazón de Cantera y Plata</h1>
+    <div class="menu">
+      <select>
+        <option selected disabled>Regístrate</option>
+        <option>Usuario</option>
+        <option>Personal</option>
+        <option>Administrador</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="ventana">
+    <div class="contenido">
+      <div class="contenido-naranja">
+        <div class="formulario">
+          <img src="Imagenes/logo.png" alt="Logo" class="logo" />
+          <div class="mensaje">
+            ¡Gracias por ser parte<br />
+            de nuestros clientes preferidos!
+          </div>
+          <div class="bienvenida">¡Bienvenido!</div>
+        </div>
+      </div>
+
+      <div class="contenido-blanco">
+        <div class="formulario">
+          <h2>Registro Usuario</h2>
+          <div class="campo"><input type="text" placeholder="Nombre" /></div>
+          <div class="campo"><input type="text" placeholder="Apellido" /></div>
+          <div class="campo"><input type="text" placeholder="Número de celular" /></div>
+          <div class="campo"><input type="email" placeholder="Correo electrónico" /></div>
+          <div class="campo"><input type="password" placeholder="Nueva contraseña" /></div>
+
+          <div class="condiciones">
+            Al hacer clic en "Registrarte", aceptas nuestras Condiciones, la Política de privacidad y la Política de cookies.<br/>
+            Es posible que te enviemos notificaciones por SMS, que puedes desactivar cuando quieras.
+          </div>
+
+          <button class="registrarse-btn">REGISTRARTE</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
