@@ -147,3 +147,26 @@ body {
     display: block;
     padding: 3px 0;
 }
+.menu-registro {
+    position: relative;
+    display: inline-block;
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    right: 0;
+    background: #FFBA5D;
+    padding: 5px;
+    width: 120px;
+}
+
+.menu-registro:hover .submenu {
+    display: block;
+}
+
+.submenu a {
+    display: block;
+    color: #333;
+    padding: 3px 0;
+}
