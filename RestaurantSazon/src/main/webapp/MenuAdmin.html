@@ -142,6 +142,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            text-decoration: none;
         }
         
         .admin-btn:hover {
@@ -165,13 +166,13 @@
     <div class="top-bar">
         <div class="restaurant-title">El Sazón de Cantera y Plata</div>
         <div class="menu-container">
-            <div class="menu-item" onclick="soporteClick()">Chat con Soporte</div>
+            <a href="Soporte.html" class="menu-item" style="text-decoration: none;">Chat con Soporte</a>
             <div class="menu-item">
                 Regístrate
                 <div class="submenu">
-                    <div class="submenu-item" onclick="menuUsuarioClick()">Usuario</div>
-                    <div class="submenu-item" onclick="menuPersonalClick()">Personal</div>
-                    <div class="submenu-item" onclick="menuAdministradorClick()">Administrador</div>
+                    <a href="LoginView.html" class="submenu-item" style="text-decoration: none;">Usuario</a>
+                    <a href="LoginEmpleado.html" class="submenu-item" style="text-decoration: none;">Personal</a>
+                    <a href="InicioSesionAdmin.html" class="submenu-item" style="text-decoration: none;">Administrador</a>
                 </div>
             </div>
         </div>
@@ -179,64 +180,17 @@
     
     <!-- Window Controls -->
     <div class="window-controls">
-        <button class="window-btn minimize-btn" onclick="minimizar()">–</button>
-        <button class="window-btn close-btn" onclick="cerrarVentana()">✖</button>
+        <button class="window-btn minimize-btn">–</button>
+        <button class="window-btn close-btn">✖</button>
     </div>
     
     <!-- Main Content -->
     <div class="main-content">
-        <button class="admin-btn" onclick="btnPedidosClick()">Revisar Pedidos</button>
-        <button class="admin-btn" onclick="btnEmpleadosClick()">Gestionar Empleados</button>
+        <button class="admin-btn" onclick="window.location.href='pedidos.html'">Revisar Pedidos</button>
+        <a href="RegistroEmpleado.html" class="admin-btn">Registrar Empleado</a>
     </div>
     
     <!-- Footer Text -->
     <div class="footer-text">Menú de Administración</div>
-    
-    <script>
-        // Event handlers
-        function soporteClick() {
-            alert("Chat con Soporte clickeado");
-            // window.location.href = "soporte.html";
-        }
-        
-        function menuUsuarioClick() {
-            alert("Registro de Usuario clickeado");
-            // window.location.href = "login_usuario.html";
-        }
-        
-        function menuPersonalClick() {
-            alert("Registro de Personal clickeado");
-            // window.location.href = "login_empleado.html";
-        }
-        
-        function menuAdministradorClick() {
-            alert("Registro de Administrador clickeado");
-            // window.location.href = "login_admin.html";
-        }
-        
-        function minimizar() {
-            // This would minimize the window in an Electron app
-            // For browser, we can't actually minimize, so we'll just alert
-            alert("Ventana minimizada");
-        }
-        
-        function cerrarVentana() {
-            // This would close the window in an Electron app
-            // For browser, we can close the tab/window
-            if (confirm("¿Desea cerrar la aplicación?")) {
-                window.close();
-            }
-        }
-        
-        function btnPedidosClick() {
-            alert("Revisar Pedidos clickeado");
-            // window.location.href = "pedidos.html";
-        }
-        
-        function btnEmpleadosClick() {
-            alert("Gestionar Empleados clickeado");
-            // window.location.href = "empleados.html";
-        }
-    </script>
 </body>
 </html>
