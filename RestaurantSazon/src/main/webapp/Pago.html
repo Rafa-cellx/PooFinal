@@ -80,6 +80,42 @@
   </main>
 
 </div>
+<script>
+document.getElementById('confirmar').addEventListener('click', function() {
+   
+    const direccion = document.getElementById('direccion').value;
+    const metodoPago = document.getElementById('metodoPago').value;
+    
+    if (!direccion || direccion.length < 10) {
+        document.getElementById('errorDireccion').hidden = false;
+        return;
+    }
+    
+    if (!metodoPago || metodoPago === "Selecciona uno") {
+        alert("Selecciona un método de pago");
+        return;
+    }
+    
+
+    // Enviar datos al servlet
+    fetch('PagoServlet', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: `direccion=${encodeURIComponent(direccion)}&metodoPago=${encodeURIComponent(metodoPago)}&carrito=${JSON.stringify(carrito)}`
+    })
+    .then(response => response.text())
+    .then(data => {
+        alert(data); 
+        
+        window.location.href = 'confirmacion.html';
+    })
+    .catch(error => {
+        alert("Error al procesar el pedido: " + error);
+    });
+});
+</script>
 
 </body>
 </html>
