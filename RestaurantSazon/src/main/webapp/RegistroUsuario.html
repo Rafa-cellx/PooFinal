@@ -170,13 +170,14 @@
   <div class="barra-superior">
     <h1>El Sazón de Cantera y Plata</h1>
     <div class="menu">
-      <select>
-        <option selected disabled>Regístrate</option>
-        <option>Usuario</option>
-        <option>Personal</option>
-        <option>Administrador</option>
-      </select>
-    </div>
+  <select id="registroSelect" onchange="redirigir()">
+    <option selected disabled>Regístrate</option>
+    <option value="usuario">Usuario</option>
+    <option value="personal">Personal</option>
+    <option value="admin">Administrador</option>
+  </select>
+</div>
+
   </div>
 
   <div class="ventana">
@@ -195,21 +196,50 @@
       <div class="contenido-blanco">
         <div class="formulario">
           <h2>Registro de Usuario</h2>
-          <div class="campo"><input type="text" placeholder="Nombre" /></div>
-          <div class="campo"><input type="text" placeholder="Apellido" /></div>
-          <div class="campo"><input type="text" placeholder="Número de celular" /></div>
-          <div class="campo"><input type="email" placeholder="Correo electrónico" /></div>
-          <div class="campo"><input type="password" placeholder="Nueva contraseña" /></div>
+          <form action="RegistroUsuarioServlet" method="post">
+    
+    <div class="campo">
+      <input type="text" name="nombre" placeholder="Nombre" required />
+    </div>
+    <div class="campo">
+      <input type="text" name="apellido" placeholder="Apellido" required />
+    </div>
+    <div class="campo">
+      <input type="text" name="celular" placeholder="Número de celular" required />
+    </div>
+    <div class="campo">
+      <input type="email" name="correo" placeholder="Correo electrónico" required />
+    </div>
+    <div class="campo">
+      <input type="password" name="contrasena" placeholder="Nueva contraseña" required />
+    </div>
 
-          <div class="condiciones">
-            Al hacer clic en "Registrarte", aceptas nuestras Condiciones, la Política de privacidad y la Política de cookies.<br/>
-            Es posible que te enviemos notificaciones por SMS, que puedes desactivar cuando quieras.
-          </div>
-          <button class="registrarse-btn">REGISTRARTE</button>
+    <div class="condiciones">
+      Al hacer clic en "Registrarte", aceptas nuestras Condiciones, la Política de privacidad y la Política de cookies.<br/>
+      Es posible que te enviemos notificaciones por SMS, que puedes desactivar cuando quieras.
+    </div>
+
+   
+    <button type="submit" class="registrarse-btn">REGISTRARTE</button>
+  </form>
+  
 		  <a href="LoginView.html" class="link-login">¿Ya tienes cuenta?</a>          
         </div>
       </div>
     </div>
   </div>
+  <script>
+  function redirigir() {
+    const opcion = document.getElementById("registroSelect").value;
+    if (opcion === "usuario") {
+      window.location.href = "LoginView.html";
+    } else if (opcion === "personal") {
+      window.location.href = "LoginEmpleado.html";
+    } else if (opcion === "admin") {
+      window.location.href = "InicioSesionAdmin.html";
+    }
+  }
+</script>
+  
 </body>
 </html>

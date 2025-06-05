@@ -3,65 +3,238 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Pago</title>
-<link rel="stylesheet" href="Pago.css" />
+<title>Confirmar Pedido</title>
+<style>
+  /* Reset básico */
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: url('Imagenes/fondo.png') no-repeat center center fixed;
+    background-size: cover;
+    color: #5d2c00;
+  }
+
+  /* Fondo decorativo fijo */
+  .fondo {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: -1;
+  }
+
+  /* Barra superior */
+  .top-bar {
+    width: 100%;
+    height: 35px;
+    background-color: rgba(255, 165, 0, 0.5);
+    border-radius: 0 0 10px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    position: fixed;
+    top: 0; left: 0;
+    font-family: 'Akhbar MT', sans-serif;
+    z-index: 1000;
+  }
+
+  .restaurant-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    margin: 0;
+  }
+
+  .menu-container {
+    display: flex;
+    gap: 15px;
+  }
+.top-bar select {
+  background-color: rgba(255, 165, 0, 0.8); /* fondo naranja semitransparente */
+  color: white; /* texto blanco */
+  border: none;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Opcional: quitar borde al hacer focus */
+.top-bar select:focus {
+  outline: none;
+  border: 1px solid #fff;
+}
+  .menu-item {
+    position: relative;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background 0.3s;
+  }
+
+  .menu-item:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .submenu-parent {
+    position: relative;
+  }
+
+  .submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: rgba(255, 165, 0, 0.8);
+    border-radius: 5px;
+    padding: 5px 0;
+    z-index: 1100;
+    min-width: 150px;
+  }
+
+  .submenu-item {
+    padding: 8px 12px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 14px;
+  }
+
+  .submenu-item:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .submenu-parent:hover .submenu {
+    display: block;
+  }
+
+  /* Contenido principal */
+  main {
+    margin: 90px auto 40px;
+    max-width: 600px;
+    background: rgba(255 255 255 / 0.5);
+    border-radius: 15px;
+    padding: 30px 40px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.2);
+    color: #b96300;
+  }
+
+  main h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 28px;
+    color: #b96300;
+  }
+
+  .platillo {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    font-size: 18px;
+  }
+
+  label {
+    display: block;
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+  input[type="text"], select {
+    width: 100%;
+    padding: 12px 15px;
+    margin-top: 8px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+
+  input[type="text"]:focus, select:focus {
+    border-color: #ffa500;
+  }
+
+  .error {
+    color: red;
+    font-size: 14px;
+    margin-top: 6px;
+    display: none;
+  }
+
+  .info-metodo {
+    font-style: italic;
+    font-size: 14px;
+    margin-top: 10px;
+    color: #6e4700;
+  }
+
+  .total {
+    margin-top: 30px;
+    font-size: 22px;
+    font-weight: bold;
+    text-align: right;
+  }
+
+  #confirmar {
+    display: block;
+    margin: 35px auto 0;
+    padding: 14px 40px;
+    background: #EBAF5D;
+    color: white;
+    font-size: 20px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+  }
+
+  #confirmar:hover {
+    background: #d99845;
+  }
+
+  @media (max-width: 650px) {
+    main {
+      margin: 100px 20px 40px;
+      padding: 25px;
+    }
+  }
+</style>
 </head>
 <body>
 
-<div class="ventana">
-
-  <!-- Fondo -->
   <div class="fondo"></div>
 
-  <!-- Barra superior -->
-  <header class="barra-superior">
-    <div class="titulo">El Sazón de Cantera y Plata</div>
-    <nav>
-      <ul class="menu">
-        <li><a href="#" id="chatSoporte">Chat con Soporte</a></li>
-        <li><a href="#" id="carrito">Carrito</a></li>
-        <li class="submenu">
-          <a href="#">Regístrate ▾</a>
-          <ul class="submenu-lista">
-            <li><a href="#" id="usuario">Usuario</a></li>
-            <li><a href="#" id="personal">Personal</a></li>
-            <li><a href="#" id="administrador">Administrador</a></li>
-          </ul>
-        </li>
-      </ul>
-    </nav>
+  <header class="top-bar">
+    <div class="restaurant-title">El Sazón de Cantera y Plata</div>
+    <div class="menu">
+	  <select id="registroSelect" onchange="redirigir()">
+	    <option selected disabled>Regístrate</option>
+	    <option value="usuario">Usuario</option>
+	    <option value="personal">Personal</option>
+	    <option value="admin">Administrador</option>
+	  </select>
+	  </div>
   </header>
 
-  <!-- Botones minimizar y cerrar -->
-  <div class="controles-ventana">
-    <button id="minimizar">–</button>
-    <button id="cerrar">✖</button>
-  </div>
-
-  <!-- Contenido principal -->
-  <main class="contenido">
+  <main>
     <h1>Confirma tu pedido</h1>
 
-    <!-- Lista de platillos -->
-    <div class="lista-platillos">
-      <div class="platillo">
-        <span class="cantidad">2</span>
-        <span class="nombre">Taco al pastor</span>
-        <span class="subtotal">$50.00</span>
-      </div>
-      <div class="platillo">
-        <span class="cantidad">1</span>
-        <span class="nombre">Quesadilla</span>
-        <span class="subtotal">$40.00</span>
-      </div>
-    </div>
+    <div class="platillo"><span>2x Taco al pastor</span><span>$50.00</span></div>
+    <div class="platillo"><span>1x Quesadilla</span><span>$40.00</span></div>
 
-    <!-- Dirección -->
     <label for="direccion">Dirección de entrega:</label>
     <input type="text" id="direccion" placeholder="Ej: Calle 123, #45-B" />
-    <p id="errorDireccion" class="error" hidden>⚠ La dirección es muy corta o contiene caracteres inválidos.</p>
+    <p id="errorDireccion" class="error">⚠ La dirección es muy corta o inválida.</p>
 
-    <!-- Método de pago -->
     <label for="metodoPago">Método de pago:</label>
     <select id="metodoPago">
       <option disabled selected>Selecciona uno</option>
@@ -72,14 +245,60 @@
     </select>
     <p id="infoMetodoPago" class="info-metodo"></p>
 
-    <!-- Total -->
     <p class="total">Total: $90.00</p>
 
-    <!-- Botón confirmar -->
     <button id="confirmar">Confirmar pedido</button>
   </main>
 
-</div>
+<script>
+function redirigir() {
+    const opcion = document.getElementById("registroSelect").value;
+    if (opcion === "usuario") {
+      window.location.href = "LoginView.html";
+    } else if (opcion === "personal") {
+      window.location.href = "LoginEmpleado.html";
+    } else if (opcion === "admin") {
+      window.location.href = "InicioSesionAdmin.html";
+    }
+  }
+
+  const carrito = [
+    { nombre: "Taco al pastor", cantidad: 2, precio: 25 },
+    { nombre: "Quesadilla", cantidad: 1, precio: 40 }
+  ];
+
+  // Mostrar info método pago (opcional)
+  const infoMetodoPago = document.getElementById("infoMetodoPago");
+  document.getElementById("metodoPago").addEventListener("change", function() {
+    const val = this.value;
+    let msg = "";
+    if(val === "Efectivo") msg = "Recuerda tener el monto exacto al momento de la entrega.";
+    else if(val === "Tarjeta de débito") msg = "El repartidor llevará una terminal para el cobro.";
+    else if(val === "Tarjeta de crédito") msg = "Aceptamos todas las tarjetas prinipales.";
+    else if(val === "Transferencia bancaria") msg = "Recibirás instrucciones para transferir.";
+    infoMetodoPago.textContent = msg;
+  });
+
+  document.getElementById("confirmar").addEventListener("click", () => {
+    const direccion = document.getElementById("direccion").value.trim();
+    const metodoPago = document.getElementById("metodoPago").value;
+    const errorDireccion = document.getElementById("errorDireccion");
+
+    errorDireccion.style.display = direccion.length < 10 ? "block" : "none";
+    if (direccion.length < 10) return;
+
+    if (!metodoPago || metodoPago === "Selecciona uno") {
+      alert("Por favor selecciona un método de pago.");
+      return;
+    }
+
+    // Aquí va el envío del pedido (simulado)
+    alert(`Pedido confirmado!\nDirección: ${direccion}\nPago: ${metodoPago}\nTotal: $90.00`);
+
+    // Simular redirección
+    // window.location.href = "confirmacion.html";
+  });
+</script>
 
 </body>
 </html>

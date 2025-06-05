@@ -4,14 +4,23 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
                              http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
-    
+    <!-- Configuración de Servlet de registro de usuario -->
     <servlet>
-        <servlet-name>RegistroServlet</servlet-name>
-        <servlet-class>RegistroServlet</servlet-class>
+        <servlet-name>com.main.java.RegistroUsuarioServlet</servlet-name>
+        <servlet-class>RegistroUsuarioServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>RegistroServlet</servlet-name>
-        <url-pattern>/RegistroServlet</url-pattern>
+        <servlet-name>RegistroUsuarioServlet</servlet-name>
+        <url-pattern>/RegistroUsuarioServlet</url-pattern>
+    </servlet-mapping>
+    <!-- Configuración de Servlet de registro de empleado -->
+     <servlet>
+        <servlet-name>com.main.java.RegistroEmpleadoServlet</servlet-name>
+        <servlet-class>RegistroEmpleadoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegistroEmpleadoServlet</servlet-name>
+        <url-pattern>/RegistroEmpleadoServlet</url-pattern>
     </servlet-mapping>
     
 </web-app>
