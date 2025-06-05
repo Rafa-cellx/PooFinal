@@ -78,7 +78,7 @@
     font-size: 50px;
     font-weight: bold;
     color: white;
-    margin: 30px 0 0 0;
+    margin: 10px 0 0 0;
   }
 
   .formulario {
@@ -90,7 +90,7 @@
   .formulario h2 {
     color: #b96300;
     font-size: 24px;
-    margin: 15px 0;
+    margin: 10px 0;
   }
 
   .formulario .logo {
@@ -102,7 +102,7 @@
     text-align: center;
     font-size: 20px;
     color: white;
-    margin: 20px 0;
+    margin: 5px 0;
   }
 
   .campo {
@@ -159,10 +159,11 @@
     background-color: #A0522D;
     color: white;
     border: none;
+    text-align:center;
     border-radius: 10px;
     font-weight: bold;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 14px;    
   }
   
 </style>
@@ -187,11 +188,11 @@
       <div class="contenido-naranja">
         <div class="formulario">
           <img src="Imagenes/logo.png" alt="Logo" class="logo" />
+          <div class="bienvenida">¡Bienvenido!</div>
           <div class="mensaje">
             ¡Gracias por formar parte<br />
             del equipo que hace esto posible!
           </div>
-          <div class="bienvenida">¡Bienvenido!</div>
         </div>
       </div>
 
@@ -218,7 +219,10 @@
             Toda la información ingresada debe ser válida y oficial.
           </div>
 
-          <button type="submit" class="registrarse-btn">DAR DE ALTA</button>
+          <div style="text-align: center;">
+  			<button type="submit" class="registrarse-btn">DAR DE ALTA</button>
+		</div>
+
           </form>
 			<a href="LoginEmpleado.html" class="link-login">¿Ya tienes cuenta?</a>
 
