@@ -41,8 +41,8 @@ public class RegistroUsuarioServlet extends HttpServlet {
             ps.executeUpdate();
             con.close();
 
-            response.setContentType("text/html;charset=UTF-8");
-            response.getWriter().println("<h1>Usuario registrado exitosamente</h1>");
+            response.sendRedirect("Menu.html"); // o .jsp si aplica
+
         } catch (Exception e) {
             e.printStackTrace();
             response.getWriter().println("<h1>Error: " + e.getMessage() + "</h1>");
