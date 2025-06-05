@@ -3,48 +3,45 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Menú de Empleados</title>
+  <title> Menú Empleados</title>
   <link rel="stylesheet" href="menu-empleados.css" />
 </head>
 <body>
-  <div class="container">
+  <!-- Fondo -->
+  <div class="fondo"></div>
 
-    <!-- Fondo -->
-    <div class="background"></div>
-
-    <!-- Barra superior -->
-    <header class="top-bar">
-      <div class="title">El Sazón de Cantera y Plata</div>
-      <nav class="menu">
-        <ul>
-          <li><a href="#" id="chatSoporte">Chat con Soporte</a></li>
-          <li>
-            Regístrate
-            <ul class="submenu">
-              <li><a href="#" id="menuUsuario">Usuario</a></li>
-              <li><a href="#" id="menuPersonal">Personal</a></li>
-              <li><a href="#" id="menuAdmin">Administrador</a></li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
-      <div class="window-controls">
-        <button id="minimizar">–</button>
-        <button id="cerrar">✖</button>
+  <!-- Barra superior -->
+  <header class="top-bar">
+    <div class="restaurant-title">El Sazón de Cantera y Plata</div>
+    <nav class="menu-container">
+      <div class="menu-item" onclick="soporteClick()">Chat con Soporte</div>
+      <div class="menu-item" onclick="verCarrito()">Carrito</div>
+      <div class="menu-item submenu-parent">
+        Regístrate
+        <div class="submenu">
+          <div class="submenu-item" onclick="menuUsuarioClick()">Usuario</div>
+          <div class="submenu-item" onclick="menuPersonalClick()">Personal</div>
+          <div class="submenu-item" onclick="menuAdministradorClick()">Administrador</div>
+        </div>
       </div>
-    </header>
+    </nav>
+  </header>
 
-    <!-- Contenido principal -->
-    <main class="main-content">
-      <button id="btnPedidos">Revisar Pedidos</button>
-    </main>
+  <!-- Contenido principal -->
+  <main>
+    <h1>Menú de Empleados</h1>
+    <button id="btnPedidos" class="btn-pedidos">Revisar Pedidos</button>
+  </main>
 
-    <!-- Texto inferior -->
-    <footer class="footer-text">
-      Menú de Empleados
-    </footer>
-  </div>
-
-  <script src="menu-empleados.js"></script>
+  <script>
+    function soporteClick() { alert("Abrir chat con soporte"); }
+    function verCarrito() { alert("Ver carrito"); }
+    function menuUsuarioClick() { alert("Registro usuario"); }
+    function menuPersonalClick() { alert("Registro personal"); }
+    function menuAdministradorClick() { alert("Registro administrador"); }
+    document.getElementById('btnPedidos').addEventListener('click', () => {
+      alert('Revisar Pedidos');
+    });
+  </script>
 </body>
 </html>

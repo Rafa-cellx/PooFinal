@@ -1,63 +1,217 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Registro Empleado</title>
-  <link rel="stylesheet" href="RegistroEmpleado.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Empleado - El Sazón de Cantera y Plata</title>
+    <style>
+    	/* Reset y base */
+		* {
+		  box-sizing: border-box;
+		  margin: 0;
+		  padding: 0;
+		}
+		body, html {
+		  height: 100%;
+		  font-family: Arial, sans-serif;
+		  background: url('Imagenes/fondo.png') no-repeat center center fixed;
+		  background-size: cover;
+		}
+		
+		/* Barra superior */
+		.top-bar {
+		  background-color: rgba(255, 165, 0, 0.9);
+		  height: 50px;
+		  display: flex;
+		  justify-content: space-between;
+		  align-items: center;
+		  padding: 0 20px;
+		  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		  color: white;
+		  position: sticky;
+		  top: 0;
+		  z-index: 1000;
+		}
+		
+		/* Título */
+		.restaurant-title {
+		  font-weight: bold;
+		  font-size: 1.2rem;
+		}
+		
+		/* Menú */
+		.menu-container {
+		  display: flex;
+		  gap: 20px;
+		  font-weight: 600;
+		  font-size: 1rem;
+		  cursor: pointer;
+		  position: relative;
+		}
+		
+		/* Items normales */
+		.menu-item {
+		  position: relative;
+		  padding: 8px 10px;
+		  user-select: none;
+		}
+		
+		/* Submenú */
+		.submenu-parent:hover .submenu {
+		  display: block;
+		}
+		
+		.submenu {
+		  display: none;
+		  position: absolute;
+		  top: 100%;
+		  left: 0;
+		  background-color: #b96300;
+		  min-width: 140px;
+		  border-radius: 5px;
+		  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+		}
+		
+		.submenu-item {
+		  padding: 10px 15px;
+		  color: white;
+		  cursor: pointer;
+		  white-space: nowrap;
+		  transition: background-color 0.3s ease;
+		}
+		
+		.submenu-item:hover {
+		  background-color: #ffa500;
+		}
+		
+		/* --- CONTENEDOR CENTRAL --- */
+		.registro-container {
+		  width: 500px;
+		  margin: 30px auto;
+		  background: rgba(255, 255, 255, 0.95);
+		  padding: 30px 25px;
+		  border-radius: 20px;
+		  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+		  text-align: center;
+		}
+		
+		/* Barra secundaria "Personal" */
+		.barra-titulo {
+		  background: rgba(255, 165, 0, 0.8);
+		  border-radius: 10px;
+		  height: 35px;
+		  color: white;
+		  font-weight: bold;
+		  padding: 0 15px;
+		  font-size: 16px;
+		  display: flex;
+		  align-items: center;
+		  justify-content: center;
+		  margin-bottom: 15px;
+		}
+		.icon-personal {
+		  width: 25px;
+		  height: 25px;
+		  background: url('Imagenes/icon_personal.png') no-repeat center center;
+		  background-size: contain;
+		  margin-left: 10px;
+		}
+		
+		/* Título */
+		.titulo-central {
+		  font-size: 22px;
+		  color: #b96300;
+  		  font-weight: bold;
+		  margin-bottom: 20px;
+		}
+		
+		/* Logo */
+		.panel-logo {
+		  margin-bottom: 20px;
+		}
+		.panel-logo img {
+		  width: 100px;
+		  height: auto;
+		}
+		
+		/* Campos */
+		.input-container {
+		  margin: 10px auto;
+		  background: linear-gradient(90deg, #A0522D, #e5b471);
+		  border-radius: 10px;
+		  height: 35px;
+		  padding: 0 10px;
+		  width: 90%;
+		  display: flex;
+		  align-items: center;
+		}
+		.input-container input {
+		  width: 100%;
+		  height: 100%;
+		  border: none;
+		  background: transparent;
+		  color: white;
+		  font-size: 14px;
+		  padding-left: 5px;
+		  outline: none;
+		}
+		
+		/* Botón */
+		.btn-alta {
+		  margin-top: 25px;
+		  width: 130px;
+		  height: 35px;
+		  font-size: 14px;
+		  font-weight: bold;
+		  color: white;
+		  border: none;
+		  border-radius: 10px;
+		  background: linear-gradient(90deg, #A0522D, #e5b471);
+		  cursor: pointer;
+		}
+		.btn-alta:hover {
+		  background: linear-gradient(90deg, #e5b471, #A0522D);
+		}
+		</style>
 </head>
 <body>
-  <div class="registro-container">
-    <div class="top-bar">
-      El Sazón de Cantera y Plata
-      <ul class="menu">
-        <li>
-          Regístrate
-          <ul class="submenu">
-            <li>Usuario</li>
-            <li>Personal</li>
-            <li>Administrador</li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-
-    <div class="contenido">
-      <div class="barra-titulo">PERSONAL</div>
-
-      <button class="boton-minimizar" title="Minimizar">−</button>
-      <button class="boton-cerrar" title="Cerrar">×</button>
-
-      <div class="icon-personal"></div>
-
-      <div class="titulo-central">Registro Empleado</div>
-
-      <div class="panel-logo">
-        <img src="Imagenes/logo.png" alt="Logo" />
-        <p>¡Te damos la bienvenida<br>a nuestra familia!</p>
+<!-- Barra superior -->
+  <header class="top-bar">
+    <div class="restaurant-title">El Sazón de Cantera y Plata</div>
+    <nav class="menu-container">
+      <div class="menu-item" onclick="soporteClick()">Chat con Soporte</div>
+      <div class="menu-item" onclick="verCarrito()">Carrito</div>
+      <div class="menu-item submenu-parent">
+        Regístrate
+        <div class="submenu">
+          <div class="submenu-item" onclick="menuUsuarioClick()">Usuario</div>
+          <div class="submenu-item" onclick="menuPersonalClick()">Personal</div>
+          <div class="submenu-item" onclick="menuAdministradorClick()">Administrador</div>
+        </div>
       </div>
-
-      <!-- Formulario funcional -->
-      <form action="registroEmpleado" method="post">
-        <div class="input-container">
-          <input type="text" name="nombre" placeholder="Nombre" required />
-        </div>
-
-        <div class="input-container">
-          <input type="text" name="apellido" placeholder="Apellido" required />
-        </div>
-
-        <div class="input-container">
-          <input type="text" name="empleadoId" placeholder="ID de Empleado" required />
-        </div>
-
-        <div class="input-container">
-          <input type="password" name="contrasena" placeholder="Nueva Contraseña" required />
-        </div>
-
-        <button type="submit" class="btn-alta">DAR DE ALTA</button>
-      </form>
+    </nav>
+  </header>
+  <!-- Contenido del registro -->
+  <div class="registro-container">
+    <div class="barra-titulo">
+      Personal <span class="icon-personal"></span>
     </div>
+
+    <h2 class="titulo-central">Registro Empleado</h2>
+
+    <div class="panel-logo">
+      <img src="Imagenes/logo.png" alt="Logo">
+    </div>
+
+    <div class="input-container"><input type="text" placeholder="Nombre"></div>
+    <div class="input-container"><input type="text" placeholder="Apellido"></div>
+    <div class="input-container"><input type="text" placeholder="ID"></div>
+    <div class="input-container"><input type="password" placeholder="Nueva contraseña"></div>
+
+    <button class="btn-alta">DAR DE ALTA</button>
   </div>
+
 </body>
 </html>
+
+    	

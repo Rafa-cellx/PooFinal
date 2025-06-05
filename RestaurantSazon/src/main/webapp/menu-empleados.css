@@ -1,160 +1,123 @@
-/* Reset y básicos */
+/* Reset básico */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body, html {
-  height: 100%;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: white;
-}
-
-/* Contenedor principal */
-.container {
-  position: relative;
-  width: 550px;
-  height: 500px;
-  margin: 50px auto;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 0 10px #b96300;
-}
-
 /* Fondo */
-.background {
-  position: absolute;
+.fondo {
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('Imagenes/fondo.png');
+  background-image: url(Imagenes/fondo.png);
   background-size: cover;
   background-position: center;
-  z-index: 0;
-  filter: brightness(0.7);
+  filter: brightness(1);
+  z-index: -1;
 }
 
 /* Barra superior */
 .top-bar {
-  position: relative;
-  background: rgba(255, 165, 0, 0.5); /* color naranja translúcido */
-  height: 40px;
-  padding: 0 15px;
+  background-color: rgba(255, 165, 0, 0.9);
+  height: 50px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  z-index: 2;
+  align-items: center;
+  padding: 0 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 /* Título */
-.title {
+.restaurant-title {
   font-weight: bold;
-  font-size: 14px;
-  color: white;
-  font-family: 'Akhbar MT', sans-serif;
+  font-size: 1.2rem;
 }
 
 /* Menú */
-.menu ul {
-  list-style: none;
+.menu-container {
   display: flex;
   gap: 20px;
-  font-weight: bold;
-  font-size: 14px;
+  font-weight: 600;
+  font-size: 1rem;
   cursor: pointer;
-  color: white;
   position: relative;
 }
 
-.menu ul li {
+/* Items normales */
+.menu-item {
   position: relative;
+  padding: 8px 10px;
+  user-select: none;
 }
 
 /* Submenú */
-.menu ul li ul.submenu {
+.submenu-parent:hover .submenu {
+  display: block;
+}
+
+.submenu {
   display: none;
   position: absolute;
   top: 100%;
   left: 0;
-  background: rgba(255, 165, 0, 0.9);
-  padding: 5px 10px;
+  background-color: #b96300;
+  min-width: 140px;
   border-radius: 5px;
-  flex-direction: column;
-  min-width: 120px;
-  z-index: 10;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
 }
 
-.menu ul li:hover ul.submenu {
-  display: flex;
-  flex-direction: column;
-}
-
-.menu ul li ul.submenu li {
-  margin: 5px 0;
-}
-
-.menu a {
-  text-decoration: none;
+.submenu-item {
+  padding: 10px 15px;
   color: white;
-}
-
-.menu a:hover {
-  text-decoration: underline;
-}
-
-/* Botones minimizar y cerrar */
-.window-controls button {
-  background: #c86d05;
-  border: none;
-  color: white;
-  font-weight: bold;
-  font-size: 16px;
-  width: 30px;
-  height: 30px;
-  margin-left: 5px;
-  border-radius: 3px;
   cursor: pointer;
-  user-select: none;
+  white-space: nowrap;
+  transition: background-color 0.3s ease;
 }
 
-/* Contenido principal */
-.main-content {
-  position: relative;
-  z-index: 1;
-  height: calc(100% - 120px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.submenu-item:hover {
+  background-color: #ffa500;
 }
 
-#btnPedidos {
+/* Main */
+main {
+  max-width: 600px; /* limita ancho para centrar mejor */
+  margin: 40px auto; /* centra horizontalmente con margen arriba */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  text-align: center;
+  padding: 0 20px;
+}
+
+
+/* Título principal */
+main h1 {
+  color: #b96300;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+/* Botón Revisar Pedidos estilo WPF */
+.btn-pedidos {
+  margin-top: 180px; 
   width: 250px;
   height: 60px;
-  background: rgba(255, 165, 0, 0.5);
-  border: none;
-  border-radius: 10px;
+  font-size: 14px;
   font-weight: bold;
-  font-size: 18px;
   color: white;
+  background-color: rgba(255, 165, 0, 0.5);
+  border: 1px solid #ffa500;
+  border-radius: 10px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
-#btnPedidos:hover {
-  background: rgba(255, 165, 0, 0.8);
-}
-
-/* Texto inferior */
-.footer-text {
-  position: relative;
-  text-align: center;
-  margin: 10px 0;
-  font-weight: bold;
-  font-size: 16px;
-  color: #b96300;
-  z-index: 2;
+.btn-pedidos:hover {
+  background-color: rgba(255, 165, 0, 0.8);
 }
