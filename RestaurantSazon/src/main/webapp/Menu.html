@@ -6,75 +6,88 @@
     <title>Menú Completo - El Sazón de Cantera y Plata</title>
     <style>
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
-        
-        body {
-            background-image: url('fondo.png');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            height: 100vh;
-            overflow: hidden;
-        }
-        
-        /* Barra superior */
-        .top-bar {
-            background-color: rgba(128, 255, 165, 0.5);
-            height: 19px;
-            width: 100%;
-            border-bottom-left-radius: 10px;
-            border-bottom-right-radius: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 15px;
-            position: fixed;
-            top: 0;
-            z-index: 999;
-        }
-        
-        .restaurant-title {
-            font-family: 'Akhbar MT', serif;
-            font-size: 14px;
-            font-weight: bold;
-            color: white;
-        }
-        
-        .menu-container {
-            display: flex;
-        }
-        
-        .menu-item {
-            background-color: #FFEBAF5D;
-            color: white;
-            font-weight: bold;
-            padding: 5px 10px;
-            margin-left: 10px;
-            cursor: pointer;
-            position: relative;
-        }
-        
-        .submenu {
-            display: none;
-            position: absolute;
-            background-color: #FFEBAF5D;
-            min-width: 120px;
-            z-index: 1;
-            right: 0;
-        }
-        
-        .menu-item:hover .submenu {
-            display: block;
-        }
-        
-        .submenu-item {
-            padding: 5px;
-            white-space: nowrap;
-        }
+		    margin: 0;
+		    padding: 0;
+		    box-sizing: border-box;
+		    font-family: 'Arial', sans-serif;
+		}
+		
+		body {
+		    background-image: url('Imagenes/fondo.png');
+		    background-size: cover;
+		    background-repeat: no-repeat;
+		    background-attachment: fixed;
+		    height: 100vh;
+		    overflow: hidden;
+		}
+		
+		/* Barra superior */
+		.top-bar {
+		    background-color: rgba(255, 165, 0, 0.5);  
+		    height: 30px;                               
+		    width: 100%;
+		    border-bottom-left-radius: 10px;
+		    border-bottom-right-radius: 10px;
+		    display: flex;
+		    justify-content: space-between;
+		    align-items: center;
+		    padding: 0 20px;                           
+		    position: fixed;
+		    top: 0;
+		    z-index: 999;
+		}
+		
+		.restaurant-title {
+		    font-family: 'Akhbar MT', serif;
+		    font-size: 18px;                           
+		    font-weight: bold;
+		    color: white;
+		}
+		
+		.menu-container {
+		    display: flex;
+		    align-items: center;
+		}
+		
+		.menu-item {
+		    background-color: #EBAF5D;                 
+		    color: white;
+		    font-weight: bold;
+		    padding: 5px 10px;
+		    margin-left: 10px;
+		    cursor: pointer;
+		    position: relative;
+		    border-radius: 4px;                         
+		    font-size: 14px;                            
+		    user-select: none;                          
+		}
+		
+		.submenu {
+		    display: none;
+		    position: absolute;
+		    background-color: #EBAF5D;                  
+		    min-width: 120px;
+		    z-index: 1;
+		    right: 0;
+		    border-radius: 4px;
+		}
+		
+		.menu-item:hover .submenu {
+		    display: block;
+		}
+		
+		.submenu-item {
+		    padding: 5px 10px;
+		    white-space: nowrap;
+		    color: white;
+		    font-weight: bold;
+		    cursor: pointer;
+		}
+		
+		.submenu-item:hover {
+		    background-color: rgba(255, 165, 0, 0.8);  
+		}
+
         
         /* Contenedor principal */
         .main-container {
@@ -165,32 +178,7 @@
             text-align: center;
         }
         
-        /* Botones de ventana */
-        .window-btn {
-            position: fixed;
-            top: 32px;
-            background-color: #c86d05;
-            color: white;
-            border: none;
-            font-size: 8px;
-            cursor: pointer;
-            height: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .close-btn {
-            right: 54px;
-            width: 20px;
-        }
-        
-        .minimize-btn {
-            right: 88px;
-            width: 22px;
-        }
-        
-        /* Botón de carrito */
+         /* Botón de carrito */
         .cart-btn {
             position: fixed;
             right: 9px;
@@ -222,23 +210,22 @@
     </style>
 </head>
 <body>
-    <!-- Barra superior -->
-    <div class="top-bar">
-        <div class="restaurant-title">El Sazón de Cantera y Plata</div>
-        <div class="menu-container">
-            <div class="menu-item" onclick="soporteClick()">Chat con Soporte</div>
-            <div class="menu-item" onclick="verCarrito()">Carrito</div>
-            <div class="menu-item">
-                Regístrate
-                <div class="submenu">
-                    <div class="submenu-item" onclick="menuUsuarioClick()">Usuario</div>
-                    <div class="submenu-item" onclick="menuPersonalClick()">Personal</div>
-                    <div class="submenu-item" onclick="menuAdministradorClick()">Administrador</div>
-                </div>
-            </div>
-        </div>
+  <!-- Barra superior -->
+  <div class="top-bar">
+  <div class="restaurant-title">El Sazón de Cantera y Plata</div>
+  <div class="menu-container">
+    <div class="menu-item" onclick="chatSoporte()">Chat con Soporte</div>
+    <div class="menu-item" onclick="verCarrito()">Carrito</div>
+    <div class="menu-item">
+      Regístrate
+      <div class="submenu">
+        <div class="submenu-item" onclick="redirigir('RegistroUsuario.html', event)">Usuario</div>
+        <div class="submenu-item" onclick="redirigir('RegistroEmpleado.html', event)">Personal</div>
+        <div class="submenu-item" onclick="redirigir('RegistroAdmin.html', event)">Administrador</div>
+      </div>
     </div>
-    
+  </div>
+</div>    
     <!-- Contenido principal -->
     <div class="main-container">
         <div class="dishes-container">
@@ -412,12 +399,9 @@
         </div>
     </div>
     
-    <!-- Botones de ventana -->
-    <button class="window-btn close-btn" onclick="cerrarVentana()">✖</button>
-    <button class="window-btn minimize-btn" onclick="minimizar()">-</button>
-    
+        
     <!-- Botón de carrito -->
-    <button class="cart-btn" onclick="irAlCarrito()">Ir al Carrito</button>
+    <button class="cart-btn" onclick="verCarrito()">Ir al Carrito</button>
     
     <!-- Notificación -->
     <div class="notification" id="notification">
@@ -425,80 +409,69 @@
     </div>
     
     <script>
-        // Funciones para los eventos
-        function soporteClick() {
-            alert("Chat con Soporte clickeado");
-        } 
-        function menuUsuarioClick() {
-            alert("Registro de Usuario clickeado");
-        }
-        
-        function menuPersonalClick() {
-            alert("Registro de Personal clickeado");
-        }
-        
-        function menuAdministradorClick() {
-            alert("Registro de Administrador clickeado");
-        }
-        
-        function cerrarVentana() {
-            alert("Cerrar ventana clickeado");
-        }
-        
-        function minimizar() {
-            alert("Minimizar ventana clickeado");
-           
-        }
-        function irAlCarrito() {
-            window.location.href = 'CarritoV.html';
-            
-            // Si necesitas procesar algo antes de redirigir, podrías usar:
-            // fetch('CarritoServlet')
-            //     .then(() => window.location.href = 'carrito.html');
-        }
-        
-        // Funcionalidad para los botones de cantidad
-        document.querySelectorAll('.quantity-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const quantityElement = this.parentElement.querySelector('.quantity-value');
-                let quantity = parseInt(quantityElement.textContent);
-                
-                if (this.textContent === '+') {
-                    quantity++;
-                } else if (this.textContent === '-' && quantity > 0) {
-                    quantity--;
-                }
-                
-                quantityElement.textContent = quantity;
-            });
-        });
-        
-        // Funcionalidad para los botones de agregar
-        document.querySelectorAll('.add-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const dishName = this.parentElement.querySelector('.dish-name').textContent;
-                const quantity = parseInt(this.parentElement.querySelector('.quantity-value').textContent);
-                
-                if (quantity > 0) {
-                    showNotification(`Agregado ${quantity} ${dishName} al carrito`);
-                } else {
-                    showNotification("Selecciona al menos 1 cantidad");
-                }
-            });
-        });
-        
-        // Mostrar notificación
-        function showNotification(message) {
-            const notification = document.getElementById('notification');
-            const notificationText = document.getElementById('notification-text');
-            
-            notificationText.textContent = message;
-            notification.style.display = 'block';
-            
-            setTimeout(() => {
-                notification.style.display = 'none';
-            }, 3000);
-        }
-    </script>
+  // Función para redirigir a una página
+  function redirigir(url, event) {
+    event.stopPropagation(); // Evita que el menú se cierre o otros eventos interfieran
+    window.location.href = url;
+  }
+
+  // Función para el Chat con soporte
+  function chatSoporte() {
+    // Redirige a la página del chat 
+    window.location.href = 'Soporte.html'; 
+  }
+
+  function verCarrito() {
+    window.location.href = 'CarritoV.html';
+  }
+  // Control básico para botones cantidad y agregar productos
+  const carrito = [];
+
+document.querySelectorAll('.dish-card').forEach(card => {
+  const btnMinus = card.querySelectorAll('.quantity-btn')[0];
+  const btnPlus = card.querySelectorAll('.quantity-btn')[1];
+  const quantityValue = card.querySelector('.quantity-value');
+  const addButton = card.querySelector('.add-btn');
+
+  btnMinus.addEventListener('click', () => {
+    let cantidad = parseInt(quantityValue.textContent);
+    if(cantidad > 0) {
+      quantityValue.textContent = cantidad - 1;
+    }
+  });
+
+  btnPlus.addEventListener('click', () => {
+    let cantidad = parseInt(quantityValue.textContent);
+    quantityValue.textContent = cantidad + 1;
+  });
+
+  addButton.addEventListener('click', () => {
+    let cantidad = parseInt(quantityValue.textContent);
+    if(cantidad > 0) {
+      const nombre = card.querySelector('.dish-name').textContent;
+      
+      // Revisa si el producto ya está en el carrito
+      const productoExistente = carrito.find(item => item.nombre === nombre);
+      if(productoExistente) {
+        // Si ya está, suma la cantidad
+        productoExistente.cantidad += cantidad;
+      } else {
+        // Si no, lo agrega
+        carrito.push({ nombre, cantidad });
+      }
+
+      alert(`Agregaste ${cantidad} unidad(es) de ${nombre} al carrito.`);
+      quantityValue.textContent = '0'; // Resetea la cantidad
+
+      // Opcional: guarda en localStorage para mantenerlo después de recargar
+      localStorage.setItem('carrito', JSON.stringify(carrito));
+    } else {
+      alert('Selecciona una cantidad mayor a cero.');
+    }
+  });
+});
+
+</script>
+
 </body>
 </html>
