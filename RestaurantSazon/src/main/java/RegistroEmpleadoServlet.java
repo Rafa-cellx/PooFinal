@@ -24,7 +24,7 @@ public class RegistroEmpleadoServlet extends HttpServlet {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
 
-                "jdbc:mysql://localhost:3306/sazon_db", "root", "MXVN#1champion5");
+                "jdbc:mysql://localhost:3306/sazon_db", "root", "fer12320");
 
 
 
@@ -39,8 +39,8 @@ public class RegistroEmpleadoServlet extends HttpServlet {
             ps.executeUpdate();
             con.close();
 
-            response.setContentType("text/html;charset=UTF-8");
-            response.getWriter().println("<h1>Empleado registrado exitosamente</h1>");
+            response.sendRedirect("menu-empleados.html"); // o .jsp si aplica
+
         } catch (Exception e) {
             e.printStackTrace();
             response.getWriter().println("<h1>Error: " + e.getMessage() + "</h1>");
