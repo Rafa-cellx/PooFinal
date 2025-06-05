@@ -3,212 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Carrito</title>
-    <style>
-        /* Estilos generales */
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-image: url('imagenes/fondo.png');
-            background-size: cover;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-
-        /* Contenedor principal */
-        .ventana {
-            width: 400px;
-            background-color: rgba(255,255,255,0.9);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 0 10px rgba(0,0,0,0.5);
-            position: relative;
-        }
-
-        /* Barra superior */
-        .barra-superior {
-            background: rgba(255, 165, 0, 0.5);
-            color: white;
-            padding: 5px 10px;
-            font-size: 12px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-family: 'Akhbar MT', sans-serif;
-        }
-
-        /* Menú de navegación */
-        .menu {
-            font-size: 11px;
-            position: relative;
-        }
-
-        .menu a {
-            color: white;
-            font-weight: bold;
-            margin-left: 10px;
-            text-decoration: none;
-        }
-
-        /* Submenú de registro */
-        .submenu {
-            position: absolute;
-            right: 0;
-            background: #FFBA5D;
-            padding: 5px;
-            display: none;
-            width: 120px;
-            z-index: 10;
-        }
-
-        .submenu a {
-            display: block;
-            color: #333;
-            padding: 3px 0;
-            margin: 0;
-        }
-
-        .menu-registro:hover .submenu {
-            display: block;
-        }
-
-        /* Contenido del carrito */
-        .contenido {
-            padding: 15px;
-            max-height: 300px;
-            overflow-y: auto;
-        }
-
-        /* Items del carrito */
-        .item {
-            border: 1px solid gray;
-            padding: 10px;
-            margin-bottom: 10px;
-            display: flex;
-            gap: 10px;
-        }
-
-        .item img {
-            width: 80px;
-            height: 80px;
-            object-fit: cover;
-        }
-
-        .item-info {
-            flex: 1;
-        }
-
-        .item-info h4 {
-            margin: 0;
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        .item-info p {
-            margin: 2px 0;
-            font-size: 12px;
-        }
-
-        /* Sección de total */
-        .total {
-            text-align: right;
-            padding: 10px;
-            font-size: 16px;
-            border-top: 1px solid #ddd;
-        }
-
-        .total span:first-child {
-            font-weight: bold;
-            color: saddlebrown;
-        }
-
-        .total span:last-child {
-            font-weight: bold;
-            color: orangered;
-        }
-
-        /* Botones de acción */
-        .acciones {
-            display: flex;
-            justify-content: flex-end;
-            padding: 10px;
-            border-top: 1px solid #ddd;
-        }
-
-        .btn {
-            background-color: #c86d05;
-            border: none;
-            color: white;
-            font-weight: bold;
-            padding: 8px 20px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-
-        .btn:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
-        }
-
-        /* Controles de ventana */
-        .control {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-        }
-
-        .control button {
-            background: #c86d05;
-            color: white;
-            border: none;
-            margin-left: 5px;
-            width: 25px;
-            height: 25px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        /* Efectos hover */
-        .btn:hover:not(:disabled), .control button:hover {
-            background-color: #a55a04;
-        }
-
-        .menu a:hover {
-            text-decoration: underline;
-        }
-
-        .submenu a:hover {
-            background-color: rgba(255,255,255,0.3);
-        }
-    </style>
+    <link rel="stylesheet" href="CarritoV.css">
 </head>
 <body>
 
 <div class="ventana">
-    <!-- Controles de ventana (simulados) -->
-    <div class="control">
-        <button>−</button>
-        <button>✖</button>
-    </div>
-
     <!-- Barra superior con menú -->
     <div class="barra-superior">
         <div>El Sazón de Cantera y Plata</div>
         <div class="menu">
-            <a href="soporte.html">Chat con Soporte</a>
+            <a href="Soporte.html" class="menu-link">Chat con Soporte</a>
             <div class="menu-registro">
-                <a href="#">Regístrate ▼</a>
+                <a href="#" class="menu-link">Regístrate ▼</a>
                 <div class="submenu">
-                    <a href="registro-usuario.html">Usuario</a>
-                    <a href="registro-personal.html">Personal</a>
-                    <a href="registro-admin.html">Administrador</a>
+                    <a href="RegistroEmpleado.html">Usuario</a>
+                    <a href="RegistroEmpleado.html">Personal</a>
+                    <a href="RegistroEmpleado.html">Administrador</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Contenido del carrito (datos estáticos) -->
+    <!-- Contenido del carrito -->
     <div class="contenido">
         <!-- Item 1 -->
         <div class="item">
@@ -242,7 +58,8 @@
 
     <!-- Botones de acción -->
     <div class="acciones">
-        <a href="pago.html" class="btn">Pagar</a>
+        <a href="Pago.html" class="btn">Pagar</a>
+        <a href="Menu.html" class="btn">Volver al Menú</a>
     </div>
 </div>
 
