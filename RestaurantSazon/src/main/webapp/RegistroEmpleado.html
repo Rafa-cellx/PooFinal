@@ -198,17 +198,28 @@
       <div class="contenido-blanco">
         <div class="formulario">
           <h2>Registro de Empleado</h2>
-          <div class="campo"><input type="text" placeholder="Nombre" /></div>
-          <div class="campo"><input type="text" placeholder="Apellido" /></div>
-          <div class="campo"><input type="text" placeholder="ID de Empleado" /></div>
-          <div class="campo"><input type="password" placeholder="Contraseña segura" /></div>
+          <form action="RegistroEmpleadoServlet" method="post">
+          
+          <div class="campo">
+          <input type="text" name="nombre" placeholder="Nombre" required />
+          </div>
+          <div class="campo">
+          <input type="text" name ="apellido"placeholder="Apellido" required/>
+          </div>
+          <div class="campo">
+          <input type="text" name ="empleadoId"placeholder="ID de Empleado" required />
+          </div>
+          <div class="campo">
+          <input type="password" name="contrasena" placeholder="Contraseña segura" required />
+          </div>
 
           <div class="condiciones">
             Al registrarte confirmas tu incorporación como parte del personal.<br/>
             Toda la información ingresada debe ser válida y oficial.
           </div>
 
-          <button class="registrarse-btn">DAR DE ALTA</button>
+          <button type="submit" class="registrarse-btn">DAR DE ALTA</button>
+          </form>
 			<a href="LoginEmpleado.html" class="link-login">¿Ya tienes cuenta?</a>
 
           </div>
