@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Carrito</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('imagenes/fondo.png');
+            background-size: cover;
+        }
+
+        .ventana {
+            max-width: 400px;
+            margin: 20px auto;
+            background-color: rgba(255,255,255,0.9);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        .barra-superior {
+            background: rgba(255, 165, 0, 0.5);
+            color: white;
+            padding: 5px 10px;
+            font-size: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Akhbar MT', sans-serif;
+        }
+
+        .menu {
+            font-size: 11px;
+        }
+
+        .menu a {
+            color: white;
+            font-weight: bold;
+            margin-left: 10px;
+            text-decoration: none;
+        }
+
+        .contenido {
+            padding: 15px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .item {
+            border: 1px solid gray;
+            padding: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .item img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+        }
+
+        .item-info {
+            flex: 1;
+        }
+
+        .item-info h4 {
+            margin: 0;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .item-info p {
+            margin: 2px 0;
+            font-size: 12px;
+        }
+
+        .total {
+            text-align: right;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        .total span:first-child {
+            font-weight: bold;
+            color: saddlebrown;
+        }
+
+        .total span:last-child {
+            font-weight: bold;
+            color: orangered;
+        }
+
+        .acciones {
+            display: flex;
+            justify-content: flex-end;
+            padding: 10px;
+        }
+
+        .btn {
+            background-color: #c86d05;
+            border: none;
+            color: white;
+            font-weight: bold;
+            padding: 8px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .control {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .control button {
+            background: #c86d05;
+            color: white;
+            border: none;
+            margin-left: 5px;
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="ventana">
+
+    <div class="barra-superior">
+        <div>El Sazón de Cantera y Plata</div>
+        <div class="menu">
+            <a href="#" onclick="abrirChat()">Chat con Soporte</a>
+            <div style="display: inline-block; position: relative;">
+                <a href="#">Regístrate ▼</a>
+                <div style="position: absolute; background: #FFBA5D; padding: 5px; display: none;" id="registro-menu">
+                    <a href="#" onclick="registro('usuario')">Usuario</a><br>
+                    <a href="#" onclick="registro('personal')">Personal</a><br>
+                    <a href="#" onclick="registro('admin')">Administrador</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="contenido" id="carrito">
+        <!-- Platillos se agregan aquí dinámicamente -->
+    </div>
+
+    <div class="total">
+        <span>Total:</span> <span id="total">$0.00</span>
+    </div>
+
+    <div class="acciones">
+        <button class="btn" onclick="pagar()" id="btnPagar" disabled>Pagar</button>
+    </div>
+</div>
+
+<div class="control">
+    <button onclick="minimizar()">−</button>
+    <button onclick="cerrar()">✖</button>
+</div>
+
+<script>
+    // Simulación de productos en el carrito
+    const carrito = [
+        {
+            nombre: "Tacos al Pastor",
+            descripcion: "Deliciosos tacos con piña",
+            cantidad: 2,
+            precio: 25.00,
+            imagen: "imagenes/taco.jpg"
+        },
+        {
+            nombre: "Agua de Jamaica",
+            descripcion: "Refrescante bebida natural",
+            cantidad: 1,
+            precio: 15.00,
+            imagen: "imagenes/jamaica.jpg"
+        }
+    ];
+
+    const contenedor = document.getElementById("carrito");
+    const totalSpan = document.getElementById("total");
+    const btnPagar = document.getElementById("btnPagar");
+
+    function renderizarCarrito() {
+        let total = 0;
+        contenedor.innerHTML = "";
+
+        carrito.forEach(item => {
+            const subtotal = item.precio * item.cantidad;
+            total += subtotal;
+
+            const div = document.createElement("div");
+            div.className = "item";
+            div.innerHTML = `
+                <img src="${item.imagen}" alt="${item.nombre}">
+                <div class="item-info">
+                    <h4>${item.nombre}</h4>
+                    <p><em>${item.descripcion}</em></p>
+                    <p>Cantidad: ${item.cantidad}</p>
+                    <p>Precio: $${item.precio.toFixed(2)}</p>
+                    <p><strong>Subtotal: $${subtotal.toFixed(2)}</strong></p>
+                </div>
+            `;
+            contenedor.appendChild(div);
+        });
+
+        totalSpan.textContent = `$${total.toFixed(2)}`;
+        btnPagar.disabled = total <= 0;
+    }
+
+    function pagar() {
+        alert("Procediendo al pago...");
+    }
+
+    function minimizar() {
+        alert("Minimizar ventana (simulado)");
+    }
+
+    function cerrar() {
+        alert("Cerrar ventana (simulado)");
+    }
+
+    function abrirChat() {
+        alert("Abriendo chat con soporte...");
+    }
+
+    function registro(tipo) {
+        alert("Registro como: " + tipo);
+    }
+
+    // Mostrar menú de registro al pasar mouse (estilo básico)
+    document.querySelector('.menu div').addEventListener('mouseover', () => {
+        document.getElementById('registro-menu').style.display = 'block';
+    });
+    document.querySelector('.menu div').addEventListener('mouseleave', () => {
+        document.getElementById('registro-menu').style.display = 'none';
+    });
+
+    renderizarCarrito();
+</script>
+
+</body>
+</html>

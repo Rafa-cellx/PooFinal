@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Administrador - El Sazón de Cantera y Plata</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-image: url('Imagenes/fondo.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Top Bar */
+        .top-bar {
+            background-color: rgba(128, 255, 165, 0.5);
+            height: 20px;
+            width: 100%;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 10px;
+            position: fixed;
+            top: 0;
+            z-index: 2;
+        }
+        
+        .restaurant-title {
+            font-family: 'Akhbar MT', serif;
+            font-size: 10px;
+            font-weight: bold;
+            color: white;
+            margin: 5px 5px 0 10px;
+        }
+        
+        /* Menu */
+        .menu-container {
+            display: flex;
+        }
+        
+        .menu-item {
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+            margin-left: 15px;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .submenu {
+            display: none;
+            position: absolute;
+            background-color: rgba(128, 255, 165, 0.8);
+            min-width: 120px;
+            border-radius: 5px;
+            right: 0;
+            z-index: 3;
+        }
+        
+        .menu-item:hover .submenu {
+            display: block;
+        }
+        
+        .submenu-item {
+            padding: 5px 10px;
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+        }
+        
+        .submenu-item:hover {
+            background-color: rgba(255, 165, 0, 0.6);
+        }
+        
+        /* Window Controls */
+        .window-controls {
+            position: fixed;
+            top: 24px;
+            right: 10px;
+            display: flex;
+            z-index: 2;
+        }
+        
+        .window-btn {
+            background-color: #c86d05;
+            color: white;
+            font-weight: bold;
+            border: none;
+            width: 22px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        
+        .minimize-btn {
+            font-size: 12px;
+        }
+        
+        .close-btn {
+            font-size: 12px;
+            margin-left: 5px;
+        }
+        
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+            margin-top: 20px;
+        }
+        
+        .admin-btn {
+            width: 250px;
+            height: 60px;
+            background-color: rgba(128, 255, 165, 0.5);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .admin-btn:hover {
+            background-color: rgba(128, 255, 165, 0.7);
+        }
+        
+        /* Footer Text */
+        .footer-text {
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            color: #b96300;
+            margin-top: auto;
+            margin-bottom: 20px;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="restaurant-title">El Sazón de Cantera y Plata</div>
+        <div class="menu-container">
+            <div class="menu-item" onclick="soporteClick()">Chat con Soporte</div>
+            <div class="menu-item">
+                Regístrate
+                <div class="submenu">
+                    <div class="submenu-item" onclick="menuUsuarioClick()">Usuario</div>
+                    <div class="submenu-item" onclick="menuPersonalClick()">Personal</div>
+                    <div class="submenu-item" onclick="menuAdministradorClick()">Administrador</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Window Controls -->
+    <div class="window-controls">
+        <button class="window-btn minimize-btn" onclick="minimizar()">–</button>
+        <button class="window-btn close-btn" onclick="cerrarVentana()">✖</button>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="main-content">
+        <button class="admin-btn" onclick="btnPedidosClick()">Revisar Pedidos</button>
+        <button class="admin-btn" onclick="btnEmpleadosClick()">Gestionar Empleados</button>
+    </div>
+    
+    <!-- Footer Text -->
+    <div class="footer-text">Menú de Administración</div>
+    
+    <script>
+        // Event handlers
+        function soporteClick() {
+            alert("Chat con Soporte clickeado");
+            // window.location.href = "soporte.html";
+        }
+        
+        function menuUsuarioClick() {
+            alert("Registro de Usuario clickeado");
+            // window.location.href = "login_usuario.html";
+        }
+        
+        function menuPersonalClick() {
+            alert("Registro de Personal clickeado");
+            // window.location.href = "login_empleado.html";
+        }
+        
+        function menuAdministradorClick() {
+            alert("Registro de Administrador clickeado");
+            // window.location.href = "login_admin.html";
+        }
+        
+        function minimizar() {
+            // This would minimize the window in an Electron app
+            // For browser, we can't actually minimize, so we'll just alert
+            alert("Ventana minimizada");
+        }
+        
+        function cerrarVentana() {
+            // This would close the window in an Electron app
+            // For browser, we can close the tab/window
+            if (confirm("¿Desea cerrar la aplicación?")) {
+                window.close();
+            }
+        }
+        
+        function btnPedidosClick() {
+            alert("Revisar Pedidos clickeado");
+            // window.location.href = "pedidos.html";
+        }
+        
+        function btnEmpleadosClick() {
+            alert("Gestionar Empleados clickeado");
+            // window.location.href = "empleados.html";
+        }
+    </script>
+</body>
+</html>

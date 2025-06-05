@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Completo - El Sazón de Cantera y Plata</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-image: url('fondo.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        /* Barra superior */
+        .top-bar {
+            background-color: rgba(128, 255, 165, 0.5);
+            height: 19px;
+            width: 100%;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 15px;
+            position: fixed;
+            top: 0;
+            z-index: 999;
+        }
+        
+        .restaurant-title {
+            font-family: 'Akhbar MT', serif;
+            font-size: 14px;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .menu-container {
+            display: flex;
+        }
+        
+        .menu-item {
+            background-color: #FFEBAF5D;
+            color: white;
+            font-weight: bold;
+            padding: 5px 10px;
+            margin-left: 10px;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .submenu {
+            display: none;
+            position: absolute;
+            background-color: #FFEBAF5D;
+            min-width: 120px;
+            z-index: 1;
+            right: 0;
+        }
+        
+        .menu-item:hover .submenu {
+            display: block;
+        }
+        
+        .submenu-item {
+            padding: 5px;
+            white-space: nowrap;
+        }
+        
+        /* Contenedor principal */
+        .main-container {
+            margin-top: 20px;
+            height: calc(100vh - 40px);
+            overflow-y: auto;
+            padding: 20px;
+        }
+        
+        .dishes-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px;
+        }
+        
+        /* Tarjeta de platillo */
+        .dish-card {
+            background-color: white;
+            border-radius: 10px;
+            width: 280px;
+            height: 380px;
+            margin: 15px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+        }
+        
+        .dish-image {
+            height: 150px;
+            width: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        
+        .dish-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 10px 0;
+            text-align: center;
+        }
+        
+        .dish-price {
+            color: #A0522D;
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        .dish-description {
+            text-align: center;
+            margin: 10px 15px;
+            font-size: 14px;
+        }
+        
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+        }
+        
+        .quantity-btn {
+            background-color: #A0522D;
+            color: white;
+            font-weight: bold;
+            border: none;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+        }
+        
+        .quantity-value {
+            width: 30px;
+            text-align: center;
+        }
+        
+        .add-btn {
+            background-color: #A0522D;
+            color: white;
+            font-weight: bold;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px 0;
+            cursor: pointer;
+            width: calc(100% - 40px);
+            text-align: center;
+        }
+        
+        /* Botones de ventana */
+        .window-btn {
+            position: fixed;
+            top: 32px;
+            background-color: #c86d05;
+            color: white;
+            border: none;
+            font-size: 8px;
+            cursor: pointer;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .close-btn {
+            right: 54px;
+            width: 20px;
+        }
+        
+        .minimize-btn {
+            right: 88px;
+            width: 22px;
+        }
+        
+        /* Botón de carrito */
+        .cart-btn {
+            position: fixed;
+            right: 9px;
+            bottom: 0;
+            background-color: #A0522D;
+            color: white;
+            font-family: 'Akhbar MT', serif;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            width: 110px;
+            height: 40px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        
+        /* Notificación */
+        .notification {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            background-color: #A0522D;
+            border-radius: 5px;
+            padding: 10px 15px;
+            color: white;
+            font-weight: bold;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra superior -->
+    <div class="top-bar">
+        <div class="restaurant-title">El Sazón de Cantera y Plata</div>
+        <div class="menu-container">
+            <div class="menu-item" onclick="soporteClick()">Chat con Soporte</div>
+            <div class="menu-item" onclick="verCarrito()">Carrito</div>
+            <div class="menu-item">
+                Regístrate
+                <div class="submenu">
+                    <div class="submenu-item" onclick="menuUsuarioClick()">Usuario</div>
+                    <div class="submenu-item" onclick="menuPersonalClick()">Personal</div>
+                    <div class="submenu-item" onclick="menuAdministradorClick()">Administrador</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Contenido principal -->
+    <div class="main-container">
+        <div class="dishes-container">
+            <!-- 1. Tacos al Pastor -->
+            <div class="dish-card">
+                <img src="tacos.jpg" alt="Tacos al Pastor" class="dish-image">
+                <div class="dish-name">Tacos al Pastor</div>
+                <div class="dish-price">$60.00</div>
+                <div class="dish-description">5 tacos de cerdo adobado con piña</div>
+                <div class="quantity-control">
+                    <button class="quantity-btn">-</button>
+                    <div class="quantity-value">0</div>
+                    <button class="quantity-btn">+</button>
+                </div>
+                <button class="add-btn">AGREGAR</button>
+            </div>
+            
+            <!-- 2. Enchiladas Rojas -->
+            <div class="dish-card">
+                <img src="enchiladas.jpeg" alt="Enchiladas Rojas" class="dish-image">
+                <div class="dish-name">Enchiladas Rojas</div>
+                <div class="dish-price">$50.00</div>
+                <div class="dish-description">Bañadas en salsa roja con crema y queso</div>
+                <div class="quantity-control">
+                    <button class="quantity-btn">-</button>
+                    <div class="quantity-value">0</div>
+                    <button class="quantity-btn">+</button>
+                </div>
+                <button class="add-btn">AGREGAR</button>
+            </div>
+            
+            <!-- 3. Pozole Rojo -->
+            <div class="dish-card">
+                <img src="pozole.jpeg" alt="Pozole Rojo" class="dish-image">
+                <div class="dish-name">Pozole Rojo</div>
+                <div class="dish-price">$90.00</div>
+                <div class="dish-description">Sopa tradicional con maíz y carne de cerdo</div>
+                <div class="quantity-control">
+                    <button class="quantity-btn">-</button>
+                    <div class="quantity-value">0</div>
+                    <button class="quantity-btn">+</button>
+                </div>
+                <button class="add-btn">AGREGAR</button>
+            </div>
+            
+            <!-- 4. Burritos -->
+            <div class="dish-card">
+                <img src="burritos.jpg" alt="Burritos" class="dish-image">
+                <div class="dish-name">Burritos</div>
+                <div class="dish-price">$40.00</div>
+                <div class="dish-description">Tortilla de harina rellena de carne, frijoles y arroz</div>
+                <div class="quantity-control">
+                    <button class="quantity-btn">-</button>
+                    <div class="quantity-value">0</div>
+                    <button class="quantity-btn">+</button>
+                </div>
+                <button class="add-btn">AGREGAR</button>
+            </div>
+            
+            <!-- 5. Sopes -->
+            <div class="dish-card">
+                <img src="sopes.jpeg" alt="Sopes" class="dish-image">
+                <div class="dish-name">Sopes</div>
+                <div class="dish-price">$20.00</div>
+                <div class="dish-description">Tortilla gruesa con frijoles, carne y salsa</div>
+                <div class="quantity-control">
+                    <button class="quantity-btn">-</button>
+                    <div class="quantity-value">0</div>
+                    <button class="quantity-btn">+</button>
+                </div>
+                <button class="add-btn">AGREGAR</button>
+            </div>
+            
+            <!-- 6. Tamales -->
+            <div class="dish-card">
+                <img src="tamales.jpeg" alt="Tamales" class="dish-image">
+                <div class="dish-name">Tamales</div>
+                <div class="dish-price">$10.00</div>
+                <div class="dish-description">Tamales rellenos de carne de puerco y salsa roja</div>
+                <div class="quantity-control">
+                    <button class="quantity-btn">-</button>
+                    <div class="quantity-value">0</div>
+                    <button class="quantity-btn">+</button>
+                </div>
+                <button class="add-btn">AGREGAR</button>
+            </div>
+            
+            <!-- 7. Asado de boda -->
+            <div class="dish-card">
+                <img src="asado.jpeg" alt="Asado de Boda" class="dish-image">
+                <div class="dish-name">Asado de Boda</div>
+                <div class="dish-price">$65.00</div>
+                <div class="dish-description">Carne de cerdo en chile rojo con arroz</div>
+                <div class="quantity-control">
+                    <button class="quantity-btn">-</button>
+                    <div class="quantity-value">0</div>
+                    <button class="quantity-btn">+</button>
+                </div>
+                <button class="add-btn">AGREGAR</button>
+            </div>
+            
+            <!-- 8. Pescado Empanizado -->
+            <div class="dish-card">
+                <img src="pescado.jpeg" alt="Pescado Empanizado" class="dish-image">
+                <div class="dish-name">Pescado Empanizado</div>
+                <div class="dish-price">$70.00</div>
+                <div class="dish-description">Filete de pescado empanizado con arroz y vegetales</div>
+                <div class="quantity-control">
+                    <button class="quantity-btn">-</button>
+                    <div class="quantity-value">0</div>
+                    <button class="quantity-btn">+</button>
+                </div>
+                <button class="add-btn">AGREGAR</button>
+            </div>
+            
+            <!-- 9. Tostadas -->
+            <div class="dish-card">
+                <img src="tinga.jpg" alt="Tostadas de Tinga de Pollo" class="dish-image">
+                <div class="dish-name">Tostadas de Tinga de Pollo</div>
+                <div class="dish-price">$20.00</div>
+                <div class="dish-description">Tostadas de tinga de pollo con chipotle</div>
+                <div class="quantity-control">
+                    <button class="quantity-btn">-</button>
+                    <div class="quantity-value">0</div>
+                    <button class="quantity-btn">+</button>
+                </div>
+                <button class="add-btn">AGREGAR</button>
+            </div>
+            
+            <!-- 10. Caldo de Res -->
+            <div class="dish-card">
+                <img src="res.jpeg" alt="Caldo de Res" class="dish-image">
+                <div class="dish-name">Caldo de Res</div>
+                <div class="dish-price">$90.00</div>
+                <div class="dish-description">Caldo de res con arroz y verduras</div>
+                <div class="quantity-control">
+                    <button class="quantity-btn">-</button>
+                    <div class="quantity-value">0</div>
+                    <button class="quantity-btn">+</button>
+                </div>
+                <button class="add-btn">AGREGAR</button>
+            </div>
+            
+            <!-- 11. Quesabirrias -->
+            <div class="dish-card">
+                <img src="quesa.jpeg" alt="Quesabirrias" class="dish-image">
+                <div class="dish-name">Quesabirrias</div>
+                <div class="dish-price">$30.00</div>
+                <div class="dish-description">Quesadilla con birria de res, frita y consomé</div>
+                <div class="quantity-control">
+                    <button class="quantity-btn">-</button>
+                    <div class="quantity-value">0</div>
+                    <button class="quantity-btn">+</button>
+                </div>
+                <button class="add-btn">AGREGAR</button>
+            </div>
+            
+            <!-- 12. Flautas -->
+            <div class="dish-card">
+                <img src="flautas.jpeg" alt="Flautas" class="dish-image">
+                <div class="dish-name">Flautas</div>
+                <div class="dish-price">$40.00</div>
+                <div class="dish-description">Tortilla frita, enrollada con carne deshebrada</div>
+                <div class="quantity-control">
+                    <button class="quantity-btn">-</button>
+                    <div class="quantity-value">0</div>
+                    <button class="quantity-btn">+</button>
+                </div>
+                <button class="add-btn">AGREGAR</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Botones de ventana -->
+    <button class="window-btn close-btn" onclick="cerrarVentana()">✖</button>
+    <button class="window-btn minimize-btn" onclick="minimizar()">-</button>
+    
+    <!-- Botón de carrito -->
+    <button class="cart-btn" onclick="verCarrito()">Ir al Carrito</button>
+    
+    <!-- Notificación -->
+    <div class="notification" id="notification">
+        <span id="notification-text"></span>
+    </div>
+    
+    <script>
+        // Funciones para los eventos
+        function soporteClick() {
+            alert("Chat con Soporte clickeado");
+        }
+        
+        function verCarrito() {
+            alert("Ver Carrito clickeado");
+        }
+        
+        function menuUsuarioClick() {
+            alert("Registro de Usuario clickeado");
+        }
+        
+        function menuPersonalClick() {
+            alert("Registro de Personal clickeado");
+        }
+        
+        function menuAdministradorClick() {
+            alert("Registro de Administrador clickeado");
+        }
+        
+        function cerrarVentana() {
+            alert("Cerrar ventana clickeado");
+        }
+        
+        function minimizar() {
+            alert("Minimizar ventana clickeado");
+        }
+        
+        // Funcionalidad para los botones de cantidad
+        document.querySelectorAll('.quantity-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const quantityElement = this.parentElement.querySelector('.quantity-value');
+                let quantity = parseInt(quantityElement.textContent);
+                
+                if (this.textContent === '+') {
+                    quantity++;
+                } else if (this.textContent === '-' && quantity > 0) {
+                    quantity--;
+                }
+                
+                quantityElement.textContent = quantity;
+            });
+        });
+        
+        // Funcionalidad para los botones de agregar
+        document.querySelectorAll('.add-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const dishName = this.parentElement.querySelector('.dish-name').textContent;
+                const quantity = parseInt(this.parentElement.querySelector('.quantity-value').textContent);
+                
+                if (quantity > 0) {
+                    showNotification(`Agregado ${quantity} ${dishName} al carrito`);
+                } else {
+                    showNotification("Selecciona al menos 1 cantidad");
+                }
+            });
+        });
+        
+        // Mostrar notificación
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            const notificationText = document.getElementById('notification-text');
+            
+            notificationText.textContent = message;
+            notification.style.display = 'block';
+            
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

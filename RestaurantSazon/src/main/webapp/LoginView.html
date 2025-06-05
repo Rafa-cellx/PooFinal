@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - El Sazón de Cantera y Plata</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-image: url('Imagenes/fondo.png');
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+
+        .ventana {
+            width: 830px;
+            height: 585px;
+            margin: 40px auto;
+            position: relative;
+            background-color: rgba(255, 255, 255, 0.01);
+        }
+
+        .barra-superior {
+            height: 19px;
+            background-color: rgba(255, 165, 0, 0.5);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 15px;
+            border-radius: 0 0 10px 10px;
+        }
+
+        .barra-superior .titulo {
+            font-family: 'Akhbar MT', sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .menu {
+            font-weight: bold;
+            position: relative;
+        }
+
+        .menu > button {
+            background: none;
+            color: white;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .submenu {
+            display: none;
+            position: absolute;
+            background-color: #ebaf5d;
+            top: 20px;
+            right: 0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .submenu a {
+            display: block;
+            padding: 5px 10px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .menu:hover .submenu {
+            display: block;
+        }
+
+        .login-contenedor {
+            margin: 60px auto;
+            background-color: white;
+            border-radius: 0 0 15px 15px;
+            padding: 30px;
+            width: 430px;
+            color: black;
+            text-align: center;
+        }
+
+        .bienvenida {
+            background-color: rgba(255, 165, 0, 0.5);
+            border-radius: 15px 15px 0 0;
+            padding: 30px 20px;
+            font-family: 'Pristina', cursive;
+            font-size: 36px;
+            color: white;
+        }
+
+        .logo {
+            width: 133px;
+            height: auto;
+            margin: 20px auto;
+        }
+
+        .texto-bienvenida {
+            font-family: 'Gabriola', serif;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        .input-group {
+            display: flex;
+            align-items: center;
+            background: linear-gradient(to right, #A0522D, #e5b471);
+            border-radius: 10px;
+            margin: 10px 0;
+            padding: 5px;
+        }
+
+        .input-group img {
+            width: 24px;
+            margin: 0 10px;
+        }
+
+        .input-group input {
+            border: none;
+            background: transparent;
+            color: white;
+            flex: 1;
+            padding: 10px;
+            font-size: 12px;
+        }
+
+        .input-group input::placeholder {
+            color: white;
+        }
+
+        .checkboxes {
+            margin: 15px 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .boton-iniciar {
+            margin-top: 20px;
+            background: linear-gradient(to right, #A0522D, #e5b471);
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .boton-unete {
+            margin-top: 10px;
+            background: none;
+            border: none;
+            color: #b96300;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .botones-ventana {
+            position: absolute;
+            top: 21px;
+            right: 210px;
+            display: flex;
+            gap: 8px;
+        }
+
+        .botones-ventana button {
+            width: 13px;
+            height: 13px;
+            background-color: #c86d05;
+            color: white;
+            border: none;
+            font-size: 10px;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="ventana">
+        <div class="barra-superior">
+            <div class="titulo">El Sazón de Cantera y Plata</div>
+            <div class="menu">
+                <button>Regístrate ▼</button>
+                <div class="submenu">
+                    <a href="#">Usuario</a>
+                    <a href="#">Personal</a>
+                    <a href="#">Administrador</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="botones-ventana">
+            <button onclick="window.close()">✖</button>
+            <button onclick="minimizar()">-</button>
+        </div>
+
+        <div class="bienvenida">¡Bienvenido!</div>
+
+        <div class="login-contenedor">
+            <img src="Imagenes/logo.png" alt="Logo" class="logo">
+            <div class="texto-bienvenida">¡Qué bueno tenerte de vuelta en nuestro sitio!</div>
+
+            <h3 style="color: #b96300; margin: 20px 0;">Sesión de Usuario</h3>
+
+            <div class="input-group">
+                <img src="Imagenes/icono_Usuario.png" alt="Usuario">
+                <input type="text" placeholder="Nombre">
+            </div>
+
+            <div class="input-group">
+                <img src="Imagenes/Candado.png" alt="Contraseña">
+                <input type="password" placeholder="Contraseña">
+            </div>
+
+            <div class="checkboxes">
+                <label><input type="checkbox"> Recordar</label>
+                <label><input type="checkbox"> ¿Olvidaste tu contraseña?</label>
+            </div>
+
+            <button class="boton-iniciar">INICIAR SESIÓN</button>
+            <br>
+            <button class="boton-unete">Únete</button>
+        </div>
+    </div>
+
+    <script>
+        function minimizar() {
+            alert("Simulación de minimizar ventana");
+        }
+    </script>
+</body>
+</html>

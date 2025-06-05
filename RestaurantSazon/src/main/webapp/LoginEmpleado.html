@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Empleado</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: url('Imagenes/fondo.png') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .top-bar {
+            background: rgba(255, 165, 0, 0.5);
+            padding: 5px 15px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 0 0 10px 10px;
+        }
+        .top-bar .menu {
+            background: #ffeba5;
+            color: white;
+            font-weight: bold;
+            padding: 5px;
+            border: none;
+            cursor: pointer;
+        }
+        .container {
+            width: 830px;
+            height: 585px;
+            margin: 40px auto;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 20px;
+            box-sizing: border-box;
+            position: relative;
+        }
+        .title-bar {
+            background: rgba(255, 165, 0, 0.5);
+            border-radius: 15px 15px 0 0;
+            padding: 5px 10px;
+            color: white;
+            font-weight: bold;
+        }
+        .input-group {
+            margin: 20px auto;
+            width: 60%;
+            background: linear-gradient(to right, #A0522D, #e5b471);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            padding: 5px;
+            color: white;
+        }
+        .input-group img {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
+        .input-group input {
+            border: none;
+            background: transparent;
+            color: white;
+            width: 100%;
+            outline: none;
+            font-size: 14px;
+        }
+        .btn {
+            display: block;
+            margin: 20px auto;
+            width: 150px;
+            height: 35px;
+            background: linear-gradient(to right, #A0522D, #e5b471);
+            border: none;
+            color: white;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .text-note {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 12px;
+        }
+        .corner-buttons {
+            position: absolute;
+            top: 15px;
+            right: 30px;
+        }
+        .corner-buttons button {
+            width: 20px;
+            height: 20px;
+            margin-left: 5px;
+            background-color: #c86d05;
+            color: white;
+            border: none;
+            font-size: 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <span>El Sazón de Cantera y Plata</span>
+        <div>
+            <button class="menu">Usuario</button>
+            <button class="menu">Personal</button>
+            <button class="menu">Administrador</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="corner-buttons">
+            <button onclick="window.close()">&times;</button>
+            <button onclick="window.minimize && window.minimize()">-</button>
+        </div>
+
+        <div class="title-bar">PERSONAL</div>
+
+        <div class="text-note"><strong>Emplead@s</strong></div>
+
+        <div class="input-group">
+            <img src="Imagenes/icono_Usuario.png" alt="Usuario">
+            <input type="text" placeholder="ID de empleado">
+        </div>
+
+        <div class="input-group">
+            <img src="Imagenes/Candado.png" alt="Contraseña">
+            <input type="password" placeholder="Contraseña">
+        </div>
+
+        <div style="text-align: center;">
+            <label><input type="checkbox"> Recordar</label>
+            <label><input type="checkbox"> ¿Olvidaste tu contraseña?</label>
+        </div>
+
+        <button class="btn">INICIAR SESIÓN</button>
+
+        <div class="text-note">
+            <button style="background: none; border: none; color: #b96300; font-weight: bold; cursor: pointer;">Nuevo Empleado</button>
+        </div>
+
+        <div class="text-note">
+            <img src="Imagenes/logo.png" width="133" height="102" alt="Logo">
+            <div>¡El cliente siempre tiene la razón, recuérdalo!</div>
+            <hr style="width: 200px; margin: 10px auto; border-color: white;">
+            <div>¡NO olvides las promociones!</div>
+        </div>
+    </div>
+</body>
+</html>
