@@ -23,11 +23,11 @@ public class RegistroEmpleadoServlet extends HttpServlet {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-<<<<<<< HEAD
+
                 "jdbc:mysql://localhost:3306/sazon_db", "root", "MXVN#1champion5");
-=======
-                "jdbc:mysql://localhost:3306/sazon_db", "root", "Madafaker2005");
->>>>>>> branch 'master' of https://github.com/Rafa-cellx/PooFinal.git
+
+
+
 
             String sql = "INSERT INTO empleados (nombre, apellido, empleado_id, contrasena) VALUES (?, ?, ?, ?)";
             PreparedStatement ps = con.prepareStatement(sql);
