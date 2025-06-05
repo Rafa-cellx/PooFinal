@@ -195,17 +195,33 @@
       <div class="contenido-blanco">
         <div class="formulario">
           <h2>Registro de Usuario</h2>
-          <div class="campo"><input type="text" placeholder="Nombre" /></div>
-          <div class="campo"><input type="text" placeholder="Apellido" /></div>
-          <div class="campo"><input type="text" placeholder="Número de celular" /></div>
-          <div class="campo"><input type="email" placeholder="Correo electrónico" /></div>
-          <div class="campo"><input type="password" placeholder="Nueva contraseña" /></div>
+          <form action="RegistroUsuarioServlet" method="post">
+    
+    <div class="campo">
+      <input type="text" name="nombre" placeholder="Nombre" required />
+    </div>
+    <div class="campo">
+      <input type="text" name="apellido" placeholder="Apellido" required />
+    </div>
+    <div class="campo">
+      <input type="text" name="celular" placeholder="Número de celular" required />
+    </div>
+    <div class="campo">
+      <input type="email" name="correo" placeholder="Correo electrónico" required />
+    </div>
+    <div class="campo">
+      <input type="password" name="contrasena" placeholder="Nueva contraseña" required />
+    </div>
 
-          <div class="condiciones">
-            Al hacer clic en "Registrarte", aceptas nuestras Condiciones, la Política de privacidad y la Política de cookies.<br/>
-            Es posible que te enviemos notificaciones por SMS, que puedes desactivar cuando quieras.
-          </div>
-          <button class="registrarse-btn">REGISTRARTE</button>
+    <div class="condiciones">
+      Al hacer clic en "Registrarte", aceptas nuestras Condiciones, la Política de privacidad y la Política de cookies.<br/>
+      Es posible que te enviemos notificaciones por SMS, que puedes desactivar cuando quieras.
+    </div>
+
+   
+    <button type="submit" class="registrarse-btn">REGISTRARTE</button>
+  </form>
+  
 		  <a href="LoginView.html" class="link-login">¿Ya tienes cuenta?</a>          
         </div>
       </div>

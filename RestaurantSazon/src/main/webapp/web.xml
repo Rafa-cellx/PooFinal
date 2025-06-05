@@ -6,12 +6,12 @@
          version="4.0">
     
     <servlet>
-        <servlet-name>RegistroServlet</servlet-name>
-        <servlet-class>RegistroServlet</servlet-class>
+        <servlet-name>com.main.java.RegistroUsuarioServlet</servlet-name>
+        <servlet-class>RegistroUsuarioServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>RegistroServlet</servlet-name>
-        <url-pattern>/RegistroServlet</url-pattern>
+        <servlet-name>RegistroUsuarioServlet</servlet-name>
+        <url-pattern>/RegistroUsuarioServlet</url-pattern>
     </servlet-mapping>
     
 </web-app>
