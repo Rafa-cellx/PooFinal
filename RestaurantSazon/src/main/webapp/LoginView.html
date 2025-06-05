@@ -1,239 +1,244 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Login - El Sazón de Cantera y Plata</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login Usuario</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-        body {
-            background-image: url('Imagenes/fondo.png');
-            background-size: cover;
-            font-family: Arial, sans-serif;
-            color: white;
-        }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: url('Imagenes/fondo.png') no-repeat center center fixed;
+      background-size: cover;
+    }
 
-        .ventana {
-            width: 830px;
-            height: 585px;
-            margin: 40px auto;
-            position: relative;
-            background-color: rgba(255, 255, 255, 0.01);
-        }
+    .ventana {
+      width: 830px;
+      margin: 60px auto;
+      background-color: transparent;
+      position: relative;
+    }
 
-        .barra-superior {
-            height: 19px;
-            background-color: rgba(255, 165, 0, 0.5);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 15px;
-            border-radius: 0 0 10px 10px;
-        }
+    .barra-superior {
+      width: 100%;
+      height: 30px;
+      background-color: rgba(255, 165, 0, 0.5);
+      border-radius: 0 0 10px 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
 
-        .barra-superior .titulo {
-            font-family: 'Akhbar MT', sans-serif;
-            font-size: 14px;
-            font-weight: bold;
-        }
+    .barra-superior h1 {
+      font-family: 'Akhbar MT', sans-serif;
+      font-size: 18px;
+      font-weight: bold;
+      color: white;
+      margin: 0;
+    }
 
-        .menu {
-            font-weight: bold;
-            position: relative;
-        }
+    .menu select {
+      background: #EBAF5D;
+      color: white;
+      font-weight: bold;
+      padding: 8px;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+    }
 
-        .menu > button {
-            background: none;
-            color: white;
-            border: none;
-            font-weight: bold;
-            cursor: pointer;
-        }
+    .contenido {
+      margin-top: 50px;
+      border-radius: 15px;
+      overflow: hidden;
+    }
 
-        .submenu {
-            display: none;
-            position: absolute;
-            background-color: #ebaf5d;
-            top: 20px;
-            right: 0;
-            border-radius: 4px;
-            overflow: hidden;
-        }
+    .contenido-naranja {
+      background-color: rgba(255, 165, 0, 0.5);
+      padding: 10px;
+      text-align: center;
+    }
 
-        .submenu a {
-            display: block;
-            padding: 5px 10px;
-            color: white;
-            text-decoration: none;
-        }
+    .contenido-blanco {
+      background-color: rgba(255,255,255,0.7);
+      padding: 30px;
+    }
 
-        .menu:hover .submenu {
-            display: block;
-        }
+    .bienvenida {
+      text-align: center;
+      font-family: 'Pristina', cursive;
+      font-size: 50px;
+      font-weight: bold;
+      color: white;
+      margin: 0.5px 0 0 0;
+    }
 
-        .login-contenedor {
-            margin: 60px auto;
-            background-color: white;
-            border-radius: 0 0 15px 15px;
-            padding: 30px;
-            width: 430px;
-            color: black;
-            text-align: center;
-        }
+    .formulario {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-        .bienvenida {
-            background-color: rgba(255, 165, 0, 0.5);
-            border-radius: 15px 15px 0 0;
-            padding: 30px 20px;
-            font-family: 'Pristina', cursive;
-            font-size: 36px;
-            color: white;
-        }
+    .formulario h2 {
+      color: #b96300;
+      font-size: 24px;
+      margin: 5px 0;
+    }
 
-        .logo {
-            width: 133px;
-            height: auto;
-            margin: 20px auto;
-        }
+    .formulario .logo {
+      width: 160px;
+      height: auto;
+    }
 
-        .texto-bienvenida {
-            font-family: 'Gabriola', serif;
-            font-size: 14px;
-            margin-top: 10px;
-        }
+    .mensaje {
+      text-align: center;
+      font-size: 20px;
+      color: white;
+      margin: 1px 0;
+    }
 
-        .input-group {
-            display: flex;
-            align-items: center;
-            background: linear-gradient(to right, #A0522D, #e5b471);
-            border-radius: 10px;
-            margin: 10px 0;
-            padding: 5px;
-        }
+    .campo {
+      background: linear-gradient(to right, #A0522D, #e5b471);
+      border-radius: 10px;
+      margin: 10px 0;
+      width: 320px;
+      height: 35px;
+      display: flex;
+      align-items: center;
+    }
 
-        .input-group img {
-            width: 24px;
-            margin: 0 10px;
-        }
+    .campo img {
+      height: 20px;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
 
-        .input-group input {
-            border: none;
-            background: transparent;
-            color: white;
-            flex: 1;
-            padding: 10px;
-            font-size: 12px;
-        }
+    .campo input {
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: transparent;
+      color: white;
+      padding: 0 10px;
+      font-size: 14px;
+      text-align: center;
+    }
 
-        .input-group input::placeholder {
-            color: white;
-        }
+    .campo input::placeholder {
+      color: white;
+    }
 
-        .checkboxes {
-            margin: 15px 0;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
+    .recordar {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #333;
+      text-align: center;
+    }
 
-        .boton-iniciar {
-            margin-top: 20px;
-            background: linear-gradient(to right, #A0522D, #e5b471);
-            border: none;
-            border-radius: 10px;
-            padding: 10px 20px;
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
-        }
+    .recordar input {
+      margin-right: 5px;
+    }
 
-        .boton-unete {
-            margin-top: 10px;
-            background: none;
-            border: none;
-            color: #b96300;
-            font-weight: bold;
-            cursor: pointer;
-        }
+    .iniciar-btn {
+      margin-top: 15px;
+      padding: 8px 20px;
+      background-color: #A0522D;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 14px;
+      text-align: center;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
 
-        .botones-ventana {
-            position: absolute;
-            top: 21px;
-            right: 210px;
-            display: flex;
-            gap: 8px;
-        }
+    .link-login {
+      display: block;
+      margin-top: 10px;
+      color: #A0522D;
+      text-decoration: underline;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 14px;
+      text-align: center;
+    }
 
-        .botones-ventana button {
-            width: 13px;
-            height: 13px;
-            background-color: #c86d05;
-            color: white;
-            border: none;
-            font-size: 10px;
-            cursor: pointer;
-        }
-
-    </style>
+    .link-login:hover {
+      color: #e5b471;
+    }
+  </style>
 </head>
 <body>
-    <div class="ventana">
-        <div class="barra-superior">
-            <div class="titulo">El Sazón de Cantera y Plata</div>
-            <div class="menu">
-                <button>Regístrate ▼</button>
-                <div class="submenu">
-                    <a href="#">Usuario</a>
-                    <a href="#">Personal</a>
-                    <a href="#">Administrador</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="botones-ventana">
-            <button onclick="window.close()">✖</button>
-            <button onclick="minimizar()">-</button>
-        </div>
-
-        <div class="bienvenida">¡Bienvenido!</div>
-
-        <div class="login-contenedor">
-            <img src="Imagenes/logo.png" alt="Logo" class="logo">
-            <div class="texto-bienvenida">¡Qué bueno tenerte de vuelta en nuestro sitio!</div>
-
-            <h3 style="color: #b96300; margin: 20px 0;">Sesión de Usuario</h3>
-
-            <div class="input-group">
-                <img src="Imagenes/Icono_Usuario.png" alt="Usuario">
-                <input type="text" placeholder="Nombre">
-            </div>
-
-            <div class="input-group">
-                <img src="Imagenes/Candado.png" alt="Contraseña">
-                <input type="password" placeholder="Contraseña">
-            </div>
-
-            <div class="checkboxes">
-                <label><input type="checkbox"> Recordar</label>
-                <label><input type="checkbox"> ¿Olvidaste tu contraseña?</label>
-            </div>
-
-            <button class="boton-iniciar">INICIAR SESIÓN</button>
-            <br>
-            
-          <a href="RegistroUsuario.html" class="link-login">Únete</a>
-          
-        </div>
+  <div class="barra-superior">
+    <h1>El Sazón de Cantera y Plata</h1>
+    <div class="menu">
+      <select id="registroSelect" onchange="redirigir()">
+        <option selected disabled>Regístrate</option>
+        <option value="usuario">Usuario</option>
+        <option value="personal">Personal</option>
+        <option value="admin">Administrador</option>
+      </select>
     </div>
+  </div>
 
-    <script>
-        function minimizar() {
-            alert("Simulación de minimizar ventana");
-        }
-    </script>
+  <div class="ventana">
+    <div class="contenido">
+      <div class="contenido-naranja">
+        <div class="formulario">
+          <img src="Imagenes/logo.png" alt="Logo" class="logo" />
+          <div class="mensaje">
+            <div class="bienvenida">¡Bienvenido!</div>
+            ¡Qué bueno tenerte de vuelta <br />
+            en nustro sitio!
+          </div>
+        </div>
+      </div>
+
+      <div class="contenido-blanco">
+        <div class="formulario">
+          <h2>Inicio de Sesión</h2>
+          <form action="LoginUsuarioServlet" method="post">
+            <div class="campo">
+              <img src="Imagenes/icon_personal.png" alt="icono usuario" />
+              <input type="text" name="nombre" placeholder="Nombre de usuario" required />
+            </div>
+            <div class="campo">
+              <img src="Imagenes/Candado.png" alt="icono contraseña" />
+              <input type="password" name="contrasena" placeholder="Contraseña" required />
+            </div>
+            <div class="recordar">
+              <label><input type="checkbox" name="recordar" /> Recordar usuario</label>
+            </div>
+            <button type="submit" class="iniciar-btn">INICIAR SESIÓN</button>
+          </form>
+          <a href="RegistroUsuario.html" class="link-login">¿No tienes cuenta?</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function redirigir() {
+      const opcion = document.getElementById("registroSelect").value;
+      if (opcion === "usuario") {
+        window.location.href = "RegistroUsuario.html";
+      } else if (opcion === "personal") {
+        window.location.href = "RegistroEmpleado.html";
+      } else if (opcion === "admin") {
+        window.location.href = "RegistroAdmin.html";
+      }
+    }
+  </script>
 </body>
 </html>
