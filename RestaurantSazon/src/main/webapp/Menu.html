@@ -417,7 +417,7 @@
     <button class="window-btn minimize-btn" onclick="minimizar()">-</button>
     
     <!-- Botón de carrito -->
-    <button class="cart-btn" onclick="window.location.href='CarritoServlet'">Ir al Carrito</button>
+    <button class="cart-btn" onclick="irAlCarrito()">Ir al Carrito</button>
     
     <!-- Notificación -->
     <div class="notification" id="notification">
@@ -428,12 +428,7 @@
         // Funciones para los eventos
         function soporteClick() {
             alert("Chat con Soporte clickeado");
-        }
-        
-        function verCarrito() {
-            alert("Ver Carrito clickeado");
-        }
-        
+        } 
         function menuUsuarioClick() {
             alert("Registro de Usuario clickeado");
         }
@@ -452,6 +447,14 @@
         
         function minimizar() {
             alert("Minimizar ventana clickeado");
+           
+        }
+        function irAlCarrito() {
+            window.location.href = 'CarritoV.html';
+            
+            // Si necesitas procesar algo antes de redirigir, podrías usar:
+            // fetch('CarritoServlet')
+            //     .then(() => window.location.href = 'carrito.html');
         }
         
         // Funcionalidad para los botones de cantidad
