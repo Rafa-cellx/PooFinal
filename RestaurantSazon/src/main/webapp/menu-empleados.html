@@ -30,18 +30,21 @@
   <!-- Contenido principal -->
   <main>
     <h1>Menú de Empleados</h1>
-    <button id="btnPedidos" class="btn-pedidos">Revisar Pedidos</button>
+<button id="btnPedidos" class="btn-pedidos" type="button">Revisar Pedidos</button>
   </main>
 
   <script>
-    function soporteClick() { alert("Abrir chat con soporte"); }
-    function verCarrito() { alert("Ver carrito"); }
-    function menuUsuarioClick() { alert("Registro usuario"); }
-    function menuPersonalClick() { alert("Registro personal"); }
-    function menuAdministradorClick() { alert("Registro administrador"); }
-    document.getElementById('btnPedidos').addEventListener('click', () => {
-      alert('Revisar Pedidos');
-    });
-  </script>
+  function soporteClick() { alert("Abrir chat con soporte"); }
+  function verCarrito() { alert("Ver carrito"); }
+  function menuUsuarioClick() { alert("Registro usuario"); }
+  function menuPersonalClick() { alert("Registro personal"); }
+  function menuAdministradorClick() { alert("Registro administrador"); }
+
+  document.getElementById('btnPedidos').addEventListener('click', () => {
+    window.location.href = 'ResumenPedidos.html';
+  });
+</script>
+
+
 </body>
 </html>

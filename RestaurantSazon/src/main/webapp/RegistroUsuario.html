@@ -170,13 +170,14 @@
   <div class="barra-superior">
     <h1>El Sazón de Cantera y Plata</h1>
     <div class="menu">
-      <select>
-        <option selected disabled>Regístrate</option>
-        <option>Usuario</option>
-        <option>Personal</option>
-        <option>Administrador</option>
-      </select>
-    </div>
+  <select id="registroSelect" onchange="redirigir()">
+    <option selected disabled>Regístrate</option>
+    <option value="usuario">Usuario</option>
+    <option value="personal">Personal</option>
+    <option value="admin">Administrador</option>
+  </select>
+</div>
+
   </div>
 
   <div class="ventana">
@@ -227,5 +228,18 @@
       </div>
     </div>
   </div>
+  <script>
+  function redirigir() {
+    const opcion = document.getElementById("registroSelect").value;
+    if (opcion === "usuario") {
+      window.location.href = "LoginView.html";
+    } else if (opcion === "personal") {
+      window.location.href = "LoginEmpleado.html";
+    } else if (opcion === "admin") {
+      window.location.href = "InicioSesionAdmin.html";
+    }
+  }
+</script>
+  
 </body>
 </html>

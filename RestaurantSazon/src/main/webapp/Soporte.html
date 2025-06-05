@@ -2,49 +2,214 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>LoginView</title>
-  <link rel="stylesheet" href="Soporte.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Soporte</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: url('Imagenes/fondo.png') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    .ventana {
+      width: 830px;
+      margin: 60px auto;
+      background-color: transparent;
+      position: relative;
+    }
+
+    .barra-superior {
+      width: 100%;
+      height: 30px;
+      background-color: rgba(255, 165, 0, 0.5);
+      border-radius: 0 0 10px 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .barra-superior h1 {
+      font-family: 'Akhbar MT', sans-serif;
+      font-size: 18px;
+      font-weight: bold;
+      color: white;
+      margin: 0;
+    }
+
+    .menu select {
+      background: #EBAF5D;
+      color: white;
+      font-weight: bold;
+      padding: 8px;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    .contenido {
+      margin-top: 50px;
+      border-radius: 15px;
+      overflow: hidden;
+    }
+
+    .contenido-naranja {
+      background-color: rgba(255, 165, 0, 0.5);
+      padding: 5px;
+      text-align: center;
+    }
+
+    .contenido-blanco {
+      background-color: rgba(255,255,255,0.7);
+      padding: 30px;
+    }
+
+    .formulario {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .logo {
+      width: 160px;
+      height: auto;
+    }
+
+    .mensaje {
+      text-align: center;
+      font-size: 20px;
+      color: white;
+      margin: 20px 0;
+    }
+
+    .bienvenida {
+      text-align: center;
+      font-family: 'Pristina', cursive;
+      font-size: 50px;
+      font-weight: bold;
+      color: white;
+      margin: 30px 0 0 0;
+    }
+
+    .chat {
+      width: 100%;
+      max-width: 500px;
+    }
+
+    #chatHistorial {
+      background: #fff;
+      border-radius: 10px;
+      padding: 10px;
+      height: 200px;
+      overflow-y: auto;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+    }
+
+    .entrada-chat {
+      display: flex;
+      gap: 10px;
+    }
+
+    .entrada-chat input {
+      flex: 1;
+      padding: 8px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    .entrada-chat button {
+      background-color: #A0522D;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .entrada-chat button:hover {
+      background-color: #e5b471;
+      color: #000;
+    }
+  </style>
 </head>
 <body>
-
   <div class="barra-superior">
-    <span>El Sazón de Cantera y Plata</span>
+    <h1>El Sazón de Cantera y Plata</h1>
     <div class="menu">
-      <div>
-        <a href="#">Chat con Soporte</a>
+  <select id="registroSelect" onchange="redirigir()">
+    <option selected disabled>Regístrate</option>
+    <option value="usuario">Usuario</option>
+    <option value="personal">Personal</option>
+    <option value="admin">Administrador</option>
+  </select>
+</div>
+
+  </div>
+  <div class="ventana">
+    <div class="contenido">
+      <div class="contenido-naranja">
+        <div class="formulario">
+          <img src="Imagenes/logo.png" alt="Logo" class="logo" />
+          <div class="bienvenida">Soporte</div>
+          <div class="mensaje">¡Bienvenido! ¿En qué podemos ayudarte?</div>
+        </div>
       </div>
-      <div>
-        <a href="#">Regístrate</a>
-        <div class="submenu">
-          <a href="#">Usuario</a>
-          <a href="#">Personal</a>
-          <a href="#">Administrador</a>
+
+      <div class="contenido-blanco">
+        <div class="formulario">
+          <div class="chat">
+            <div id="chatHistorial"></div>
+            <div class="entrada-chat">
+              <input type="text" id="mensajeUsuario" placeholder="Escribe un mensaje..." />
+              <button onclick="enviarMensaje()">Enviar</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="ventana">
-    <button onclick="cerrarVentana()">✖</button>
-    <button onclick="minimizarVentana()">-</button>
-  </div>
+  <script>
+  function redirigir() {
+    const opcion = document.getElementById("registroSelect").value;
+    if (opcion === "usuario") {
+      window.location.href = "LoginView.html";
+    } else if (opcion === "personal") {
+      window.location.href = "LoginEmpleado.html";
+    } else if (opcion === "admin") {
+      window.location.href = "InicioSesionAdmin.html";
+    }
+  }
 
-  <div class="bienvenida">¡Bienvenido!</div>
+  function enviarMensaje() {
+    const input = document.getElementById("mensajeUsuario");
+    const historial = document.getElementById("chatHistorial");
+    const mensaje = input.value.trim();
 
-  <div class="mensaje-label">¡Bienvenido! ¿En qué podemos ayudarte?</div>
+    if (mensaje) {
+      historial.innerHTML += `<p><strong>Tú:</strong> ${mensaje}</p>`;
+      input.value = "";
+      historial.scrollTop = historial.scrollHeight;
 
-  <div class="chat">
-    <div id="chatHistorial" style="background:white; height:250px; border:1px solid lightgray; overflow-y:scroll; margin-bottom:10px;"></div>
-    <div>
-      <input type="text" id="mensajeUsuario" placeholder="Escribe un mensaje..." />
-      <button onclick="enviarMensaje()">Enviar</button>
-    </div>
-  </div>
+      setTimeout(() => {
+        const respuesta = "Bot: Gracias por tu mensaje. Un agente te atenderá enseguida.";
+        historial.innerHTML += `<p style="color:#A0522D;"><strong>${respuesta}</strong></p>`;
+        historial.scrollTop = historial.scrollHeight;
+      }, 1000);
+    }
+  }
+</script>
 
-  <div class="logo">
-    <img src="Imagenes/logo.png" alt="Logo" />
-  </div>
 
-  <script src="script.js"></script>
 </body>
 </html>
