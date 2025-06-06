@@ -10,52 +10,49 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet("/Menu")
 public class MenuServlet extends HttpServlet {
-    
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/sazon_db";
-    private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "Madafaker2005";
-    
+
+    // Datos de conexión a Clever Cloud
+    private static final String DB_URL = "jdbc:mysql://bytogqoyftf2dlcuaelb-mysql.services.clever-cloud.com:3306/bytogqoyftf2dlcuaelb?useSSL=false&serverTimezone=UTC";
+    private static final String DB_USER = "ufijig3sshb19ywp";
+    private static final String DB_PASSWORD = "6eM3Lcinv04fcPya4Ixe";
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
-        
+
         List<Articulo> articulos = obtenerArticulosDesdeDB();
-        
-        if(articulos != null) {
+
+        if (articulos != null) {
             request.setAttribute("articulos", articulos);
             request.getRequestDispatcher("/Menu.jsp").forward(request, response);
         } else {
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, 
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR,
                 "Error al obtener artículos de la base de datos");
         }
     }
-    
+
     private List<Articulo> obtenerArticulosDesdeDB() {
         List<Articulo> articulos = new ArrayList<>();
-        
+
         try {
-          
             Class.forName("com.mysql.cj.jdbc.Driver");
-            
-            
-            try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sazon_db", "root", "MXVN#1champion5");
+
+            try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
                  Statement stmt = conn.createStatement();
                  ResultSet rs = stmt.executeQuery("SELECT * FROM articulos")) {
-                
-                // 3. Procesar resultados
-                while(rs.next()) {
+
+                while (rs.next()) {
                     Articulo art = new Articulo();
                     art.setId(rs.getInt("id"));
                     art.setNombre(rs.getString("nombre"));
                     art.setPrecio(rs.getDouble("precio"));
                     art.setCantidad(rs.getInt("cantidad"));
-                  
-                    
+
                     articulos.add(art);
                 }
             }
             return articulos;
-            
+
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
             return null;

@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Confirmar Pedido</title>
 <style>
-  /* Reset básico */
   * {
     box-sizing: border-box;
   }
@@ -18,7 +17,6 @@
     color: #5d2c00;
   }
 
-  /* Fondo decorativo fijo */
   .fondo {
     position: fixed;
     top: 0; left: 0;
@@ -26,7 +24,6 @@
     z-index: -1;
   }
 
-  /* Barra superior */
   .top-bar {
     width: 100%;
     height: 35px;
@@ -114,7 +111,6 @@
     display: block;
   }
 
-  /* Contenido principal */
   main {
     margin: 90px auto 40px;
     max-width: 600px;
@@ -228,7 +224,6 @@
   <h1>Confirma tu pedido</h1>
 
   <div id="listaPlatillos">
-    <!-- Aquí se agregarán los platillos del carrito -->
   </div>
 
   <label for="direccion">Dirección de entrega:</label>
@@ -256,7 +251,11 @@ function mostrarCarrito() {
   const lista = document.getElementById("listaPlatillos");
   const totalPedido = document.getElementById("totalPedido");
 
+<<<<<<< HEAD
   const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+=======
+	  const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+>>>>>>> branch 'master' of https://github.com/Rafa-cellx/PooFinal.git
 
   if (carrito.length === 0) {
     lista.innerHTML = "<p>No hay productos en el carrito.</p>";
@@ -267,9 +266,15 @@ function mostrarCarrito() {
   lista.innerHTML = "";
   let total = 0;
 
+<<<<<<< HEAD
   carrito.forEach(item => {
     const precio = parseFloat(item.price);
     const cantidad = parseInt(item.quantity);
+=======
+	  carrito.forEach(item => {
+	    const precio = parseFloat(item.price);
+	    const cantidad = parseInt(item.quantity);
+>>>>>>> branch 'master' of https://github.com/Rafa-cellx/PooFinal.git
 
     if (!item.name || isNaN(precio) || isNaN(cantidad)) {
       console.warn("Item inválido en carrito:", item);
@@ -301,6 +306,7 @@ document.getElementById("confirmar").addEventListener("click", async () => {
   const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
   const cliente = localStorage.getItem("cliente") || "Cliente Anónimo";
 
+<<<<<<< HEAD
   // Validaciones
   if (direccion.length < 10) {
     errorDireccion.style.display = "block";
@@ -313,20 +319,37 @@ document.getElementById("confirmar").addEventListener("click", async () => {
     alert("Por favor selecciona un método de pago.");
     return;
   }
+=======
+	  if (!metodoPago || metodoPago === "Selecciona uno") {
+	    alert("Por favor selecciona un método de pago.");
+	    return;
+	  }
+	  
+	  alert(`Pedido confirmado!\nDirección: ${direccion}\nPago: ${metodoPago}\nTotal: ${document.getElementById("totalPedido").textContent.replace("Total: ", "")}`);
+>>>>>>> branch 'master' of https://github.com/Rafa-cellx/PooFinal.git
 
   if (carrito.length === 0) {
     alert("El carrito está vacío.");
     return;
   }
 
+<<<<<<< HEAD
   // Obtener fecha actual en formato YYYY-MM-DD
   const fecha = new Date().toISOString().slice(0, 10);
+=======
+	  window.location.href = "Despedida.html";
+	});
+>>>>>>> branch 'master' of https://github.com/Rafa-cellx/PooFinal.git
 
+<<<<<<< HEAD
   const detalle = carrito.map(item => ({
     nombre: item.name,
     cantidad: item.quantity,
     precio: item.price
   }));
+=======
+	document.addEventListener("DOMContentLoaded", mostrarCarrito);
+>>>>>>> branch 'master' of https://github.com/Rafa-cellx/PooFinal.git
 
   const pedido = {
     cliente: cliente,

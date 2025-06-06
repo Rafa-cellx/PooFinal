@@ -21,7 +21,6 @@
 		    overflow: hidden;
 		}
 		
-		/* Barra superior */
 		.top-bar {
             background-color: #ffb347;
 		    height: 30px;                               
@@ -89,7 +88,6 @@
 		}
 
         
-        /* Contenedor principal */
         .main-container {
             margin-top: 20px;
             height: calc(100vh - 40px);
@@ -105,7 +103,6 @@
             padding: 20px;
         }
         
-        /* Tarjeta de platillo */
         .dish-card {
             background-color: white;
             border-radius: 10px;
@@ -210,7 +207,6 @@
     </style>
 </head>
 <body>
-  <!-- Barra superior -->
   <div class="top-bar">
   <div class="restaurant-title">El Sazón de Cantera y Plata</div>
   <div class="menu-container">
@@ -226,10 +222,8 @@
     </div>
   </div>
 </div>    
-    <!-- Contenido principal -->
     <div class="main-container">
         <div class="dishes-container">
-            <!-- 1. Tacos al Pastor -->
             <div class="dish-card">
                 <img src="Imagenes/tacos.jpg" alt="Tacos al Pastor" class="dish-image">
                 <div class="dish-name">Tacos al Pastor</div>
@@ -243,7 +237,6 @@
                 <button class="add-btn">AGREGAR</button>
             </div>
             
-            <!-- 2. Enchiladas Rojas -->
             <div class="dish-card">
                 <img src="Imagenes/enchiladas.jpeg" alt="Enchiladas Rojas" class="dish-image">
                 <div class="dish-name">Enchiladas Rojas</div>
@@ -257,7 +250,6 @@
                 <button class="add-btn">AGREGAR</button>
             </div>
             
-            <!-- 3. Pozole Rojo -->
             <div class="dish-card">
                 <img src="Imagenes/pozole.jpeg" alt="Pozole Rojo" class="dish-image">
                 <div class="dish-name">Pozole Rojo</div>
@@ -271,7 +263,6 @@
                 <button class="add-btn">AGREGAR</button>
             </div>
             
-            <!-- 4. Burritos -->
             <div class="dish-card">
                 <img src="Imagenes/burritos.jpg" alt="Burritos" class="dish-image">
                 <div class="dish-name">Burritos</div>
@@ -285,7 +276,6 @@
                 <button class="add-btn">AGREGAR</button>
             </div>
             
-            <!-- 5. Sopes -->
             <div class="dish-card">
                 <img src="Imagenes/sopes.jpeg" alt="Sopes" class="dish-image">
                 <div class="dish-name">Sopes</div>
@@ -299,7 +289,6 @@
                 <button class="add-btn">AGREGAR</button>
             </div>
             
-            <!-- 6. Tamales -->
             <div class="dish-card">
                 <img src="Imagenes/tamales.jpeg" alt="Tamales" class="dish-image">
                 <div class="dish-name">Tamales</div>
@@ -313,7 +302,6 @@
                 <button class="add-btn">AGREGAR</button>
             </div>
             
-            <!-- 7. Asado de boda -->
             <div class="dish-card">
                 <img src="Imagenes/asado.jpeg" alt="Asado de Boda" class="dish-image">
                 <div class="dish-name">Asado de Boda</div>
@@ -327,7 +315,6 @@
                 <button class="add-btn">AGREGAR</button>
             </div>
             
-            <!-- 8. Pescado Empanizado -->
             <div class="dish-card">
                 <img src="Imagenes/pescado.jpeg" alt="Pescado Empanizado" class="dish-image">
                 <div class="dish-name">Pescado Empanizado</div>
@@ -341,7 +328,6 @@
                 <button class="add-btn">AGREGAR</button>
             </div>
             
-            <!-- 9. Tostadas -->
             <div class="dish-card">
                 <img src="Imagenes/tinga.jpg" alt="Tostadas de Tinga de Pollo" class="dish-image">
                 <div class="dish-name">Tostadas de Tinga de Pollo</div>
@@ -355,7 +341,6 @@
                 <button class="add-btn">AGREGAR</button>
             </div>
             
-            <!-- 10. Caldo de Res -->
             <div class="dish-card">
                 <img src="Imagenes/res.jpeg" alt="Caldo de Res" class="dish-image">
                 <div class="dish-name">Caldo de Res</div>
@@ -369,7 +354,6 @@
                 <button class="add-btn">AGREGAR</button>
             </div>
             
-            <!-- 11. Quesabirrias -->
             <div class="dish-card">
                 <img src="Imagenes/quesa.jpeg" alt="Quesabirrias" class="dish-image">
                 <div class="dish-name">Quesabirrias</div>
@@ -383,7 +367,6 @@
                 <button class="add-btn">AGREGAR</button>
             </div>
             
-            <!-- 12. Flautas -->
             <div class="dish-card">
                 <img src="Imagenes/flautas.jpeg" alt="Flautas" class="dish-image">
                 <div class="dish-name">Flautas</div>
@@ -400,17 +383,14 @@
     </div>
     
         
-    <!-- Botón de carrito -->
     <button class="cart-btn" onclick="verCarrito()">Ir al Carrito</button>
     
-    <!-- Notificación -->
     <div class="notification" id="notification">
         <span id="notification-text"></span>
     </div>
     
     <script>
     document.addEventListener("DOMContentLoaded", function () {
-        // Botones "+" y "-" para cambiar cantidaaad
         document.querySelectorAll(".dish-card").forEach(card => {
             const minusBtn = card.querySelectorAll(".quantity-btn")[0];
             const plusBtn = card.querySelectorAll(".quantity-btn")[1];
@@ -426,7 +406,6 @@
                 quantityDisplay.textContent = qty + 1;
             });
 
-            // Botón AGREGAR
             card.querySelector(".add-btn").addEventListener("click", () => {
                 const name = card.querySelector(".dish-name").textContent;
                 const price = parseFloat(card.querySelector(".dish-price").textContent.replace('$', ''));
@@ -436,11 +415,8 @@
 
                 if (quantity > 0) {
                     const item = { name, price, description, image, quantity };
-
-                    // Obtener carrito actual
                     let cart = JSON.parse(localStorage.getItem("carrito")) || [];
 
-                    // Revisar si ya está en el carrito
                     const existing = cart.find(p => p.name === name);
                     if (existing) {
                         existing.quantity += quantity;
@@ -448,18 +424,15 @@
                         cart.push(item);
                     }
 
-                    // Guardar en localStorage
                     localStorage.setItem("carrito", JSON.stringify(cart));
 
-                    // Notificación (opcional)
                     alert(`Se agregaron ${quantity} ${name} al carrito`);
-                    quantityDisplay.textContent = 0; // Reinicia contador
+                    quantityDisplay.textContent = 0;
                 }
             });
         });
     });
 
-  // Ir al carrito
   function verCarrito() {
       window.location.href = "CarritoV.html"; 
   }
