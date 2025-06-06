@@ -18,8 +18,7 @@ public class LoginEmpleadoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Mismo estilo que el LoginUsuarioServlet
-        String nombre = request.getParameter("nombre");
+        String empleado_id = request.getParameter("empleado_id");
         String contrasena = request.getParameter("contrasena");
 
         try {
@@ -28,16 +27,19 @@ public class LoginEmpleadoServlet extends HttpServlet {
             Connection con = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/sazon_db", "root", "MXVN#1champion5");
 
-            String sql = "SELECT * FROM empleados WHERE nombre = ? AND contrasena = ?";
+            String sql = "SELECT nombre, apellido FROM empleados WHERE empleado_id = ? AND contrasena = ?";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, nombre);
+            ps.setString(1, empleado_id);
             ps.setString(2, contrasena);
 
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
+                String nombreCompleto = rs.getString("nombre") + " " + rs.getString("apellido");
+
                 HttpSession sesion = request.getSession();
-                sesion.setAttribute("usuario", nombre);
+                sesion.setAttribute("usuario", nombreCompleto);
+                sesion.setAttribute("empleado_id", empleado_id); 
 
                 response.sendRedirect("menu-empleados.html");
             } else {
@@ -48,6 +50,7 @@ public class LoginEmpleadoServlet extends HttpServlet {
 
         } catch (Exception e) {
             e.printStackTrace();
+            response.setContentType("text/html");
             response.getWriter().println("<h1>Error: " + e.getMessage() + "</h1>");
         }
     }
