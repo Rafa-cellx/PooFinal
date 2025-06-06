@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Byeee</title>
+<style>
+        * {
+		    margin: 0;
+		    padding: 0;
+		    box-sizing: border-box;
+		    font-family: 'Arial', sans-serif;
+		}
+		
+		body {
+		    background-image: url('Imagenes/fondo.png');
+		    background-size: cover;
+		    background-repeat: no-repeat;
+		    background-attachment: fixed;
+		    height: 100vh;
+		    overflow: hidden;
+		}
+		
+		/* Barra superior */
+		.top-bar {
+            background-color: #ffb347;
+		    height: 30px;                               
+		    width: 100%;
+		    border-bottom-left-radius: 10px;
+		    border-bottom-right-radius: 10px;
+		    display: flex;
+		    justify-content: space-between;
+		    align-items: center;
+		    padding: 0 20px;                           
+		    position: fixed;
+		    top: 0;
+		    z-index: 999;
+		}
+		
+		.restaurant-title {
+		    font-family: 'Akhbar MT', serif;
+		    font-size: 18px;                           
+		    font-weight: bold;
+		    color: white;
+		}
+		
+		.menu-container {
+		    display: flex;
+		    align-items: center;
+		}
+		
+		.menu-item {
+		    background-color: #EBAF5D;                 
+		    color: white;
+		    font-weight: bold;
+		    padding: 5px 10px;
+		    margin-left: 10px;
+		    cursor: pointer;
+		    position: relative;
+		    border-radius: 4px;                         
+		    font-size: 14px;                            
+		    user-select: none;                          
+		}
+		
+		.submenu {
+		    display: none;
+		    position: absolute;
+		    background-color: #EBAF5D;                  
+		    min-width: 120px;
+		    z-index: 1;
+		    right: 0;
+		    border-radius: 4px;
+		}
+		
+		.menu-item:hover .submenu {
+		    display: block;
+		}
+		
+		.submenu-item {
+		    padding: 5px 10px;
+		    white-space: nowrap;
+		    color: white;
+		    font-weight: bold;
+		    cursor: pointer;
+		}
+		
+		.submenu-item:hover {
+		    background-color: rgba(255, 165, 0, 0.8);  
+		}
+		.mensaje-despedida {
+		
+		  position: fixed;
+		  top: 50%;
+		  left: 50%;
+		  transform: translate(-50%, -50%);
+		  max-width: 700px;
+		  text-align: center;
+		  font-size: 28px;
+		  font-weight: bold;
+		  padding: 30px;
+		  background: rgba(255, 255, 255, 0.8);
+		  border-radius: 20px;
+		  color: #b96300;
+		  box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
+		  font-family: 'Akhbar MT', sans-serif;
+		  z-index: 2000;
+}
+    </style>
+</head>
+<body>
+  <!-- Barra superior -->
+  <div class="top-bar">
+  <div class="restaurant-title">El Sazón de Cantera y Plata</div>
+  <div class="menu-container">
+    <div class="menu-item" onclick="chatSoporte()">Chat con Soporte</div>
+    <div class="menu-item" onclick="Menu()">Ir al Menú</div>    
+    <div class="menu-item">
+      Regístrate
+      <div class="submenu">
+        <div class="submenu-item" onclick="redirigir('RegistroUsuario.html', event)">Usuario</div>
+        <div class="submenu-item" onclick="redirigir('LoginEmpleado.html', event)">Personal</div>
+        <div class="submenu-item" onclick="redirigir('InicioSesionAdmin.html', event)">Administrador</div>
+      </div>
+    </div>
+  </div>
+</div>    
+    <!-- Contenido principal -->
+   <div class="mensaje-despedida">
+  ¡Gracias por tu compra, esperamos verte pronto de nuevo! 😊
+</div>
+        
+</head>
+<script>
+  function redirigir(pagina, e) {
+      e.stopPropagation();
+      window.location.href = pagina;
+  }
+  function chatSoporte() {
+  	 window.location.href = "Soporte.html";
+  }
+  function Menu() {
+	  	 window.location.href = "Menu.html";
+	  }
+</script>
+<body>
+
+</body>
+</html>
