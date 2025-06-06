@@ -225,78 +225,97 @@
   </header>
 
   <main>
-    <h1>Confirma tu pedido</h1>
+  <h1>Confirma tu pedido</h1>
 
-    <div class="platillo"><span>2x Taco al pastor</span><span>$50.00</span></div>
-    <div class="platillo"><span>1x Quesadilla</span><span>$40.00</span></div>
+  <div id="listaPlatillos">
+    <!-- Aquí se agregarán los platillos del carrito -->
+  </div>
 
-    <label for="direccion">Dirección de entrega:</label>
-    <input type="text" id="direccion" placeholder="Ej: Calle 123, #45-B" />
-    <p id="errorDireccion" class="error">⚠ La dirección es muy corta o inválida.</p>
+  <label for="direccion">Dirección de entrega:</label>
+  <input type="text" id="direccion" placeholder="Ej: Calle 123, #45-B" />
+  <p id="errorDireccion" class="error">⚠ La dirección es muy corta o inválida.</p>
 
-    <label for="metodoPago">Método de pago:</label>
-    <select id="metodoPago">
-      <option disabled selected>Selecciona uno</option>
-      <option>Efectivo</option>
-      <option>Tarjeta de débito</option>
-      <option>Tarjeta de crédito</option>
-      <option>Transferencia bancaria</option>
-    </select>
-    <p id="infoMetodoPago" class="info-metodo"></p>
+  <label for="metodoPago">Método de pago:</label>
+  <select id="metodoPago">
+    <option disabled selected>Selecciona uno</option>
+    <option>Efectivo</option>
+    <option>Tarjeta de débito</option>
+    <option>Tarjeta de crédito</option>
+    <option>Transferencia bancaria</option>
+  </select>
+  <p id="infoMetodoPago" class="info-metodo"></p>
 
-    <p class="total">Total: $90.00</p>
+  <p class="total" id="totalPedido">Total: $0.00</p>
 
-    <button id="confirmar">Confirmar pedido</button>
-  </main>
+  <button id="confirmar">Confirmar pedido</button>
+</main>
+
 
 <script>
-function redirigir() {
-    const opcion = document.getElementById("registroSelect").value;
-    if (opcion === "usuario") {
-      window.location.href = "LoginView.html";
-    } else if (opcion === "personal") {
-      window.location.href = "LoginEmpleado.html";
-    } else if (opcion === "admin") {
-      window.location.href = "InicioSesionAdmin.html";
-    }
-  }
+function mostrarCarrito() {
+	  const lista = document.getElementById("listaPlatillos");
+	  const totalPedido = document.getElementById("totalPedido");
 
-  const carrito = [
-    { nombre: "Taco al pastor", cantidad: 2, precio: 25 },
-    { nombre: "Quesadilla", cantidad: 1, precio: 40 }
-  ];
+	  // Obtener carrito desde localStorage
+	  const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
-  // Mostrar info método pago (opcional)
-  const infoMetodoPago = document.getElementById("infoMetodoPago");
-  document.getElementById("metodoPago").addEventListener("change", function() {
-    const val = this.value;
-    let msg = "";
-    if(val === "Efectivo") msg = "Recuerda tener el monto exacto al momento de la entrega.";
-    else if(val === "Tarjeta de débito") msg = "El repartidor llevará una terminal para el cobro.";
-    else if(val === "Tarjeta de crédito") msg = "Aceptamos todas las tarjetas prinipales.";
-    else if(val === "Transferencia bancaria") msg = "Recibirás instrucciones para transferir.";
-    infoMetodoPago.textContent = msg;
-  });
+	  if (carrito.length === 0) {
+	    lista.innerHTML = "<p>No hay productos en el carrito.</p>";
+	    totalPedido.textContent = "Total: $0.00";
+	    return;
+	  }
 
-  document.getElementById("confirmar").addEventListener("click", () => {
-    const direccion = document.getElementById("direccion").value.trim();
-    const metodoPago = document.getElementById("metodoPago").value;
-    const errorDireccion = document.getElementById("errorDireccion");
+	  lista.innerHTML = "";
+	  let total = 0;
 
-    errorDireccion.style.display = direccion.length < 10 ? "block" : "none";
-    if (direccion.length < 10) return;
+	  carrito.forEach(item => {
+	    const subtotal = item.precio * item.cantidad;
+	    total += subtotal;
 
-    if (!metodoPago || metodoPago === "Selecciona uno") {
-      alert("Por favor selecciona un método de pago.");
-      return;
-    }
+	    const divPlatillo = document.createElement("div");
+	    divPlatillo.classList.add("platillo");
+	    divPlatillo.innerHTML = `<span>${item.cantidad}x ${item.nombre}</span><span>$${subtotal.toFixed(2)}</span>`;
+	    lista.appendChild(divPlatillo);
+	  });
 
-    // Aquí va el envío del pedido (simulado)
-    alert(`Pedido confirmado!\nDirección: ${direccion}\nPago: ${metodoPago}\nTotal: $90.00`);
+	  totalPedido.textContent = `Total: $${total.toFixed(2)}`;
+	}
 
-    // Simular redirección
-    // window.location.href = "confirmacion.html";
-  });
+	document.getElementById("metodoPago").addEventListener("change", function() {
+	  const val = this.value;
+	  let msg = "";
+	  if(val === "Efectivo") msg = "Recuerda tener el monto exacto al momento de la entrega.";
+	  else if(val === "Tarjeta de débito") msg = "El repartidor llevará una terminal para el cobro.";
+	  else if(val === "Tarjeta de crédito") msg = "Aceptamos todas las tarjetas principales.";
+	  else if(val === "Transferencia bancaria") msg = "Recibirás instrucciones para transferir.";
+	  document.getElementById("infoMetodoPago").textContent = msg;
+	});
+
+	document.getElementById("confirmar").addEventListener("click", () => {
+	  const direccion = document.getElementById("direccion").value.trim();
+	  const metodoPago = document.getElementById("metodoPago").value;
+	  const errorDireccion = document.getElementById("errorDireccion");
+
+	  errorDireccion.style.display = direccion.length < 10 ? "block" : "none";
+	  if (direccion.length < 10) return;
+
+	  if (!metodoPago || metodoPago === "Selecciona uno") {
+	    alert("Por favor selecciona un método de pago.");
+	    return;
+	  }
+
+	  // Confirmar pedido y limpiar carrito
+	  alert(`Pedido confirmado!\nDirección: ${direccion}\nPago: ${metodoPago}\nTotal: ${document.getElementById("totalPedido").textContent.replace("Total: ", "")}`);
+
+	  localStorage.removeItem("carrito");
+
+	  // Redirigir a página principal o agradecimiento
+	  window.location.href = "menu.html";
+	});
+
+	// Ejecutar al cargar la página
+	document.addEventListener("DOMContentLoaded", mostrarCarrito);
+
 </script>
 
 </body>
