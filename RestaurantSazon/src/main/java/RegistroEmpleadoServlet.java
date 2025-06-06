@@ -26,20 +26,17 @@ public class RegistroEmpleadoServlet extends HttpServlet {
 
                 "jdbc:mysql://localhost:3306/sazon_db", "root", "Madafaker2005");
 
-
-
-
             String sql = "INSERT INTO empleados (nombre, apellido, empleado_id, contrasena) VALUES (?, ?, ?, ?)";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, nombre);
             ps.setString(2, apellido);
             ps.setString(3, empleadoId);
-            ps.setString(4, contrasena); // en producción, encripta esto
+            ps.setString(4, contrasena); 
 
             ps.executeUpdate();
             con.close();
 
-            response.sendRedirect("menu-empleados.html"); // o .jsp si aplica
+            response.sendRedirect("menu-empleados.html"); 
 
         } catch (Exception e) {
             e.printStackTrace();

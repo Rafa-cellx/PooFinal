@@ -182,11 +182,11 @@
             <p>Califica a tus empleados</p>
 
             <div class="input-group">
-                <input type="text" placeholder="ID de administrador">
+                <input type="text" id="adminId" placeholder="ID de administrador">
             </div>
 
             <div class="input-group">
-                <input type="password" placeholder="Contraseña">
+                <input type="password" id="adminPass" placeholder="Contraseña">
             </div>
 
             <div class="checkboxes">
@@ -194,8 +194,22 @@
                 <label><input type="checkbox"> ¿Olvidaste tu contraseña?</label>
             </div>
 
-            <a href="MenuAdmin.html" class="boton-iniciar">INICIAR SESIÓN</a>
+            <button onclick="iniciarSesion()" class="boton-iniciar">INICIAR SESIÓN</button>
         </div>
     </div>
+
+    <script>
+        function iniciarSesion() {
+            const id = document.getElementById("adminId").value;
+            const pass = document.getElementById("adminPass").value;
+
+            if (id === "Transformacion4T" && pass === "LopezMamador") {
+                alert("Bienvenida Claudia Sheinbaum");
+                window.location.href = "MenuAdmin.html";
+            } else {
+                alert("ID o contraseña incorrectos");
+            }
+        }
+    </script>
 </body>
 </html>
