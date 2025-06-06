@@ -117,21 +117,25 @@ main {
 
 /* Botón de pedidos */
 .btn-pedidos {
-  margin-top: 100px;
-  padding: 20px 30px;
-  font-size: 26px;
-  background-color: #EBAF5D;
-  color: white;
-  border: none;
-  border-radius: 18px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
+	width: 300px;
+	padding: 20px;
+    margin-bottom: 25px;
+    background: linear-gradient(to right, #A0522D, #e5b471);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
 .btn-pedidos:hover {
-  background-color: #d99845;
-}
+     transform: translateY(-3px);
+     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
 	
 </style>
 </head>
@@ -143,8 +147,6 @@ main {
   <header class="top-bar">
     <div class="restaurant-title">El Sazón de Cantera y Plata</div>
     <nav class="menu-container">
-      <div class="menu-item" onclick="soporteClick()">Chat con Soporte</div>
-      <div class="menu-item" onclick="verCarrito()">Carrito</div>
       <div class="menu-item submenu-parent">
         Regístrate
         <div class="submenu">
