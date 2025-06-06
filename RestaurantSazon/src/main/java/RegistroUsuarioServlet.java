@@ -1,4 +1,4 @@
-package com.main.java;
+package com.sazon.usuarios;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import java.sql.Connection;
