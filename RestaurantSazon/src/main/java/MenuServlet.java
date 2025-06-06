@@ -38,7 +38,7 @@ public class MenuServlet extends HttpServlet {
             Class.forName("com.mysql.cj.jdbc.Driver");
             
             
-            try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sazon_db", "root", "MXVN#1champion5");
+            try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sazon_db", "root", "fer12320");
                  Statement stmt = conn.createStatement();
                  ResultSet rs = stmt.executeQuery("SELECT * FROM articulos")) {
                 
