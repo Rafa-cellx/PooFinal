@@ -3,6 +3,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -17,7 +18,8 @@ public class LoginEmpleadoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String empleado_id = request.getParameter("empleado_id");
+        // Mismo estilo que el LoginUsuarioServlet
+        String nombre = request.getParameter("nombre");
         String contrasena = request.getParameter("contrasena");
 
         try {
@@ -26,16 +28,16 @@ public class LoginEmpleadoServlet extends HttpServlet {
             Connection con = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/sazon_db", "root", "MXVN#1champion5");
 
-            String sql = "SELECT * FROM empleados WHERE empleado_id = ? AND contrasena = ?";
+            String sql = "SELECT * FROM empleados WHERE nombre = ? AND contrasena = ?";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, empleado_id);
+            ps.setString(1, nombre);
             ps.setString(2, contrasena);
 
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
                 HttpSession sesion = request.getSession();
-                sesion.setAttribute("usuario", empleado_id);
+                sesion.setAttribute("usuario", nombre);
 
                 response.sendRedirect("menu-empleados.html");
             } else {

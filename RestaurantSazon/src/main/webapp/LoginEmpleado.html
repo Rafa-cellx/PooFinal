@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Login Empleado</title>
     <style>
         body {
@@ -125,7 +125,7 @@
             font-size: 16px;
             transition: all 0.3s;
         }
-        .btn:hover {
+        .btn:hover:not(:disabled) {
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
@@ -182,9 +182,9 @@
         <div class="title-bar">
             <div class="title-text">PERSONAL</div>
             <div class="logo-container">
-                <img src="Imagenes/logo.png" alt="Logo">
+                <img src="Imagenes/logo.png" alt="Logo" />
                 <div>¡El cliente siempre tiene la razón, recuérdalo!</div>
-                <hr class="separator">
+                <hr class="separator" />
                 <div>¡NO olvides las promociones!</div>
             </div>
         </div>
@@ -192,24 +192,27 @@
         <div class="content">
             <div class="text-note"><strong>Emplead@s</strong></div>
 
-            <div class="input-group">
-                <img src="Imagenes/Icono_Usuario.png" alt="Usuario">
-                <input type="text" id="employeeId" placeholder="ID de empleado" required>
-            </div>
-            <div class="error-message" id="employeeIdError">Por favor ingresa tu ID de empleado</div>
+            <!-- FORMULARIO POST para enviar datos al servlet -->
+            <form id="loginForm" action="LoginEmpleadoServlet" method="post">
+                <div class="input-group">
+                    <img src="Imagenes/Icono_Usuario.png" alt="Usuario" />
+                    <input type="text" id="empleado_id" name="empleado_id" placeholder="ID de empleado" required />
+                </div>
+                <div class="error-message" id="empleadoIdError">Por favor ingresa tu ID de empleado</div>
 
-            <div class="input-group">
-                <img src="Imagenes/Candado.png" alt="Contraseña">
-                <input type="password" id="password" placeholder="Contraseña" required>
-            </div>
-            <div class="error-message" id="passwordError">Por favor ingresa tu contraseña</div>
+                <div class="input-group">
+                    <img src="Imagenes/Candado.png" alt="Contraseña" />
+                    <input type="password" id="contrasena" name="contrasena" placeholder="Contraseña" required />
+                </div>
+                <div class="error-message" id="contrasenaError">Por favor ingresa tu contraseña</div>
 
-            <div class="checkbox-group">
-                <label><input type="checkbox"> Recordar credenciales</label>
-                <label><input type="checkbox"> Recuperar contraseña</label>
-            </div>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" /> Recordar credenciales</label>
+                    <label><input type="checkbox" /> Recuperar contraseña</label>
+                </div>
 
-            <button class="btn" id="loginBtn" disabled>INICIAR SESIÓN</button>
+                <button type="submit" class="btn" id="loginBtn" disabled>INICIAR SESIÓN</button>
+            </form>
         </div>
     </div>
 
@@ -218,55 +221,50 @@
             const select = document.getElementById('registroSelect');
             const value = select.value;
 
-            if(value === 'usuario') {
+            if (value === 'usuario') {
                 window.location.href = 'RegistroUsuario.html';
-            } else if(value === 'personal') {
+            } else if (value === 'personal') {
                 window.location.href = 'LoginEmpleado.html';
-            } else if(value === 'admin') {
+            } else if (value === 'admin') {
                 window.location.href = 'InicioSesionAdmin.html';
             }
         }
 
-        const employeeIdInput = document.getElementById('employeeId');
-        const passwordInput = document.getElementById('password');
+        const empleadoIdInput = document.getElementById('empleado_id');
+        const contrasenaInput = document.getElementById('contrasena');
         const loginBtn = document.getElementById('loginBtn');
-        const employeeIdError = document.getElementById('employeeIdError');
-        const passwordError = document.getElementById('passwordError');
+        const empleadoIdError = document.getElementById('empleadoIdError');
+        const contrasenaError = document.getElementById('contrasenaError');
 
         function validateInputs() {
-            const employeeIdValid = employeeIdInput.value.trim() !== '';
-            const passwordValid = passwordInput.value.trim() !== '';
+            const empleadoIdValid = empleadoIdInput.value.trim() !== '';
+            const contrasenaValid = contrasenaInput.value.trim() !== '';
 
-            employeeIdError.style.display = employeeIdValid ? 'none' : 'block';
-            passwordError.style.display = passwordValid ? 'none' : 'block';
+            empleadoIdError.style.display = empleadoIdValid ? 'none' : 'block';
+            contrasenaError.style.display = contrasenaValid ? 'none' : 'block';
 
-            loginBtn.disabled = !(employeeIdValid && passwordValid);
+            loginBtn.disabled = !(empleadoIdValid && contrasenaValid);
         }
 
-        employeeIdInput.addEventListener('input', validateInputs);
-        passwordInput.addEventListener('input', validateInputs);
+        empleadoIdInput.addEventListener('input', validateInputs);
+        contrasenaInput.addEventListener('input', validateInputs);
 
-        loginBtn.addEventListener('click', function () {
+        empleadoIdInput.addEventListener('blur', () => {
+            if (empleadoIdInput.value.trim() === '') {
+                empleadoIdError.style.display = 'block';
+            }
+        });
+
+        contrasenaInput.addEventListener('blur', () => {
+            if (contrasenaInput.value.trim() === '') {
+                contrasenaError.style.display = 'block';
+            }
+        });
+
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
             validateInputs();
-            if (!loginBtn.disabled) {
-
-                window.location.href = 'menu-empleados.html';
-
-                // Redirige al menú del empleado
-                window.location.href = 'menu-empleado.html';
-
-            }
-        });
-
-        employeeIdInput.addEventListener('blur', () => {
-            if (employeeIdInput.value.trim() === '') {
-                employeeIdError.style.display = 'block';
-            }
-        });
-
-        passwordInput.addEventListener('blur', () => {
-            if (passwordInput.value.trim() === '') {
-                passwordError.style.display = 'block';
+            if (loginBtn.disabled) {
+                e.preventDefault();
             }
         });
     </script>
