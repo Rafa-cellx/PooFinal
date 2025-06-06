@@ -137,7 +137,7 @@
     }
 
     function cargarPedidos() {
-      fetch('PedidosServlet') // Asegúrate que este endpoint exista y retorne JSON válido
+      fetch('PedidosServlet') 
         .then(response => response.json())
         .then(data => {
           const tabla = document.getElementById("tabla-pedidos");
