@@ -25,12 +25,7 @@ public class RegistroUsuarioServlet extends HttpServlet {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
 
-<<<<<<< HEAD
                 "jdbc:mysql://localhost:3306/sazon_db", "root", "MXVN#1champion5");
-=======
-                "jdbc:mysql://localhost:3306/sazon_db", "root", "Madafaker2005");
->>>>>>> branch 'master' of https://github.com/Rafa-cellx/PooFinal.git
-
 
 
 
@@ -45,7 +40,7 @@ public class RegistroUsuarioServlet extends HttpServlet {
             ps.executeUpdate();
             con.close();
 
-            response.sendRedirect("Menu.html"); // o .jsp si aplica
+            response.sendRedirect("Menu.html"); 
 
         } catch (Exception e) {
             e.printStackTrace();
