@@ -40,7 +40,6 @@ public class LoginUsuarioServlet extends HttpServlet {
 
                 response.sendRedirect("Menu.html");
             } else {
-                // Redirigir con parámetro para indicar error
                 response.sendRedirect("LoginUsuario.html?error=invalid");
             }
 
