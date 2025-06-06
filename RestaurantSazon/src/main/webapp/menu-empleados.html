@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title> Menú Empleados</title>
 <style>
-	/* Reseteo básico */
 * {
   box-sizing: border-box;
 }
@@ -17,7 +16,6 @@ body {
   background-size: cover;
 }
 
-/* Fondo decorativo opcional */
 .fondo {
   position: fixed;
   top: 0;
@@ -27,11 +25,10 @@ body {
   z-index: -1;
 }
 
-/* Barra superior */
 .top-bar {
   width: 100%;
   height: 30px;
-  background-color: rgba(255, 165, 0, 0.5); /* Naranja translúcido */
+  background-color: rgba(255, 165, 0, 0.5); 
   border-radius: 0 0 10px 10px;
   display: flex;
   justify-content: space-between;
@@ -43,7 +40,6 @@ body {
   font-family: 'Akhbar MT', sans-serif;
 }
 
-/* Título del restaurante */
 .restaurant-title {
   font-size: 18px;
   font-weight: bold;
@@ -51,13 +47,11 @@ body {
   margin: 0;
 }
 
-/* Contenedor del menú */
 .menu-container {
   display: flex;
   gap: 15px;
 }
 
-/* Ítems del menú */
 .menu-item {
   position: relative;
   color: white;
@@ -73,7 +67,6 @@ body {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Submenú desplegable */
 .submenu-parent {
   position: relative;
 }
@@ -83,7 +76,7 @@ body {
   position: absolute;
   top: 100%;
   left: 0;
-  background-color: rgba(255, 165, 0, 0.8); /* Submenú más sólido */
+  background-color: rgba(255, 165, 0, 0.8);
   border-radius: 5px;
   padding: 5px 0;
   z-index: 1000;
@@ -158,7 +151,6 @@ main {
     </nav>
   </header>
 
-  <!-- Contenido principal -->
   <main>
     <h1>Menú de Empleados</h1>
 <button id="btnPedidos" class="btn-pedidos" type="button">Revisar Pedidos</button>
