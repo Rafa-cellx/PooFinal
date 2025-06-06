@@ -18,12 +18,9 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet("/PedidosServlet")
 public class PedidosServlet extends HttpServlet {
-<<<<<<< HEAD
-=======
     private static final String DB_URL = "jdbc:mysql://bytogqoyftf2dlcuaelb-mysql.services.clever-cloud.com:3306/bytogqoyftf2dlcuaelb?useSSL=false&serverTimezone=UTC";
     private static final String DB_USER = "ufijig3sshb19ywp";
     private static final String DB_PASSWORD = "6eM3Lcinv04fcPya4Ixe";
->>>>>>> branch 'master' of https://github.com/Rafa-cellx/PooFinal.git
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -39,21 +36,15 @@ public class PedidosServlet extends HttpServlet {
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-<<<<<<< HEAD
             con = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/sazon_db", "root", "100394");
-=======
             Connection con = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
->>>>>>> branch 'master' of https://github.com/Rafa-cellx/PooFinal.git
 
             String sql = "SELECT * FROM pedidos";
-<<<<<<< HEAD
             stmt = con.createStatement();
             rs = stmt.executeQuery(sql);
-=======
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
->>>>>>> branch 'master' of https://github.com/Rafa-cellx/PooFinal.git
 
             while (rs.next()) {
                 JSONObject pedido = new JSONObject();
@@ -71,7 +62,6 @@ public class PedidosServlet extends HttpServlet {
 
         } catch (Exception e) {
             e.printStackTrace();
-<<<<<<< HEAD
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
             out.write("{\"mensaje\": \"Error al obtener pedidos\"}");
         } finally {
@@ -92,10 +82,8 @@ public class PedidosServlet extends HttpServlet {
             while ((line = reader.readLine()) != null) {
                 sb.append(line);
             }
-=======
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR,
                     "Error al obtener los pedidos: " + e.getMessage());
->>>>>>> branch 'master' of https://github.com/Rafa-cellx/PooFinal.git
         }
 
         response.setContentType("application/json");

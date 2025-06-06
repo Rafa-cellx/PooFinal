@@ -251,11 +251,8 @@ function mostrarCarrito() {
   const lista = document.getElementById("listaPlatillos");
   const totalPedido = document.getElementById("totalPedido");
 
-<<<<<<< HEAD
   const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-=======
 	  const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
->>>>>>> branch 'master' of https://github.com/Rafa-cellx/PooFinal.git
 
   if (carrito.length === 0) {
     lista.innerHTML = "<p>No hay productos en el carrito.</p>";
@@ -306,7 +303,6 @@ document.getElementById("confirmar").addEventListener("click", async () => {
   const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
   const cliente = localStorage.getItem("cliente") || "Cliente Anónimo";
 
-<<<<<<< HEAD
   // Validaciones
   if (direccion.length < 10) {
     errorDireccion.style.display = "block";
@@ -319,37 +315,29 @@ document.getElementById("confirmar").addEventListener("click", async () => {
     alert("Por favor selecciona un método de pago.");
     return;
   }
-=======
 	  if (!metodoPago || metodoPago === "Selecciona uno") {
 	    alert("Por favor selecciona un método de pago.");
 	    return;
 	  }
 	  
 	  alert(`Pedido confirmado!\nDirección: ${direccion}\nPago: ${metodoPago}\nTotal: ${document.getElementById("totalPedido").textContent.replace("Total: ", "")}`);
->>>>>>> branch 'master' of https://github.com/Rafa-cellx/PooFinal.git
 
   if (carrito.length === 0) {
     alert("El carrito está vacío.");
     return;
   }
 
-<<<<<<< HEAD
   // Obtener fecha actual en formato YYYY-MM-DD
   const fecha = new Date().toISOString().slice(0, 10);
-=======
 	  window.location.href = "Despedida.html";
 	});
->>>>>>> branch 'master' of https://github.com/Rafa-cellx/PooFinal.git
 
-<<<<<<< HEAD
   const detalle = carrito.map(item => ({
     nombre: item.name,
     cantidad: item.quantity,
     precio: item.price
   }));
-=======
 	document.addEventListener("DOMContentLoaded", mostrarCarrito);
->>>>>>> branch 'master' of https://github.com/Rafa-cellx/PooFinal.git
 
   const pedido = {
     cliente: cliente,
