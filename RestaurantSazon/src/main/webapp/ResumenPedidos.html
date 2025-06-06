@@ -118,7 +118,6 @@
           </tr>
         </thead>
         <tbody id="tabla-pedidos">
-          <!-- Se llena con JS -->
         </tbody>
       </table>
     </div>
@@ -137,7 +136,7 @@
     }
 
     function cargarPedidos() {
-      fetch('PedidosServlet') // Asegúrate que este endpoint exista y retorne JSON válido
+      fetch('PedidosServlet')
         .then(response => response.json())
         .then(data => {
           const tabla = document.getElementById("tabla-pedidos");

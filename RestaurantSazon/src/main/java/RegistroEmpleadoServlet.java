@@ -12,6 +12,12 @@ import jakarta.servlet.http.HttpServletResponse;
 public class RegistroUsuarioServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
+    // Datos de conexión a Clever Cloud
+    private static final String DB_URL = "jdbc:mysql://bytogqoyftf2dlcuaelb-mysql.services.clever-cloud.com:3306/bytogqoyftf2dlcuaelb?useSSL=false&serverTimezone=UTC";
+    private static final String DB_USER = "ufijig3sshb19ywp";
+    private static final String DB_PASSWORD = "6eM3Lcinv04fcPya4Ixe";
+
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
@@ -23,11 +29,8 @@ public class RegistroUsuarioServlet extends HttpServlet {
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection(
 
-
-            		"jdbc:mysql://123.45.67.89:3306/sazon_db", "root", "MXVN#1champion5");
-
+            Connection con = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
 
             String sql = "INSERT INTO usuarios (nombre, apellido, celular, correo, contrasena) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement ps = con.prepareStatement(sql);
@@ -44,6 +47,7 @@ public class RegistroUsuarioServlet extends HttpServlet {
 
         } catch (Exception e) {
             e.printStackTrace();
+            response.setContentType("text/html;charset=UTF-8");
             response.getWriter().println("<h1>Error: " + e.getMessage() + "</h1>");
         }
     }

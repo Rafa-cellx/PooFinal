@@ -21,12 +21,16 @@ public class ConfiguracionServlet extends HttpServlet {
             throws ServletException, IOException {
         
 
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sazon_db","root","MXVN#1champion5")) {
-            response.getWriter().println("¡Conexión a la DB exitosa!");
-        } catch (SQLException e) {
-            response.getWriter().println("Error de conexión: " + e.getMessage());
-        }
-    }
+    	try (Connection conn = DriverManager.getConnection(
+    	        "jdbc:mysql://bytogqoyftf2dlcuaelb-mysql.services.clever-cloud.com:3306/bytogqoyftf2dlcuaelb?useSSL=false&serverTimezone=UTC",
+    	        "ufijig3sshb19ywp",
+    	        "6eM3Lcinv04fcPya4Ixe")) {
+
+    	    response.getWriter().println("¡Conexión a la DB exitosa!");
+    	} catch (SQLException e) {
+    	    response.getWriter().println("Error de conexión: " + e.getMessage());
+    	}
+
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) 
