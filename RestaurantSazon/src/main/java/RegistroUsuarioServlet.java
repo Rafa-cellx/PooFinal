@@ -1,4 +1,4 @@
-import java.io.IOException;
+2import java.io.IOException;
 import jakarta.servlet.ServletException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -25,7 +25,7 @@ public class RegistroUsuarioServlet extends HttpServlet {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
 
-                "jdbc:mysql://localhost:3306/sazon_db", "root", "fer12320");
+                "jdbc:mysql://localhost:3306/sazon_db", "root", "Madafaker2005");
 
 
 

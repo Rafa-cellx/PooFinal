@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <!--  <meta http-equiv="refresh" content="0; url=LoginView.html">-->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Login Usuario</title>
@@ -86,12 +85,13 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      position: relative;
     }
 
     .formulario h2 {
       color: #b96300;
       font-size: 24px;
-      margin: 5px 0;
+      margin: 5px 0 20px 0;
     }
 
     .formulario .logo {
@@ -201,7 +201,7 @@
           <div class="mensaje">
             <div class="bienvenida">¡Bienvenido!</div>
             ¡Qué bueno tenerte de vuelta <br />
-            en nustro sitio!
+            en nuestro sitio!
           </div>
         </div>
       </div>
@@ -209,6 +209,11 @@
       <div class="contenido-blanco">
         <div class="formulario">
           <h2>Inicio de Sesión</h2>
+          <!-- Aquí se mostrará el mensaje de error si hay -->
+          <div id="errorMensaje" style="color: red; font-weight: bold; margin-bottom: 15px; display: none;">
+            Usuario o contraseña inválidos. Por favor, inténtalo de nuevo.
+          </div>
+
           <form action="LoginUsuarioServlet" method="post">
             <div class="campo">
               <img src="Imagenes/icon_personal.png" alt="icono usuario" />
@@ -238,6 +243,14 @@
         window.location.href = "LoginEmpleado.html";
       } else if (opcion === "admin") {
         window.location.href = "RegistroAdmin.html";
+      }
+    }
+
+    // Mostrar mensaje de error si existe el parámetro error=invalid en la URL
+    window.onload = function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('error') === 'invalid') {
+        document.getElementById('errorMensaje').style.display = 'block';
       }
     }
   </script>

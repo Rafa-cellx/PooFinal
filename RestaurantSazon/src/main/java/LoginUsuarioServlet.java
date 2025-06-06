@@ -22,7 +22,6 @@ public class LoginUsuarioServlet extends HttpServlet {
         String contrasena = request.getParameter("contrasena");
 
         try {
-            
             Class.forName("com.mysql.cj.jdbc.Driver");
 
             Connection con = DriverManager.getConnection(
@@ -36,13 +35,13 @@ public class LoginUsuarioServlet extends HttpServlet {
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
-                
                 HttpSession sesion = request.getSession();
                 sesion.setAttribute("usuario", nombre);
 
                 response.sendRedirect("Menu.html");
             } else {
-                response.sendRedirect("LoginUsuario.html?error=true");
+                // Redirigir con parámetro para indicar error
+                response.sendRedirect("LoginUsuario.html?error=invalid");
             }
 
             con.close();
