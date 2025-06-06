@@ -15,6 +15,9 @@
       font-family: Arial, sans-serif;
       background: url('Imagenes/fondo.png') no-repeat center center fixed;
       background-size: cover;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .ventana {
@@ -71,6 +74,9 @@
     .contenido-blanco {
       background-color: rgba(255,255,255,0.7);
       padding: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .bienvenida {
@@ -86,12 +92,22 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+<<<<<<< HEAD
+=======
+      position: relative;
+      width: 100%;
+>>>>>>> branch 'master' of https://github.com/Rafa-cellx/PooFinal.git
     }
 
     .formulario h2 {
       color: #b96300;
       font-size: 24px;
+<<<<<<< HEAD
       margin: 5px 0;
+=======
+      margin: 5px 0 20px 0;
+      text-align: center;
+>>>>>>> branch 'master' of https://github.com/Rafa-cellx/PooFinal.git
     }
 
     .formulario .logo {
@@ -109,11 +125,12 @@
     .campo {
       background: linear-gradient(to right, #A0522D, #e5b471);
       border-radius: 10px;
-      margin: 10px 0;
+      margin: 10px auto; /* Centrado con margen automático */
       width: 320px;
       height: 35px;
       display: flex;
       align-items: center;
+      justify-content: center; /* Centrar contenido horizontalmente */
     }
 
     .campo img {
@@ -123,7 +140,7 @@
     }
 
     .campo input {
-      width: 100%;
+      width: 80%; /* Reducir ancho para mejor centrado */
       height: 100%;
       border: none;
       background: transparent;
@@ -142,6 +159,7 @@
       font-size: 14px;
       color: #333;
       text-align: center;
+      width: 100%;
     }
 
     .recordar input {
@@ -149,7 +167,7 @@
     }
 
     .iniciar-btn {
-      margin-top: 15px;
+      margin: 15px auto; /* Centrado con margen automático */
       padding: 8px 20px;
       background-color: #A0522D;
       color: white;
@@ -158,25 +176,33 @@
       font-weight: bold;
       cursor: pointer;
       font-size: 14px;
-      text-align: center;
       display: block;
-      margin-left: auto;
-      margin-right: auto;
     }
 
     .link-login {
       display: block;
-      margin-top: 10px;
+      margin: 10px auto; /* Centrado con margen automático */
       color: #A0522D;
       text-decoration: underline;
       cursor: pointer;
       font-weight: bold;
       font-size: 14px;
       text-align: center;
+      width: fit-content;
     }
 
     .link-login:hover {
       color: #e5b471;
+    }
+
+    /* Mensaje de error centrado */
+    #errorMensaje {
+      color: red;
+      font-weight: bold;
+      margin-bottom: 15px;
+      display: none;
+      text-align: center;
+      width: 100%;
     }
   </style>
 </head>
@@ -209,6 +235,13 @@
       <div class="contenido-blanco">
         <div class="formulario">
           <h2>Inicio de Sesión</h2>
+<<<<<<< HEAD
+=======
+          <div id="errorMensaje">
+            Usuario o contraseña inválidos. Por favor, inténtalo de nuevo.
+          </div>
+
+>>>>>>> branch 'master' of https://github.com/Rafa-cellx/PooFinal.git
           <form action="LoginUsuarioServlet" method="post">
             <div class="campo">
               <img src="Imagenes/icon_personal.png" alt="icono usuario" />
@@ -240,6 +273,16 @@
         window.location.href = "InicioSesionAdmin.html";
       }
     }
+<<<<<<< HEAD
+=======
+
+    window.onload = function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('error') === 'invalid') {
+        document.getElementById('errorMensaje').style.display = 'block';
+      }
+    }
+>>>>>>> branch 'master' of https://github.com/Rafa-cellx/PooFinal.git
   </script>
 </body>
 </html>

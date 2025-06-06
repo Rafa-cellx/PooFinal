@@ -1,15 +1,15 @@
 import java.io.IOException;
-import jakarta.servlet.ServletException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/RegistroEmpleadoServlet")
-public class RegistroEmpleadoServlet extends HttpServlet {
+@WebServlet("/RegistroUsuarioServlet")
+public class RegistroUsuarioServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -17,26 +17,27 @@ public class RegistroEmpleadoServlet extends HttpServlet {
 
         String nombre = request.getParameter("nombre");
         String apellido = request.getParameter("apellido");
-        String empleadoId = request.getParameter("empleadoId");
+        String celular = request.getParameter("celular");
+        String correo = request.getParameter("correo");
         String contrasena = request.getParameter("contrasena");
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-
                 "jdbc:mysql://localhost:3306/sazon_db", "root", "Madafaker2005");
 
-            String sql = "INSERT INTO empleados (nombre, apellido, empleado_id, contrasena) VALUES (?, ?, ?, ?)";
+            String sql = "INSERT INTO usuarios (nombre, apellido, celular, correo, contrasena) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, nombre);
             ps.setString(2, apellido);
-            ps.setString(3, empleadoId);
-            ps.setString(4, contrasena); 
+            ps.setString(3, celular);
+            ps.setString(4, correo);
+            ps.setString(5, contrasena);
 
             ps.executeUpdate();
             con.close();
 
-            response.sendRedirect("menu-empleados.html"); 
+            response.sendRedirect("LoginView.html");
 
         } catch (Exception e) {
             e.printStackTrace();
