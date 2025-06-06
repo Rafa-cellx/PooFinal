@@ -269,12 +269,21 @@ function mostrarCarrito() {
 	  let total = 0;
 
 	  carrito.forEach(item => {
-	    const subtotal = item.precio * item.cantidad;
+	    // Usar propiedades en inglés según tu carrito
+	    const precio = parseFloat(item.price);
+	    const cantidad = parseInt(item.quantity);
+
+	    if (!item.name || isNaN(precio) || isNaN(cantidad)) {
+	      console.warn("Item inválido en carrito:", item);
+	      return;
+	    }
+
+	    const subtotal = precio * cantidad;
 	    total += subtotal;
 
 	    const divPlatillo = document.createElement("div");
 	    divPlatillo.classList.add("platillo");
-	    divPlatillo.innerHTML = `<span>${item.cantidad}x ${item.nombre}</span><span>$${subtotal.toFixed(2)}</span>`;
+	    divPlatillo.innerHTML = `<span>${cantidad}x ${item.name}</span><span>$${subtotal.toFixed(2)}</span>`;
 	    lista.appendChild(divPlatillo);
 	  });
 
@@ -303,6 +312,7 @@ function mostrarCarrito() {
 	    alert("Por favor selecciona un método de pago.");
 	    return;
 	  }
+	  
 
 	  // Confirmar pedido y limpiar carrito
 	  alert(`Pedido confirmado!\nDirección: ${direccion}\nPago: ${metodoPago}\nTotal: ${document.getElementById("totalPedido").textContent.replace("Total: ", "")}`);
@@ -310,7 +320,7 @@ function mostrarCarrito() {
 	  localStorage.removeItem("carrito");
 
 	  // Redirigir a página principal o agradecimiento
-	  window.location.href = "menu.html";
+	  window.location.href = "Menu.html";
 	});
 
 	// Ejecutar al cargar la página
