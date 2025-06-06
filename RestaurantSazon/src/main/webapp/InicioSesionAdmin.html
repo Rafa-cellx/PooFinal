@@ -61,110 +61,36 @@
       font-size: 16px;
     }
 
+    .boton-iniciar:hover {
+      background: linear-gradient(to right, #8B4513, #DAA520);
+    }
 
-        .menu ul li {
-            padding: 5px;
-        }
+    .checkboxes {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 20px;
+      font-size: 15px;
+    }
 
-        .menu ul li a {
-            color: white;
-            text-decoration: none;
-            display: block;
-            padding: 5px;
-            font-weight: bold;
-        }
+    h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #b96300;
+    }
 
-        .menu ul li a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-            border-radius: 3px;
-        }
+    p {
+      font-size: 16px;
+      margin: 15px 0;
+    }
 
-        .contenido {
-            background-color: white;
-            border-radius: 15px;
-            margin: 50px 50px;
-            padding: 40px;
-            text-align: center;
-            min-height: 500px;
-        }
-
-        .logo {
-            margin-bottom: 20px;
-        }
-
-        .logo img {
-            width: 180px;
-            height: auto;
-        }
-
-        .input-group {
-            margin: 20px 0;
-            display: flex;
-            justify-content: center;
-        }
-
-        .input-group input {
-            padding: 12px 15px;
-            width: 60%;
-            border-radius: 10px;
-            border: none;
-            background: linear-gradient(to right, #A0522D, #e5b471);
-            color: white;
-            font-size: 16px;
-        }
-
-        .boton-iniciar {
-            margin-top: 30px;
-            padding: 12px 30px;
-            background: linear-gradient(to right, #A0522D, #e5b471);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            font-weight: bold;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-        }
-
-        .boton-iniciar:hover {
-            background: linear-gradient(to right, #8B4513, #DAA520);
-        }
-
-        .checkboxes {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 20px;
-            font-size: 15px;
-        }
-
-        h2 {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-
-        p {
-            font-size: 16px;
-            margin: 15px 0;
-        }
-
-        hr {
-            width: 250px;
-            border: 1px solid #b96300;
-            margin: 20px auto;
-        }
-
-        #errorMsg {
-            color: red;
-            display: none;
-            margin-top: 15px;
-            font-weight: bold;
-        }
-    </style>
-
+    #errorMsg {
+      color: red;
+      display: none;
+      margin-top: 15px;
+      font-weight: bold;
+    }
   </style>
-
 </head>
 <body>
   <div class="ventana">
@@ -172,108 +98,55 @@
       <div class="logo">
         <img src="Imagenes/logo.png" alt="Logo">
       </div>
-      <h2 style="color: #b96300">Administrador</h2>
+      <h2>Administrador</h2>
       <p>Ingresa tus credenciales</p>
 
       <div class="input-group">
         <input type="text" id="adminId" placeholder="ID de administrador">
       </div>
 
-
-            <div class="input-group">
-
-                <input type="text" placeholder="ID de administrador" id="adminId">
-
-                <input type="text" id="adminId" placeholder="ID de administrador">
-
-            </div>
-
       <div class="input-group">
         <input type="password" id="adminPass" placeholder="Contraseña">
       </div>
 
+      <div class="checkboxes">
+        <label><input type="checkbox"> Recordar</label>
+        <label><input type="checkbox"> ¿Olvidaste tu contraseña?</label>
+      </div>
 
-
-            <div class="input-group">
-
-                <input type="password" placeholder="Contraseña" id="adminPass">
-
-                <input type="password" id="adminPass" placeholder="Contraseña">
-
-            </div>
-
-            <div class="checkboxes">
-                <label><input type="checkbox"> Recordar</label>
-                <label><input type="checkbox"> ¿Olvidaste tu contraseña?</label>
-            </div>
-
-            <button class="boton-iniciar" id="loginBtn">INICIAR SESIÓN</button>
-            <p id="errorMsg">ID o contraseña incorrectos</p>
-
-            <button onclick="iniciarSesion()" class="boton-iniciar">INICIAR SESIÓN</button>
-
-        </div>
-
-      <button onclick="iniciarSesionAdmin()" class="boton-iniciar">INICIAR SESIÓN</button>
-
+      <button class="boton-iniciar" id="loginBtn">INICIAR SESIÓN</button>
+      <p id="errorMsg">ID o contraseña incorrectos</p>
     </div>
   </div>
 
-
-    <script>
-
-        const loginBtn = document.getElementById("loginBtn");
-        const adminId = document.getElementById("adminId");
-        const adminPass = document.getElementById("adminPass");
-        const errorMsg = document.getElementById("errorMsg");
-
-        loginBtn.addEventListener("click", () => {
-            const id = adminId.value.trim();
-            const pass = adminPass.value.trim();
-
-            if (id === "Patria4T" && pass === "LopezPapidor") {
-                window.location.href = "MenuAdmin.html";
-            } else {
-                errorMsg.style.display = "block";
-            }
-        });
-
-        // También permite presionar Enter para enviar
-        document.addEventListener("keydown", (e) => {
-            if (e.key === "Enter") {
-                loginBtn.click();
-            }
-        });
-
-        function iniciarSesion() {
-            const id = document.getElementById("adminId").value;
-            const pass = document.getElementById("adminPass").value;
-
   <script>
-    function iniciarSesionAdmin() {
-      const id = document.getElementById("adminId").value;
-      const pass = document.getElementById("adminPass").value;
+    const loginBtn = document.getElementById("loginBtn");
+    const adminId = document.getElementById("adminId");
+    const adminPass = document.getElementById("adminPass");
+    const errorMsg = document.getElementById("errorMsg");
 
+    loginBtn.addEventListener("click", () => {
+      const id = adminId.value.trim();
+      const pass = adminPass.value.trim();
 
-
-            if (id === "Transformacion4T" && pass === "LopezMamador") {
-                alert("Bienvenida Claudia Sheinbaum");
-                window.location.href = "MenuAdmin.html";
-            } else {
-                alert("ID o contraseña incorrectos");
-            }
-        }
-	
-    </script>
-
-      if (id === "Kunno4k" && pass === "Rafagod123") {
+      if (
+        (id === "Patria4T" && pass === "LopezPapidor") ||
+        (id === "Transformacion4T" && pass === "LopezMamador") ||
+        (id === "Kunno4k" && pass === "Rafagod123")
+      ) {
         localStorage.setItem("rol", "admin");
-        alert("Bienvenido, administrador.");
+        alert("Bienvenido administrador");
         window.location.href = "MenuAdmin.html";
       } else {
-        alert("ID o contraseña incorrectos");
+        errorMsg.style.display = "block";
       }
-    }
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        loginBtn.click();
+      }
+    });
   </script>
 </body>
 </html>
