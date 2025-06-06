@@ -4,133 +4,130 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title> Menú Empleados</title>
-<style>
-* {
-  box-sizing: border-box;
-}
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: url('Imagenes/fondo.png') no-repeat center center fixed;
-  background-size: cover;
-}
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: url('Imagenes/fondo.png') no-repeat center center fixed;
+      background-size: cover;
+    }
 
-.fondo {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-}
+    .fondo {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
 
-.top-bar {
-  width: 100%;
-  height: 30px;
-  background-color: rgba(255, 165, 0, 0.5); 
-  border-radius: 0 0 10px 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 20px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  font-family: 'Akhbar MT', sans-serif;
-}
+    .top-bar {
+      width: 100%;
+      height: 30px;
+      background-color: rgba(255, 165, 0, 0.5); 
+      border-radius: 0 0 10px 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      font-family: 'Akhbar MT', sans-serif;
+    }
 
-.restaurant-title {
-  font-size: 18px;
-  font-weight: bold;
-  color: white;
-  margin: 0;
-}
+    .restaurant-title {
+      font-size: 18px;
+      font-weight: bold;
+      color: white;
+      margin: 0;
+    }
 
-.menu-container {
-  display: flex;
-  gap: 15px;
-}
+    .menu-container {
+      display: flex;
+      gap: 15px;
+    }
 
-.menu-item {
-  position: relative;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  font-size: 14px;
-  padding: 5px 10px;
-  border-radius: 4px;
-  transition: background 0.3s;
-}
+    .menu-item {
+      position: relative;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 14px;
+      padding: 5px 10px;
+      border-radius: 4px;
+      transition: background 0.3s;
+    }
 
-.menu-item:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-}
+    .menu-item:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
 
-.submenu-parent {
-  position: relative;
-}
+    .submenu-parent {
+      position: relative;
+    }
 
-.submenu {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: rgba(255, 165, 0, 0.8);
-  border-radius: 5px;
-  padding: 5px 0;
-  z-index: 1000;
-  min-width: 150px;
-}
+    .submenu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: rgba(255, 165, 0, 0.8);
+      border-radius: 5px;
+      padding: 5px 0;
+      z-index: 1000;
+      min-width: 150px;
+    }
 
-.submenu-item {
-  padding: 8px 12px;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  font-size: 14px;
-}
+    .submenu-item {
+      padding: 8px 12px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 14px;
+    }
 
-.submenu-item:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-}
+    .submenu-item:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
 
-/* Mostrar el submenú al pasar el mouse */
-.submenu-parent:hover .submenu {
-  display: block;
-}
+    .submenu-parent:hover .submenu {
+      display: block;
+    }
 
-/* Contenido principal */
-main {
-  margin-top: 80px;
-  text-align: center;
-  color: #b96300;
-  font-size: 20px;
-}
+    main {
+      margin-top: 80px;
+      text-align: center;
+      color: #b96300;
+      font-size: 20px;
+    }
 
-/* Botón de pedidos */
-.btn-pedidos {
-	width: 300px;
-	padding: 20px;
-    margin-bottom: 25px;
-    background: linear-gradient(to right, #A0522D, #e5b471);
-    color: white;
-    border: none;
-    border-radius: 15px;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s;
-    text-align: center;
-    text-decoration: none;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-.btn-pedidos:hover {
-     transform: translateY(-3px);
-     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        }
-	
-</style>
+    .btn-pedidos {
+      width: 300px;
+      padding: 20px;
+      margin-bottom: 25px;
+      background: linear-gradient(to right, #A0522D, #e5b471);
+      color: white;
+      border: none;
+      border-radius: 15px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-align: center;
+      text-decoration: none;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-pedidos:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+  </style>
 </head>
 <body>
   <!-- Fondo -->
@@ -153,21 +150,25 @@ main {
 
   <main>
     <h1>Menú de Empleados</h1>
-<button id="btnPedidos" class="btn-pedidos" type="button">Revisar Pedidos</button>
+    <button id="btnPedidos" class="btn-pedidos" type="button">Revisar Pedidos</button>
   </main>
 
   <script>
-  function soporteClick() { alert("Abrir chat con soporte"); }
-  function verCarrito() { alert("Ver carrito"); }
-  function menuUsuarioClick() { alert("Registro usuario"); }
-  function menuPersonalClick() { alert("Registro personal"); }
-  function menuAdministradorClick() { alert("Registro administrador"); }
+    function menuUsuarioClick() {
+      window.location.href = 'RegistroUsuario.html';
+    }
 
-  document.getElementById('btnPedidos').addEventListener('click', () => {
-    window.location.href = 'ResumenPedidos.html';
-  });
-</script>
+    function menuPersonalClick() {
+      window.location.href = 'LoginEmpleado.html';
+    }
 
+    function menuAdministradorClick() {
+      window.location.href = 'InicioSesionAdmin.html';
+    }
 
+    document.getElementById('btnPedidos').addEventListener('click', () => {
+      window.location.href = 'ResumenPedidos.html';
+    });
+  </script>
 </body>
 </html>
