@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Inicio de Sesión - Empleado</title>
+    <title>Inicio de Sesión - Administrador</title>
     <style>
+        /* Puedes reutilizar todos los estilos de la versión del empleado */
         body {
             margin: 0;
             background: url('Imagenes/fondo.png') no-repeat center center fixed;
@@ -176,17 +177,17 @@
             <div class="logo">
                 <img src="Imagenes/logo.png" alt="Logo">
             </div>
-            <h2 style="color: #b96300">Empleado</h2>
-            <p>Bienvenido al panel de empleados</p>
+            <h2 style="color: #b96300">Administrador</h2>
+            <p>Bienvenido al panel de administración</p>
             <hr>
             <p>Accede con tu ID y contraseña</p>
 
             <div class="input-group">
-                <input type="text" id="empleadoId" placeholder="ID de empleado">
+                <input type="text" id="adminId" placeholder="ID de administrador">
             </div>
 
             <div class="input-group">
-                <input type="password" id="empleadoPass" placeholder="Contraseña">
+                <input type="password" id="adminPass" placeholder="Contraseña">
             </div>
 
             <div class="checkboxes">
@@ -194,19 +195,18 @@
                 <label><input type="checkbox"> ¿Olvidaste tu contraseña?</label>
             </div>
 
-            <button onclick="iniciarSesionEmpleado()" class="boton-iniciar">INICIAR SESIÓN</button>
+            <button onclick="iniciarSesionAdmin()" class="boton-iniciar">INICIAR SESIÓN</button>
         </div>
     </div>
 
     <script>
-        function iniciarSesionEmpleado() {
-            const id = document.getElementById("empleadoId").value;
-            const pass = document.getElementById("empleadoPass").value;
+        function iniciarSesionAdmin() {
+            const id = document.getElementById("adminId").value;
+            const pass = document.getElementById("adminPass").value;
 
-            // Datos de ejemplo - aquí deberías validar con servidor en producción
-            if (id === "empleado001" && pass === "1234") {
-                alert("Bienvenido, empleado.");
-                window.location.href = "menu-empleados.html?rol=empleado";
+            if (id === "Kunno4k" && pass === "Rafagod123") {
+                alert("Bienvenido, administrador.");
+                window.location.href = "menu-admin.html?rol=admin";
             } else {
                 alert("ID o contraseña incorrectos");
             }
