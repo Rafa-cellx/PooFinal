@@ -165,16 +165,21 @@
     
     <!-- Pie de página -->
     <div class="footer-text">Menú de Administración</div>
+    <button onclick="irAResumen()">Ver Pedidos</button>
 
     <script>
-        // Funcionalidad adicional si es necesaria
-        document.querySelectorAll('.admin-btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                if(this.getAttribute('href') === '#') {
-                    e.preventDefault();
-                }
-            });
-        });
+    
+    function irAResumen() {
+        window.location.href = "ResumenPedidos.html";
+      }
+    
+    	document.querySelectorAll('.admin-btn').forEach(btn => {
+        	btn.addEventListener('click', function(e) {
+            	if(this.getAttribute('href') === '#') {
+                	e.preventDefault();
+            	}
+        	});
+    	});
     </script>
 </body>
 </html>

@@ -1,216 +1,105 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Inicio de Sesión - Administrador</title>
-    <style>
-        /* Puedes reutilizar todos los estilos de la versión del empleado */
-        body {
-            margin: 0;
-            background: url('Imagenes/fondo.png') no-repeat center center fixed;
-            background-size: cover;
-            font-family: Arial, sans-serif;
-        }
+  <meta charset="UTF-8" />
+  <title>Inicio de Sesión - Admin</title>
+  <style>
+    body {
+      background: url('Imagenes/fondo.png') no-repeat center center fixed;
+      background-size: cover;
+      font-family: Arial, sans-serif;
+      margin: 0;
+    }
 
-        .ventana {
-            width: 830px;
-            height: 650px;
-            margin: 50px auto;
-            background: transparent;
-            position: relative;
-        }
+    .ventana {
+      width: 830px;
+      height: 650px;
+      margin: 50px auto;
+      background: transparent;
+      position: relative;
+    }
 
-        .barra-superior {
-            background: rgba(255, 165, 0, 0.5);
-            padding: 5px 15px;
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-radius: 0 0 10px 10px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-        }
+    .contenido {
+      background-color: white;
+      border-radius: 15px;
+      margin: 50px 50px;
+      padding: 40px;
+      text-align: center;
+      min-height: 500px;
+    }
 
-        .menu {
-            position: relative;
-        }
+    .logo img {
+      width: 180px;
+      height: auto;
+    }
 
-        .menu button {
-            background: transparent;
-            border: none;
-            color: white;
-            cursor: pointer;
-            font-weight: bold;
-        }
+    .input-group {
+      margin: 20px 0;
+      display: flex;
+      justify-content: center;
+    }
 
-        .menu ul {
-            display: none;
-            position: absolute;
-            right: 0;
-            background-color: #ebaf5d;
-            list-style: none;
-            margin: 0;
-            padding: 5px;
-            border-radius: 5px;
-            width: 150px;
-            z-index: 10;
-        }
+    .input-group input {
+      padding: 12px 15px;
+      width: 60%;
+      border-radius: 10px;
+      border: none;
+      background: linear-gradient(to right, #A0522D, #e5b471);
+      color: white;
+      font-size: 16px;
+    }
 
-        .menu:hover ul {
-            display: block;
-        }
+    .boton-iniciar {
+      margin-top: 30px;
+      padding: 12px 30px;
+      background: linear-gradient(to right, #A0522D, #e5b471);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 16px;
+    }
 
-        .menu ul li {
-            padding: 5px;
-        }
-
-        .menu ul li a {
-            color: white;
-            text-decoration: none;
-            display: block;
-            padding: 5px;
-            font-weight: bold;
-        }
-
-        .menu ul li a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-            border-radius: 3px;
-        }
-
-        .contenido {
-            background-color: white;
-            border-radius: 15px;
-            margin: 50px 50px;
-            padding: 40px;
-            text-align: center;
-            min-height: 500px;
-        }
-
-        .logo {
-            margin-bottom: 20px;
-        }
-
-        .logo img {
-            width: 180px;
-            height: auto;
-        }
-
-        .input-group {
-            margin: 20px 0;
-            display: flex;
-            justify-content: center;
-        }
-
-        .input-group input {
-            padding: 12px 15px;
-            width: 60%;
-            border-radius: 10px;
-            border: none;
-            background: linear-gradient(to right, #A0522D, #e5b471);
-            color: white;
-            font-size: 16px;
-        }
-
-        .boton-iniciar {
-            margin-top: 30px;
-            padding: 12px 30px;
-            background: linear-gradient(to right, #A0522D, #e5b471);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            font-weight: bold;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-        }
-
-        .boton-iniciar:hover {
-            background: linear-gradient(to right, #8B4513, #DAA520);
-        }
-
-        .checkboxes {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 20px;
-            font-size: 15px;
-        }
-
-        h2 {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-
-        p {
-            font-size: 16px;
-            margin: 15px 0;
-        }
-
-        hr {
-            width: 250px;
-            border: 1px solid #b96300;
-            margin: 20px auto;
-        }
-    </style>
+    .boton-iniciar:hover {
+      background: linear-gradient(to right, #8B4513, #DAA520);
+    }
+  </style>
 </head>
 <body>
-    <div class="ventana">
-        <div class="barra-superior">
-            <span>El Sazón de Cantera y Plata</span>
-            <div class="menu">
-                <button>Regístrate ▾</button>
-                <ul>
-                    <li><a href="RegistroUsuario.html">Usuario</a></li>
-                    <li><a href="LoginEmpleado.html">Personal</a></li>
-                    <li><a href="InicioSesionAdmin.html">Administrador</a></li>
-                </ul>
-            </div>
-        </div>
+  <div class="ventana">
+    <div class="contenido">
+      <div class="logo">
+        <img src="Imagenes/logo.png" alt="Logo">
+      </div>
+      <h2 style="color: #b96300">Administrador</h2>
+      <p>Ingresa tus credenciales</p>
 
-        <div class="contenido">
-            <div class="logo">
-                <img src="Imagenes/logo.png" alt="Logo">
-            </div>
-            <h2 style="color: #b96300">Administrador</h2>
-            <p>Bienvenido al panel de administración</p>
-            <hr>
-            <p>Accede con tu ID y contraseña</p>
+      <div class="input-group">
+        <input type="text" id="adminId" placeholder="ID de administrador">
+      </div>
 
-            <div class="input-group">
-                <input type="text" id="adminId" placeholder="ID de administrador">
-            </div>
+      <div class="input-group">
+        <input type="password" id="adminPass" placeholder="Contraseña">
+      </div>
 
-            <div class="input-group">
-                <input type="password" id="adminPass" placeholder="Contraseña">
-            </div>
-
-            <div class="checkboxes">
-                <label><input type="checkbox"> Recordar</label>
-                <label><input type="checkbox"> ¿Olvidaste tu contraseña?</label>
-            </div>
-
-            <button onclick="iniciarSesionAdmin()" class="boton-iniciar">INICIAR SESIÓN</button>
-        </div>
+      <button onclick="iniciarSesionAdmin()" class="boton-iniciar">INICIAR SESIÓN</button>
     </div>
+  </div>
 
-    <script>
-        function iniciarSesionAdmin() {
-            const id = document.getElementById("adminId").value;
-            const pass = document.getElementById("adminPass").value;
+  <script>
+    function iniciarSesionAdmin() {
+      const id = document.getElementById("adminId").value;
+      const pass = document.getElementById("adminPass").value;
 
-            if (id === "Kunno4k" && pass === "Rafagod123") {
-                alert("Bienvenido, administrador.");
-                window.location.href = "MenuAdmin.html";
-            } else {
-                alert("ID o contraseña incorrectos");
-            }
-        }
-    </script>
+      if (id === "Kunno4k" && pass === "Rafagod123") {
+        localStorage.setItem("rol", "admin");
+        alert("Bienvenido, administrador.");
+        window.location.href = "MenuAdmin.html";
+      } else {
+        alert("ID o contraseña incorrectos");
+      }
+    }
+  </script>
 </body>
 </html>
