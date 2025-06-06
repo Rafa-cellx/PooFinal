@@ -3,30 +3,192 @@
 <head>
     <meta charset="UTF-8">
     <title>Carrito</title>
-    <link rel="stylesheet" href="CarritoV.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('Imagenes/fondo.png');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+        }
+
+        .barra-navegacion {
+            background-color: #ffb347;
+            color: white;
+            font-size: 16px;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Akhbar MT', sans-serif;
+            font-weight:bold;
+        }
+
+        .barra-navegacion .menu-links a {
+            margin-left: 16px;
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .barra-navegacion .menu-links a:hover {
+            text-decoration: underline;
+        }
+
+        .menu-registro {
+            position: relative;
+            display: inline-block;
+        }
+
+        .submenu {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: #FFBA5D;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            padding: 5px;
+            z-index: 100;
+            min-width: 130px;
+        }
+
+        .submenu a {
+            display: block;
+            padding: 5px 10px;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .submenu a:hover {
+            background-color: rgba(255,255,255,0.3);
+        }
+
+        .menu-registro:hover .submenu {
+            display: block;
+        }
+		.titulo-carrito {
+		    background-color: rgba(255, 165, 0, 0.9); /* Naranja con poquita transparencia */
+		    color: white;
+		    font-size: 20px;
+		    font-weight: bold;
+		    padding: 10px 20px;
+		    border-radius: 10px 10px 0 0;
+		    margin-bottom: -10px;
+		    text-align: center;
+		    font-family: 'Akhbar MT', sans-serif;
+		    width: 600px;
+		    margin-top:0;
+	}
+		
+        .ventana {
+            max-width: 600px;
+            margin: 40px auto;
+            background-color: rgba(255,255,255,0.7);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,1);
+            overflow: hidden;
+        }
+
+        .contenido {
+            padding: 15px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .item {
+            border: 1px solid gray;
+            padding: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .item img {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .item-info {
+            flex: 1;
+        }
+
+        .item-info h4 {
+       		color: saddlebrown;
+            margin: 0;
+            font-size: 17px;
+        }
+
+        .item-info p {
+            margin: 2px 0;
+            font-size: 15px;
+        }
+
+        .total {
+            text-align: right;
+            padding: 10px;
+            font-size: 20px;
+            border-top: 1px solid #ddd;
+        }
+
+        .total span:first-child {
+            font-weight: bold;
+            color: saddlebrown;
+        }
+
+        .total span:last-child {
+            font-weight: bold;
+            color: orangered;
+        }
+
+        .acciones {
+            display: flex;
+            justify-content: flex-end;
+            padding: 10px;
+            border-top: 1px solid #ddd;
+            gap: 10px;
+        }
+
+        .btn {
+            background-color: #c86d05;
+            border: none;
+            color: white;
+            font-weight: bold;
+            padding: 8px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .btn:hover {
+            background-color: #a55a04;
+        }
+    </style>
 </head>
 <body>
 
-<div class="ventana">
-    <!-- Barra superior con menú -->
-    <div class="barra-superior">
-        <div>El Sazón de Cantera y Plata</div>
-        <div class="menu">
-            <a href="Soporte.html" class="menu-link">Chat con Soporte</a>
-            <div class="menu-registro">
-                <a href="#" class="menu-link">Regístrate ▼</a>
-                <div class="submenu">
-                    <a href="RegistroEmpleado.html">Usuario</a>
-                    <a href="RegistroEmpleado.html">Personal</a>
-                    <a href="RegistroEmpleado.html">Administrador</a>
-                </div>
+<!-- Barra superior -->
+<div class="barra-navegacion">
+    <div>El Sazón de Cantera y Plata</div>
+    <div class="menu-links">
+        <a href="Soporte.html">Chat con Soporte</a>
+        <div class="menu-registro">
+            <a href="#">Regístrate ▼</a>
+            <div class="submenu">
+                <a href="RegistroUsuario.html">Usuario</a>
+                <a href="RegistroEmpleado.html">Personal</a>
+                <a href="InicioSesionAdmin.html">Administrador</a>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- Contenido del carrito -->
+<!-- Ventana del carrito -->
+<div class="ventana">
+	<h2 class="titulo-carrito">🛒 Tu Carrito de Compras</h2>
     <div class="contenido">
-        <!-- Item 1 -->
+        <!-- Producto 1 -->
         <div class="item">
             <img src="Imagenes/tacos.jpg" alt="Tacos al Pastor">
             <div class="item-info">
@@ -38,7 +200,7 @@
             </div>
         </div>
 
-        <!-- Item 2 -->
+        <!-- Producto 2 -->
         <div class="item">
             <img src="Imagenes/jamaica.jpg" alt="Agua de Jamaica">
             <div class="item-info">
@@ -56,7 +218,7 @@
         <span>Total:</span> <span>$65.00</span>
     </div>
 
-    <!-- Botones de acción -->
+    <!-- Botones -->
     <div class="acciones">
         <a href="Pago.html" class="btn">Pagar</a>
         <a href="Menu.html" class="btn">Volver al Menú</a>
