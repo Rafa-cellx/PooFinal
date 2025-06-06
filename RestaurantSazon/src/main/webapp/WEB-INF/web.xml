@@ -6,8 +6,8 @@
          version="4.0">
     <!-- Configuración de Servlet de registro de usuario -->
     <servlet>
-        <servlet-name>com.main.java.RegistroUsuarioServlet</servlet-name>
-        <servlet-class>RegistroUsuarioServlet</servlet-class>
+        <servlet-name>RegistroUsuarioServlet</servlet-name>
+        <servlet-class>com.main.java.RegistroUsuarioServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>RegistroUsuarioServlet</servlet-name>
@@ -17,8 +17,8 @@
     
     <!-- Configuración de Servlet de registro de empleado -->
      <servlet>
-        <servlet-name>com.main.java.RegistroEmpleadoServlet</servlet-name>
-        <servlet-class>RegistroEmpleadoServlet</servlet-class>
+        <servlet-name>RegistroEmpleadoServlet</servlet-name>
+        <servlet-class>com.main.java.RegistroEmpleadoServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>RegistroEmpleadoServlet</servlet-name>
@@ -27,8 +27,8 @@
     
     
     <!-- Servlet principal de la configuración --> <servlet>
-        <servlet-name>com.main.java.ConfiguracionServlet</servlet-name>
-        <servlet-class>ConfiguracionServlet</servlet-class>
+        <servlet-name>ConfiguracionServlet</servlet-name>
+        <servlet-class>com.main.java.ConfiguracionServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ConfiguracionServlet</servlet-name>

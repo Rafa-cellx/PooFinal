@@ -1,4 +1,4 @@
-2import java.io.IOException;
+import java.io.IOException;
 import jakarta.servlet.ServletException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -26,7 +26,7 @@ public class RegistroUsuarioServlet extends HttpServlet {
             Connection con = DriverManager.getConnection(
 
 
-                "jdbc:mysql://localhost:3306/sazon_db", "root", "MXVN#1champion5");
+            		"jdbc:mysql://123.45.67.89:3306/sazon_db", "root", "MXVN#1champion5");
 
             String sql = "INSERT INTO usuarios (nombre, apellido,celular,correo, contrasena) VALUES (?, ?, ?, ?,?)";
             PreparedStatement ps = con.prepareStatement(sql);
