@@ -49,5 +49,10 @@ public class LoginUsuarioServlet extends HttpServlet {
             e.printStackTrace();
             response.getWriter().println("<h1>Error: " + e.getMessage() + "</h1>");
         }
+        
+        if (loginValido) {
+            response.sendRedirect("menu-empleados.html");
+        }
+
     }
 }
