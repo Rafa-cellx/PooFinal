@@ -1,3 +1,4 @@
+package com.main.java;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import java.sql.Connection;
@@ -7,9 +8,14 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.annotation.WebServlet;
 
 @WebServlet("/RegistroUsuarioServlet")
 public class RegistroUsuarioServlet extends HttpServlet {
+	public RegistroUsuarioServlet() {
+	    super();
+	}
+
     private static final long serialVersionUID = 1L;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -26,9 +32,9 @@ public class RegistroUsuarioServlet extends HttpServlet {
             Connection con = DriverManager.getConnection(
 
 
-            		"jdbc:mysql://123.45.67.89:3306/sazon_db", "root", "MXVN#1champion5");
+            		"jdbc:mysql://localhost:3306/sazon_db", "root", "MXVN#1champion5");
 
-            String sql = "INSERT INTO usuarios (nombre, apellido,celular,correo, contrasena) VALUES (?, ?, ?, ?,?)";
+            String sql = "INSERT INTO usuarios (nombre, apellido,celular,correo, contrasena) VALUES (?,?,?, ?,?)";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, nombre);
             ps.setString(2, apellido);
