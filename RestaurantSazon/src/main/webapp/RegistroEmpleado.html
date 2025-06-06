@@ -7,13 +7,18 @@
   <style>
   * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
 
   body {
-    margin: 0;
     font-family: Arial, sans-serif;
     background: url('Imagenes/fondo.png') no-repeat center center fixed;
     background-size: cover;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    align-items: center; /* Centrar todo el contenido horizontalmente */
   }
 
   .ventana {
@@ -21,6 +26,10 @@
     margin: 60px auto;
     background-color: transparent;
     position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrar contenido dentro de ventana */
   }
 
   .barra-superior {
@@ -53,23 +62,33 @@
     border: none;
     border-radius: 4px;
     font-size: 14px;
+    cursor: pointer;
   }
 
   .contenido {
     margin-top: 50px;
     border-radius: 15px;
     overflow: hidden;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrar contenido */
   }
 
   .contenido-naranja {
     background-color: rgba(255, 165, 0, 0.5);
     padding: 30px;
     text-align: center;
+    width: 100%;
   }
 
   .contenido-blanco {
     background-color: rgba(255,255,255,0.7);
     padding: 30px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrar contenido */
   }
 
   .bienvenida {
@@ -85,17 +104,21 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
   }
 
   .formulario h2 {
     color: #b96300;
     font-size: 24px;
     margin: 10px 0;
+    text-align: center;
   }
 
   .formulario .logo {
     width: 160px;
     height: auto;
+    margin: 0 auto;
+    display: block;
   }
 
   .mensaje {
@@ -108,7 +131,7 @@
   .campo {
     background: linear-gradient(to right, #A0522D, #e5b471);
     border-radius: 10px;
-    margin: 10px 0;
+    margin: 10px auto; /* Centrado con margen automático */
     width: 320px;
     height: 35px;
     display: flex;
@@ -129,58 +152,111 @@
   .campo input::placeholder {
     color: white;
   }
-  .link-login {
-  display: block;
-  margin-top: 10px;
-  color: #A0522D; /* color café, similar al botón */
-  text-decoration: underline;
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 14px;
-  text-align: center;
-}
-
-.link-login:hover {
-  color: #e5b471; /* cambio de color al pasar el mouse */
-}
   
+  .link-login {
+    display: block;
+    margin: 10px auto;
+    color: #A0522D;
+    text-decoration: underline;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    text-align: center;
+    width: fit-content;
+  }
 
+  .link-login:hover {
+    color: #e5b471;
+  }
+  
   .condiciones {
     font-size: 13px;
     color: gray;
     text-align: center;
-    margin-top: 15px;
+    margin: 15px auto;
     max-width: 350px;
   }
 
   .registrarse-btn {
-    margin-top: 15px;
+    margin: 15px auto;
     padding: 8px 20px;
     background-color: #A0522D;
     color: white;
     border: none;
-    text-align:center;
     border-radius: 10px;
     font-weight: bold;
     cursor: pointer;
-    font-size: 14px;    
+    font-size: 14px;
+    transition: all 0.3s;
+    display: block;
   }
   
-</style>
+  .registrarse-btn:hover {
+    background-color: #8a4524;
+    transform: translateY(-2px);
+  }
+  
+  .btn-regresar {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 25px;
+    background-color: #e5b471;
+    color: #A0522D;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: none;
+    transition: all 0.3s;
+    width: fit-content;
+  }
+  
+  .btn-regresar:hover {
+    background-color: #d9a45f;
+    transform: translateY(-2px);
+  }
+  
+  .mensaje-exito {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(76, 175, 80, 0.9);
+    color: white;
+    padding: 20px 30px;
+    border-radius: 10px;
+    font-weight: bold;
+    z-index: 1000;
+    display: none;
+    animation: fadeIn 0.5s;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
 
+  /* Contenedor para centrar botones */
+  .botones-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+</style>
 </head>
 <body>
   <div class="barra-superior">
     <h1>El Sazón de Cantera y Plata</h1>
     <div class="menu">
-  <select id="registroSelect" onchange="redirigir()">
-    <option selected disabled>Regístrate</option>
-    <option value="usuario">Usuario</option>
-    <option value="personal">Personal</option>
-    <option value="admin">Administrador</option>
-  </select>
-</div>
-
+      <select id="registroSelect" onchange="redirigir()">
+        <option selected disabled>Regístrate</option>
+        <option value="usuario">Usuario</option>
+        <option value="personal">Personal</option>
+        <option value="admin">Administrador</option>
+      </select>
+    </div>
   </div>
 
   <div class="ventana">
@@ -199,36 +275,39 @@
       <div class="contenido-blanco">
         <div class="formulario">
           <h2>Registro de Empleado</h2>
-          <form action="RegistroEmpleadoServlet" method="post">
-          
-          <div class="campo">
-          <input type="text" name="nombre" placeholder="Nombre" required />
-          </div>
-          <div class="campo">
-          <input type="text" name ="apellido"placeholder="Apellido" required/>
-          </div>
-          <div class="campo">
-          <input type="text" name ="empleadoId"placeholder="ID de Empleado" required />
-          </div>
-          <div class="campo">
-          <input type="password" name="contrasena" placeholder="Contraseña segura" required />
-          </div>
+          <form id="registroForm" action="RegistroEmpleadoServlet" method="post">
+            <div class="campo">
+              <input type="text" name="nombre" placeholder="Nombre" required />
+            </div>
+            <div class="campo">
+              <input type="text" name="apellido" placeholder="Apellido" required/>
+            </div>
+            <div class="campo">
+              <input type="text" name="empleadoId" placeholder="ID de Empleado" required />
+            </div>
+            <div class="campo">
+              <input type="password" name="contrasena" placeholder="Contraseña segura" required />
+            </div>
 
-          <div class="condiciones">
-            Al registrarte confirmas tu incorporación como parte del personal.<br/>
-            Toda la información ingresada debe ser válida y oficial.
-          </div>
+            <div class="condiciones">
+              Al registrarte confirmas tu incorporación como parte del personal.<br/>
+              Toda la información ingresada debe ser válida y oficial.
+            </div>
 
-          <div style="text-align: center;">
-  			<button type="submit" class="registrarse-btn">DAR DE ALTA</button>
-		</div>
-
-          </div>
+            <div class="botones-container">
+              <button type="submit" class="registrarse-btn">DAR DE ALTA</button>
+              <a href="MenuAdmin.html" class="btn-regresar">Regresar al menú</a>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>
-  <div style="text-align: center; margin: 20px 0;">
-</div>
+  
+  <div id="mensajeExito" class="mensaje-exito">
+    Usuario registrado con éxito
+  </div>
+
 <script>
   function redirigir() {
     const opcion = document.getElementById("registroSelect").value;
@@ -239,6 +318,21 @@
     } else if (opcion === "admin") {
       window.location.href = "InicioSesionAdmin.html";
     }
+  }
+  
+  document.getElementById('registroForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    mostrarMensajeExito();
+  });
+  
+  function mostrarMensajeExito() {
+    const mensaje = document.getElementById('mensajeExito');
+    mensaje.style.display = 'block';
+    
+    setTimeout(function() {
+      mensaje.style.display = 'none';
+      window.location.href = 'MenuAdmin.html';
+    }, 2000);
   }
 </script>
 

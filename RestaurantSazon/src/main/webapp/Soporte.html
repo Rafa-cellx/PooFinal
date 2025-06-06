@@ -140,20 +140,37 @@
       background-color: #e5b471;
       color: #000;
     }
+
+    .boton-regresar {
+      background-color: #A0522D;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 20px;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .boton-regresar:hover {
+      background-color: #e5b471;
+      color: #000;
+    }
   </style>
 </head>
 <body>
   <div class="barra-superior">
     <h1>El Sazón de Cantera y Plata</h1>
     <div class="menu">
-  <select id="registroSelect" onchange="redirigir()">
-    <option selected disabled>Regístrate</option>
-    <option value="usuario">Usuario</option>
-    <option value="personal">Personal</option>
-    <option value="admin">Administrador</option>
-  </select>
-</div>
-
+      <select id="registroSelect" onchange="redirigir()">
+        <option selected disabled>Regístrate</option>
+        <option value="usuario">Usuario</option>
+        <option value="personal">Personal</option>
+        <option value="admin">Administrador</option>
+      </select>
+    </div>
   </div>
   <div class="ventana">
     <div class="contenido">
@@ -173,6 +190,7 @@
               <input type="text" id="mensajeUsuario" placeholder="Escribe un mensaje..." />
               <button onclick="enviarMensaje()">Enviar</button>
             </div>
+            <button class="boton-regresar" onclick="window.location.href='Menu.html'">Regresar al Menú</button>
           </div>
         </div>
       </div>
@@ -180,36 +198,34 @@
   </div>
 
   <script>
-  function redirigir() {
-    const opcion = document.getElementById("registroSelect").value;
-    if (opcion === "usuario") {
-      window.location.href = "LoginView.html";
-    } else if (opcion === "personal") {
-      window.location.href = "LoginEmpleado.html";
-    } else if (opcion === "admin") {
-      window.location.href = "InicioSesionAdmin.html";
+    function redirigir() {
+      const opcion = document.getElementById("registroSelect").value;
+      if (opcion === "usuario") {
+        window.location.href = "LoginView.html";
+      } else if (opcion === "personal") {
+        window.location.href = "LoginEmpleado.html";
+      } else if (opcion === "admin") {
+        window.location.href = "InicioSesionAdmin.html";
+      }
     }
-  }
 
-  function enviarMensaje() {
-    const input = document.getElementById("mensajeUsuario");
-    const historial = document.getElementById("chatHistorial");
-    const mensaje = input.value.trim();
+    function enviarMensaje() {
+      const input = document.getElementById("mensajeUsuario");
+      const historial = document.getElementById("chatHistorial");
+      const mensaje = input.value.trim();
 
-    if (mensaje) {
-      historial.innerHTML += `<p><strong>Tú:</strong> ${mensaje}</p>`;
-      input.value = "";
-      historial.scrollTop = historial.scrollHeight;
-
-      setTimeout(() => {
-        const respuesta = "Bot: Gracias por tu mensaje. Un agente te atenderá enseguida.";
-        historial.innerHTML += `<p style="color:#A0522D;"><strong>${respuesta}</strong></p>`;
+      if (mensaje) {
+        historial.innerHTML += `<p><strong>Tú:</strong> ${mensaje}</p>`;
+        input.value = "";
         historial.scrollTop = historial.scrollHeight;
-      }, 1000);
+
+        setTimeout(() => {
+          const respuesta = "Bot: Gracias por tu mensaje. Un agente te atenderá enseguida.";
+          historial.innerHTML += `<p style="color:#A0522D;"><strong>${respuesta}</strong></p>`;
+          historial.scrollTop = historial.scrollHeight;
+        }, 1000);
+      }
     }
-  }
-</script>
-
-
+  </script>
 </body>
 </html>

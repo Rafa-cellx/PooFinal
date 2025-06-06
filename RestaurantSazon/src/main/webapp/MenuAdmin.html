@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menú Administrador - El Sazón de Cantera y Plata</title>
     <style>
+        /* Estilos generales */
         * {
             margin: 0;
             padding: 0;
@@ -13,178 +14,167 @@
         }
         
         body {
-            background-image: url('Imagenes/fondo.png');
+            background: url('Imagenes/fondo.png') no-repeat center center fixed;
             background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
             height: 100vh;
-            overflow: hidden;
             display: flex;
             flex-direction: column;
         }
-        
-        /* Top Bar */
+
         .top-bar {
-            background-color: rgba(128, 255, 165, 0.5);
-            height: 20px;
             width: 100%;
-            border-bottom-left-radius: 10px;
-            border-bottom-right-radius: 10px;
+            height: 40px;
+            background-color: rgba(255, 165, 0, 0.5);
+            border-radius: 0 0 10px 10px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 10px;
+            padding: 0 20px;
             position: fixed;
             top: 0;
-            z-index: 2;
+            left: 0;
+            z-index: 1000;
+            font-family: 'Akhbar MT', sans-serif;
         }
         
         .restaurant-title {
-            font-family: 'Akhbar MT', serif;
-            font-size: 10px;
+            font-size: 18px;
             font-weight: bold;
             color: white;
-            margin: 5px 5px 0 10px;
         }
         
-        /* Menu */
         .menu-container {
             display: flex;
+            gap: 20px;
         }
         
         .menu-item {
             color: white;
-            font-size: 10px;
             font-weight: bold;
-            margin-left: 15px;
             cursor: pointer;
+            font-size: 14px;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background 0.3s;
+            text-decoration: none;
+        }
+        
+        .menu-item:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Submenú desplegable */
+        .submenu-parent {
             position: relative;
         }
         
         .submenu {
             display: none;
             position: absolute;
-            background-color: rgba(128, 255, 165, 0.8);
-            min-width: 120px;
-            border-radius: 5px;
+            top: 100%;
             right: 0;
-            z-index: 3;
-        }
-        
-        .menu-item:hover .submenu {
-            display: block;
+            background-color: rgba(255, 165, 0, 0.8);
+            border-radius: 5px;
+            padding: 5px 0;
+            min-width: 150px;
+            z-index: 1001;
         }
         
         .submenu-item {
-            padding: 5px 10px;
+            padding: 8px 15px;
             color: white;
-            font-size: 10px;
             font-weight: bold;
+            display: block;
+            text-decoration: none;
         }
         
         .submenu-item:hover {
-            background-color: rgba(255, 165, 0, 0.6);
+            background-color: rgba(255, 255, 255, 0.2);
         }
         
-        /* Window Controls */
-        .window-controls {
-            position: fixed;
-            top: 24px;
-            right: 10px;
-            display: flex;
-            z-index: 2;
+        .submenu-parent:hover .submenu {
+            display: block;
         }
-        
-        .window-btn {
-            background-color: #c86d05;
-            color: white;
-            font-weight: bold;
-            border: none;
-            width: 22px;
-            height: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-        }
-        
-        .minimize-btn {
-            font-size: 12px;
-        }
-        
-        .close-btn {
-            font-size: 12px;
-            margin-left: 5px;
-        }
-        
-        /* Main Content */
+
+        /* Contenido principal */
         .main-content {
             flex: 1;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            z-index: 1;
-            margin-top: 20px;
+            margin-top: 60px;
+            padding: 20px;
         }
         
+        /* Botones de administración (estilo actualizado) */
         .admin-btn {
-            width: 250px;
-            height: 60px;
-            background-color: rgba(128, 255, 165, 0.5);
-            border: none;
-            border-radius: 10px;
+            width: 300px;
+            padding: 20px;
+            margin-bottom: 25px;
+            background: linear-gradient(to right, #A0522D, #e5b471);
             color: white;
-            font-size: 14px;
+            border: none;
+            border-radius: 15px;
+            font-size: 18px;
             font-weight: bold;
-            margin-bottom: 20px;
             cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            transition: all 0.3s;
+            text-align: center;
             text-decoration: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         
         .admin-btn:hover {
-            background-color: rgba(128, 255, 165, 0.7);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
         
-        /* Footer Text */
+        /* Pie de página */
         .footer-text {
             text-align: center;
-            font-size: 16px;
+            font-size: 20px;
             font-weight: bold;
             color: #b96300;
-            margin-top: auto;
-            margin-bottom: 20px;
-            z-index: 1;
+            margin-bottom: 30px;
+            padding: 0 20px;
         }
     </style>
 </head>
 <body>
-    <!-- Top Bar -->
+    <!-- Barra superior actualizada -->
     <div class="top-bar">
         <div class="restaurant-title">El Sazón de Cantera y Plata</div>
-        <div class="menu-container">
-            <a href="Soporte.html" class="menu-item" style="text-decoration: none;">Chat con Soporte</a>
-            <div class="menu-item">
+        <nav class="menu-container">
+            <div class="menu-item submenu-parent">
                 Regístrate
                 <div class="submenu">
-                    <a href="LoginView.html" class="submenu-item" style="text-decoration: none;">Usuario</a>
-                    <a href="LoginEmpleado.html" class="submenu-item" style="text-decoration: none;">Personal</a>
-                    <a href="InicioSesionAdmin.html" class="submenu-item" style="text-decoration: none;">Administrador</a>
+                    <a href="LoginView.html" class="submenu-item">Usuario</a>
+                    <a href="LoginEmpleado.html" class="submenu-item">Personal</a>
+                    <a href="InicioSesionAdmin.html" class="submenu-item">Administrador</a>
                 </div>
             </div>
-        </div>
+        </nav>
     </div>
     
-    <!-- Main Content -->
+    <!-- Contenido principal -->
     <div class="main-content">
-        <button class="admin-btn" onclick="window.location.href='pedidos.html'">Revisar Pedidos</button>
+        <a href="ResumenPedidos.html" class="admin-btn">Revisar Pedidos</a>
         <a href="RegistroEmpleado.html" class="admin-btn">Registrar Empleado</a>
     </div>
     
-    <!-- Footer Text -->
+    <!-- Pie de página -->
     <div class="footer-text">Menú de Administración</div>
+
+    <script>
+        // Funcionalidad adicional si es necesaria
+        document.querySelectorAll('.admin-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                if(this.getAttribute('href') === '#') {
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
 </body>
 </html>
