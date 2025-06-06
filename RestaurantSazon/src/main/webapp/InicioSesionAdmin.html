@@ -84,18 +84,18 @@
         .contenido {
             background-color: white;
             border-radius: 15px;
-            margin: 50px 50px; 
-            padding: 40px; 
+            margin: 50px 50px;
+            padding: 40px;
             text-align: center;
-            min-height: 500px; 
+            min-height: 500px;
         }
 
         .logo {
-            margin-bottom: 20px; 
+            margin-bottom: 20px;
         }
 
         .logo img {
-            width: 180px; 
+            width: 180px;
             height: auto;
         }
 
@@ -106,8 +106,8 @@
         }
 
         .input-group input {
-            padding: 12px 15px; 
-            width: 60%; 
+            padding: 12px 15px;
+            width: 60%;
             border-radius: 10px;
             border: none;
             background: linear-gradient(to right, #A0522D, #e5b471);
@@ -116,8 +116,8 @@
         }
 
         .boton-iniciar {
-            margin-top: 30px; 
-            padding: 12px 30px; 
+            margin-top: 30px;
+            padding: 12px 30px;
             background: linear-gradient(to right, #A0522D, #e5b471);
             color: white;
             border: none;
@@ -126,7 +126,7 @@
             font-weight: bold;
             text-decoration: none;
             display: inline-block;
-            font-size: 16px; 
+            font-size: 16px;
         }
 
         .boton-iniciar:hover {
@@ -136,25 +136,32 @@
         .checkboxes {
             display: flex;
             justify-content: center;
-            gap: 30px; 
+            gap: 30px;
             margin-top: 20px;
-            font-size: 15px; 
+            font-size: 15px;
         }
 
         h2 {
-            font-size: 24px; 
+            font-size: 24px;
             margin-bottom: 20px;
         }
 
         p {
-            font-size: 16px; 
+            font-size: 16px;
             margin: 15px 0;
         }
 
         hr {
-            width: 250px; 
+            width: 250px;
             border: 1px solid #b96300;
             margin: 20px auto;
+        }
+
+        #errorMsg {
+            color: red;
+            display: none;
+            margin-top: 15px;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -182,11 +189,11 @@
             <p>Califica a tus empleados</p>
 
             <div class="input-group">
-                <input type="text" placeholder="ID de administrador">
+                <input type="text" placeholder="ID de administrador" id="adminId">
             </div>
 
             <div class="input-group">
-                <input type="password" placeholder="Contraseña">
+                <input type="password" placeholder="Contraseña" id="adminPass">
             </div>
 
             <div class="checkboxes">
@@ -194,8 +201,34 @@
                 <label><input type="checkbox"> ¿Olvidaste tu contraseña?</label>
             </div>
 
-            <a href="MenuAdmin.html" class="boton-iniciar">INICIAR SESIÓN</a>
+            <button class="boton-iniciar" id="loginBtn">INICIAR SESIÓN</button>
+            <p id="errorMsg">ID o contraseña incorrectos</p>
         </div>
     </div>
+
+    <script>
+        const loginBtn = document.getElementById("loginBtn");
+        const adminId = document.getElementById("adminId");
+        const adminPass = document.getElementById("adminPass");
+        const errorMsg = document.getElementById("errorMsg");
+
+        loginBtn.addEventListener("click", () => {
+            const id = adminId.value.trim();
+            const pass = adminPass.value.trim();
+
+            if (id === "Patria4T" && pass === "LopezPapidor") {
+                window.location.href = "MenuAdmin.html";
+            } else {
+                errorMsg.style.display = "block";
+            }
+        });
+
+        // También permite presionar Enter para enviar
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Enter") {
+                loginBtn.click();
+            }
+        });
+    </script>
 </body>
 </html>
