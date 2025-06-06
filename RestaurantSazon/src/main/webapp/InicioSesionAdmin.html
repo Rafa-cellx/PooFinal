@@ -1,69 +1,67 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio de Sesión - Administrador</title>
-    <style>
-        body {
-            margin: 0;
-            background: url('Imagenes/fondo.png') no-repeat center center fixed;
-            background-size: cover;
-            font-family: Arial, sans-serif;
-        }
+  <meta charset="UTF-8" />
+  <title>Inicio de Sesión - Admin</title>
+  <style>
+    body {
+      background: url('Imagenes/fondo.png') no-repeat center center fixed;
+      background-size: cover;
+      font-family: Arial, sans-serif;
+      margin: 0;
+    }
 
-        .ventana {
-            width: 830px;
-            height: 650px;
-            margin: 50px auto;
-            background: transparent;
-            position: relative;
-        }
+    .ventana {
+      width: 830px;
+      height: 650px;
+      margin: 50px auto;
+      background: transparent;
+      position: relative;
+    }
 
-        .barra-superior {
-            background: rgba(255, 165, 0, 0.5);
-            padding: 5px 15px;
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-radius: 0 0 10px 10px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-        }
+    .contenido {
+      background-color: white;
+      border-radius: 15px;
+      margin: 50px 50px;
+      padding: 40px;
+      text-align: center;
+      min-height: 500px;
+    }
 
-        .menu {
-            position: relative;
-        }
+    .logo img {
+      width: 180px;
+      height: auto;
+    }
 
-        .menu button {
-            background: transparent;
-            border: none;
-            color: white;
-            cursor: pointer;
-            font-weight: bold;
-        }
+    .input-group {
+      margin: 20px 0;
+      display: flex;
+      justify-content: center;
+    }
 
-        .menu ul {
-            display: none;
-            position: absolute;
-            right: 0;
-            background-color: #ebaf5d;
-            list-style: none;
-            margin: 0;
-            padding: 5px;
-            border-radius: 5px;
-            width: 150px;
-            z-index: 10;
-        }
+    .input-group input {
+      padding: 12px 15px;
+      width: 60%;
+      border-radius: 10px;
+      border: none;
+      background: linear-gradient(to right, #A0522D, #e5b471);
+      color: white;
+      font-size: 16px;
+    }
 
-        .menu:hover ul {
-            display: block;
-        }
+    .boton-iniciar {
+      margin-top: 30px;
+      padding: 12px 30px;
+      background: linear-gradient(to right, #A0522D, #e5b471);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 16px;
+    }
 
+<<<<<<< HEAD
         .menu ul li {
             padding: 5px;
         }
@@ -164,30 +162,27 @@
             font-weight: bold;
         }
     </style>
+=======
+    .boton-iniciar:hover {
+      background: linear-gradient(to right, #8B4513, #DAA520);
+    }
+  </style>
+>>>>>>> branch 'master' of https://github.com/Rafa-cellx/PooFinal.git
 </head>
 <body>
-    <div class="ventana">
-        <div class="barra-superior">
-            <span>El Sazón de Cantera y Plata</span>
-            <div class="menu">
-                <button>Regístrate ▾</button>
-                <ul>
-                    <li><a href="RegistroUsuario.html">Usuario</a></li>
-                    <li><a href="LoginEmpleado.html">Personal</a></li>
-                    <li><a href="InicioSesionAdmin.html">Administrador</a></li>
-                </ul>
-            </div>
-        </div>
+  <div class="ventana">
+    <div class="contenido">
+      <div class="logo">
+        <img src="Imagenes/logo.png" alt="Logo">
+      </div>
+      <h2 style="color: #b96300">Administrador</h2>
+      <p>Ingresa tus credenciales</p>
 
-        <div class="contenido">
-            <div class="logo">
-                <img src="Imagenes/logo.png" alt="Logo">
-            </div>
-            <h2 style="color: #b96300">Administrador</h2>
-            <p>El empleado del mes será:</p>
-            <hr>
-            <p>Califica a tus empleados</p>
+      <div class="input-group">
+        <input type="text" id="adminId" placeholder="ID de administrador">
+      </div>
 
+<<<<<<< HEAD
             <div class="input-group">
 <<<<<<< HEAD
                 <input type="text" placeholder="ID de administrador" id="adminId">
@@ -195,7 +190,13 @@
                 <input type="text" id="adminId" placeholder="ID de administrador">
 >>>>>>> branch 'master' of https://github.com/Rafa-cellx/PooFinal.git
             </div>
+=======
+      <div class="input-group">
+        <input type="password" id="adminPass" placeholder="Contraseña">
+      </div>
+>>>>>>> branch 'master' of https://github.com/Rafa-cellx/PooFinal.git
 
+<<<<<<< HEAD
             <div class="input-group">
 <<<<<<< HEAD
                 <input type="password" placeholder="Contraseña" id="adminPass">
@@ -216,8 +217,13 @@
             <button onclick="iniciarSesion()" class="boton-iniciar">INICIAR SESIÓN</button>
 >>>>>>> branch 'master' of https://github.com/Rafa-cellx/PooFinal.git
         </div>
+=======
+      <button onclick="iniciarSesionAdmin()" class="boton-iniciar">INICIAR SESIÓN</button>
+>>>>>>> branch 'master' of https://github.com/Rafa-cellx/PooFinal.git
     </div>
+  </div>
 
+<<<<<<< HEAD
     <script>
 <<<<<<< HEAD
         const loginBtn = document.getElementById("loginBtn");
@@ -246,7 +252,14 @@
         function iniciarSesion() {
             const id = document.getElementById("adminId").value;
             const pass = document.getElementById("adminPass").value;
+=======
+  <script>
+    function iniciarSesionAdmin() {
+      const id = document.getElementById("adminId").value;
+      const pass = document.getElementById("adminPass").value;
+>>>>>>> branch 'master' of https://github.com/Rafa-cellx/PooFinal.git
 
+<<<<<<< HEAD
             if (id === "Transformacion4T" && pass === "LopezMamador") {
                 alert("Bienvenida Claudia Sheinbaum");
                 window.location.href = "MenuAdmin.html";
@@ -256,5 +269,16 @@
         }
 >>>>>>> branch 'master' of https://github.com/Rafa-cellx/PooFinal.git
     </script>
+=======
+      if (id === "Kunno4k" && pass === "Rafagod123") {
+        localStorage.setItem("rol", "admin");
+        alert("Bienvenido, administrador.");
+        window.location.href = "MenuAdmin.html";
+      } else {
+        alert("ID o contraseña incorrectos");
+      }
+    }
+  </script>
+>>>>>>> branch 'master' of https://github.com/Rafa-cellx/PooFinal.git
 </body>
 </html>

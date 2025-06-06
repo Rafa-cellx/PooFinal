@@ -5,9 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Resumen de Pedidos</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -23,7 +21,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: 'Akhbar MT', sans-serif;
       font-weight: bold;
       color: white;
       font-size: 16px;
@@ -101,21 +98,17 @@
   </style>
 </head>
 <body>
-  <!-- Barra superior -->
   <div class="barra-superior">
     El Sazón de Cantera y Plata
   </div>
 
   <div class="ventana">
-    <!-- Título -->
     <h1>Resumen de Pedidos</h1>
 
-    <!-- Tabla -->
     <div class="tabla-container">
       <table>
         <thead>
           <tr>
-          <!-- Ejemplos fijos de por mientras -->
             <th>ID Pedido</th>
             <th>Cliente</th>
             <th>Dirección</th>
@@ -124,42 +117,49 @@
             <th>Fecha</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>001</td>
-            <td>Juan Pérez</td>
-            <td>Av. Universidad #123</td>
-            <td>Efectivo</td>
-            <td>$250.00</td>
-            <td>05/06/2025</td>
-          </tr>
-          <tr>
-            <td>002</td>
-            <td>Ana López</td>
-            <td>Calle del Sol #456</td>
-            <td>Tarjeta</td>
-            <td>$320.00</td>
-            <td>05/06/2025</td>
-          </tr>
+        <tbody id="tabla-pedidos">
+          <!-- Se llena con JS -->
         </tbody>
       </table>
     </div>
 
-    <!-- Botón regresar -->
-<button class="btn-regresar" onclick="regresarAlMenu()">Regresar al Menú</button>
+    <button class="btn-regresar" onclick="regresarAlMenu()">Regresar al Menú</button>
   </div>
-</body>
-<script>
-  function regresarAlMenu() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const rol = urlParams.get('rol');
 
-    if (rol === 'admin') {
-      window.location.href = 'MenuAdmin.html';
-    } else {
-      window.location.href = 'menu-empleados.html';
+  <script>
+    function regresarAlMenu() {
+      const rol = localStorage.getItem('rol');
+      if (rol === 'admin') {
+        window.location.href = 'MenuAdmin.html';
+      } else {
+        window.location.href = 'menu-empleados.html';
+      }
     }
-  }
-</script>
 
+    function cargarPedidos() {
+      fetch('PedidosServlet') // Asegúrate que este endpoint exista y retorne JSON válido
+        .then(response => response.json())
+        .then(data => {
+          const tabla = document.getElementById("tabla-pedidos");
+          tabla.innerHTML = '';
+          data.forEach(pedido => {
+            const fila = `
+              <tr>
+                <td>${pedido.id}</td>
+                <td>${pedido.cliente}</td>
+                <td>${pedido.direccion}</td>
+                <td>${pedido.metodoPago}</td>
+                <td>$${pedido.total.toFixed(2)}</td>
+                <td>${pedido.fecha}</td>
+              </tr>
+            `;
+            tabla.innerHTML += fila;
+          });
+        })
+        .catch(error => console.error('Error al cargar pedidos:', error));
+    }
+
+    window.onload = cargarPedidos;
+  </script>
+</body>
 </html>
