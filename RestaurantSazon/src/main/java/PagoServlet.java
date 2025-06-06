@@ -21,7 +21,7 @@ public class PagoServlet extends HttpServlet {
             Class.forName("com.mysql.cj.jdbc.Driver");
             
           //CONEXIÓN CON LA DB LOCAL
-            try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sazon_db,root,Madafaker2005")) {
+            try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sazon_db,root,MMXVN#1champion5")) {
                 conn.setAutoCommit(false); // Iniciar transacción
                 
                 // 3. Actualizar inventario para cada item del carrito

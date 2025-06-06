@@ -24,7 +24,7 @@ public class RegistroEmpleadoServlet extends HttpServlet {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
 
-                "jdbc:mysql://localhost:3306/sazon_db", "root", "Madafaker2005");
+                "jdbc:mysql://localhost:3306/sazon_db", "root", "MXVN#1champion5");
 
 
 

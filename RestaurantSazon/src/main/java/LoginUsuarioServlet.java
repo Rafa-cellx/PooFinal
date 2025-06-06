@@ -22,11 +22,10 @@ public class LoginUsuarioServlet extends HttpServlet {
         String contrasena = request.getParameter("contrasena");
 
         try {
-            
             Class.forName("com.mysql.cj.jdbc.Driver");
 
             Connection con = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/sazon_db", "root", "Madafaker2005");
+                "jdbc:mysql://localhost:3306/sazon_db", "root", "MXVN#1champion5");
 
             String sql = "SELECT * FROM usuarios WHERE nombre = ? AND contrasena = ?";
             PreparedStatement ps = con.prepareStatement(sql);
@@ -36,13 +35,12 @@ public class LoginUsuarioServlet extends HttpServlet {
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
-                
                 HttpSession sesion = request.getSession();
                 sesion.setAttribute("usuario", nombre);
 
                 response.sendRedirect("Menu.html");
             } else {
-                response.sendRedirect("LoginUsuario.html?error=true");
+                response.sendRedirect("LoginUsuario.html?error=invalid");
             }
 
             con.close();

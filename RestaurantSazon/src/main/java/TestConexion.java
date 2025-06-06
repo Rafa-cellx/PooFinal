@@ -6,7 +6,7 @@ public class TestConexion {
     public static void main(String[] args) {
         String url = "jdbc:mysql://localhost:3306/sazon_db";
         String usuario = "root";
-        String contrasena = "Madafaker2005";
+        String contrasena = "MXVN#1champion5";
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
