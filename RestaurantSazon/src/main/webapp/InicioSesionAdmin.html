@@ -3,199 +3,327 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio de Sesión - Administrador</title>
+    <title>Login Empleado</title>
     <style>
         body {
             margin: 0;
+            font-family: Arial, sans-serif;
             background: url('Imagenes/fondo.png') no-repeat center center fixed;
             background-size: cover;
-            font-family: Arial, sans-serif;
         }
-
-        .ventana {
-            width: 830px;
-            height: 650px;
-            margin: 50px auto;
-            background: transparent;
-            position: relative;
-        }
-
         .barra-superior {
-            background: rgba(255, 165, 0, 0.5);
-            padding: 5px 15px;
-            color: white;
+            width: 100%;
+            height: 30px;
+            background-color: rgba(255, 165, 0, 0.5);
+            border-radius: 0 0 10px 10px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-radius: 0 0 10px 10px;
+            padding: 0 20px;
             position: fixed;
             top: 0;
             left: 0;
-            right: 0;
             z-index: 1000;
         }
-
-        .menu {
-            position: relative;
-        }
-
-        .menu button {
-            background: transparent;
-            border: none;
-            color: white;
-            cursor: pointer;
+        .barra-superior h1 {
+            font-family: 'Akhbar MT', sans-serif;
+            font-size: 18px;
             font-weight: bold;
-        }
-
-        .menu ul {
-            display: none;
-            position: absolute;
-            right: 0;
-            background-color: #ebaf5d;
-            list-style: none;
+            color: white;
             margin: 0;
-            padding: 5px;
-            border-radius: 5px;
-            width: 150px;
-            z-index: 10;
         }
-
-        .menu:hover ul {
-            display: block;
-        }
-
-        .menu ul li {
-            padding: 5px;
-        }
-
-        .menu ul li a {
+        .menu select {
+            background: #EBAF5D;
             color: white;
-            text-decoration: none;
-            display: block;
-            padding: 5px;
             font-weight: bold;
+            padding: 8px;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
         }
-
-        .menu ul li a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-            border-radius: 3px;
-        }
-
-        .contenido {
-            background-color: white;
+        /* Contenedor principal */
+        .container {
+            width: 830px;
+            height: 720px;
+            margin: 80px auto 40px;
+            background-color: rgba(255, 255, 255, 0.9);
             border-radius: 15px;
-            margin: 50px 50px; 
-            padding: 40px; 
-            text-align: center;
-            min-height: 500px; 
+            padding: 0;
+            box-sizing: border-box;
+            position: relative;
+            overflow: hidden;
         }
-
-        .logo {
-            margin-bottom: 20px; 
-        }
-
-        .logo img {
-            width: 180px; 
-            height: auto;
-        }
-
-        .input-group {
-            margin: 20px 0;
-            display: flex;
-            justify-content: center;
-        }
-
-        .input-group input {
-            padding: 12px 15px; 
-            width: 60%; 
-            border-radius: 10px;
-            border: none;
-            background: linear-gradient(to right, #A0522D, #e5b471);
+        .title-bar {
+            background: rgba(255, 165, 0, 0.5);
             color: white;
-            font-size: 16px;
-        }
-
-        .boton-iniciar {
-            margin-top: 30px; 
-            padding: 12px 30px; 
-            background: linear-gradient(to right, #A0522D, #e5b471);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
             font-weight: bold;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px; 
-        }
-
-        .boton-iniciar:hover {
-            background: linear-gradient(to right, #8B4513, #DAA520);
-        }
-
-        .checkboxes {
+            height: 50%;
             display: flex;
-            justify-content: center;
-            gap: 30px; 
-            margin-top: 20px;
-            font-size: 15px; 
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            padding-top: 30px;
         }
-
-        h2 {
-            font-size: 24px; 
+        .title-text {
+            font-size: 28px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
             margin-bottom: 20px;
         }
-
-        p {
-            font-size: 16px; 
-            margin: 15px 0;
+        .logo-container {
+            text-align: center;
+            margin-top: 20px;
         }
-
-        hr {
-            width: 250px; 
-            border: 1px solid #b96300;
+        .logo-container img {
+            width: 160px;
+            height: auto;
+        }
+        .logo-container div {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+        .content {
+            padding: 30px;
+            height: 50%;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+        .input-group {
             margin: 20px auto;
+            width: 50%;
+            background: linear-gradient(to right, #A0522D, #e5b471);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            color: white;
+        }
+        .input-group img {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
+        .input-group input {
+            border: none;
+            background: transparent;
+            color: white;
+            width: 100%;
+            outline: none;
+            font-size: 14px;
+            padding: 5px 0;
+        }
+        .btn {
+            display: block;
+            margin: 25px auto;
+            width: 160px;
+            height: 40px;
+            background: linear-gradient(to right, #A0522D, #e5b471);
+            border: none;
+            color: white;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        .text-note {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 12px;
+        }
+        .error-message {
+            color: red;
+            font-size: 12px;
+            text-align: center;
+            margin-top: -15px;
+            margin-bottom: 10px;
+            display: none;
+        }
+        .checkbox-group {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .checkbox-group label {
+            margin: 0 15px;
+            cursor: pointer;
+        }
+        hr.separator {
+            width: 60%;
+            margin: 15px auto;
+            border: 0;
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+        /* Estilo para el mensaje de bienvenida */
+        .mensaje-bienvenida {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(76, 175, 80, 0.9);
+            color: white;
+            padding: 30px 50px;
+            border-radius: 15px;
+            font-size: 24px;
+            font-weight: bold;
+            z-index: 2000;
+            display: none;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 0.5s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
     </style>
 </head>
 <body>
-    <div class="ventana">
-        <div class="barra-superior">
-            <span>El Sazón de Cantera y Plata</span>
-            <div class="menu">
-                <button>Regístrate ▾</button>
-                <ul>
-                    <li><a href="RegistroUsuario.html">Usuario</a></li>
-                    <li><a href="LoginEmpleado.html">Personal</a></li>
-                    <li><a href="InicioSesionAdmin.html">Administrador</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="contenido">
-            <div class="logo">
-                <img src="Imagenes/logo.png" alt="Logo">
-            </div>
-            <h2 style="color: #b96300">Administrador</h2>
-            <p>El empleado del mes será:</p>
-            <hr>
-            <p>Califica a tus empleados</p>
-
-            <div class="input-group">
-                <input type="text" placeholder="ID de administrador">
-            </div>
-
-            <div class="input-group">
-                <input type="password" placeholder="Contraseña">
-            </div>
-
-            <div class="checkboxes">
-                <label><input type="checkbox"> Recordar</label>
-                <label><input type="checkbox"> ¿Olvidaste tu contraseña?</label>
-            </div>
-
-            <a href="MenuAdmin.html" class="boton-iniciar">INICIAR SESIÓN</a>
+    <!-- Barra superior -->
+    <div class="barra-superior">
+        <h1>El Sazón de Cantera y Plata</h1>
+        <div class="menu">
+            <select id="registroSelect" onchange="redirigir()">
+                <option selected disabled>Regístrate</option>
+                <option value="usuario">Usuario</option>
+                <option value="personal">Personal</option>
+                <option value="admin">Administrador</option>
+            </select>
         </div>
     </div>
+
+    <div class="container">
+        <div class="title-bar">
+            <div class="title-text">PERSONAL</div>
+            <div class="logo-container">
+                <img src="Imagenes/logo.png" alt="Logo">
+                <div>¡El cliente siempre tiene la razón, recuérdalo!</div>
+                <hr class="separator">
+                <div>¡NO olvides las promociones!</div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="text-note"><strong>Emplead@s</strong></div>
+
+            <div class="input-group">
+                <img src="Imagenes/Icono_Usuario.png" alt="Usuario">
+                <input type="text" id="employeeId" placeholder="ID de empleado" required>
+            </div>
+            <div class="error-message" id="employeeIdError">Por favor ingresa tu ID de empleado</div>
+
+            <div class="input-group">
+                <img src="Imagenes/Candado.png" alt="Contraseña">
+                <input type="password" id="password" placeholder="Contraseña" required>
+            </div>
+            <div class="error-message" id="passwordError">Por favor ingresa tu contraseña</div>
+
+            <div class="checkbox-group">
+                <label><input type="checkbox"> Recordar credenciales</label>
+                <label><input type="checkbox"> Recuperar contraseña</label>
+            </div>
+
+            <button class="btn" id="loginBtn" disabled>INICIAR SESIÓN</button>
+        </div>
+    </div>
+
+    <!-- Mensaje de bienvenida -->
+    <div id="mensajeBienvenida" class="mensaje-bienvenida">
+        ¡Bienvenida Claudia Sheinbaum!
+    </div>
+
+    <script>
+        // Función para el select de la barra superior
+        function redirigir() {
+            const select = document.getElementById('registroSelect');
+            const value = select.value;
+            
+            if(value === 'usuario') {
+                window.location.href = 'RegistroUsuario.html';
+            } else if(value === 'personal') {
+                window.location.href = 'LoginEmpleado.html';
+            } else if(value === 'admin') {
+                window.location.href = 'InicioSesionAdmin.html';
+            }
+        }
+
+        // Credenciales válidas
+        const ID_VALIDO = "Transformacion4T";
+        const CONTRASENIA_VALIDA = "LopezMamador";
+
+        // Elementos del DOM
+        const employeeIdInput = document.getElementById('employeeId');
+        const passwordInput = document.getElementById('password');
+        const loginBtn = document.getElementById('loginBtn');
+        const employeeIdError = document.getElementById('employeeIdError');
+        const passwordError = document.getElementById('passwordError');
+        const mensajeBienvenida = document.getElementById('mensajeBienvenida');
+
+        function validateInputs() {
+            const employeeIdValid = employeeIdInput.value.trim() !== '';
+            const passwordValid = passwordInput.value.trim() !== '';
+            
+            if (!employeeIdValid) {
+                employeeIdError.style.display = 'block';
+            } else {
+                employeeIdError.style.display = 'none';
+            }
+            
+            if (!passwordValid) {
+                passwordError.style.display = 'block';
+            } else {
+                passwordError.style.display = 'none';
+            }
+            
+            loginBtn.disabled = !(employeeIdValid && passwordValid);
+        }
+
+        employeeIdInput.addEventListener('input', validateInputs);
+        passwordInput.addEventListener('input', validateInputs);
+
+        loginBtn.addEventListener('click', function() {
+            validateInputs();
+            
+            if (!loginBtn.disabled) {
+                const idIngresado = employeeIdInput.value.trim();
+                const contraseniaIngresada = passwordInput.value.trim();
+                
+                if (idIngresado === ID_VALIDO && contraseniaIngresada === CONTRASENIA_VALIDA) {
+                    // Mostrar mensaje de bienvenida
+                    mensajeBienvenida.style.display = 'block';
+                    
+                    // Redirigir después de 2 segundos
+                    setTimeout(function() {
+                        window.location.href = 'MenuEmpleado.html';
+                    }, 2000);
+                } else {
+                    alert("Credenciales incorrectas. Por favor intenta nuevamente.");
+                }
+            }
+        });
+
+        // Validar al perder el foco
+        employeeIdInput.addEventListener('blur', function() {
+            if (employeeIdInput.value.trim() === '') {
+                employeeIdError.style.display = 'block';
+            }
+        });
+
+        passwordInput.addEventListener('blur', function() {
+            if (passwordInput.value.trim() === '') {
+                passwordError.style.display = 'block';
+            }
+        });
+    </script>
 </body>
 </html>
