@@ -8,8 +8,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/RegistroUsuarioServlet")
-public class RegistroUsuarioServlet extends HttpServlet {
+@WebServlet("/RegistroEmpleadoServlet")
+public class RegistroEmpleadoServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

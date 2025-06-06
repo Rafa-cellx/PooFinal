@@ -253,79 +253,124 @@
 
 <script>
 function mostrarCarrito() {
-	  const lista = document.getElementById("listaPlatillos");
-	  const totalPedido = document.getElementById("totalPedido");
+  const lista = document.getElementById("listaPlatillos");
+  const totalPedido = document.getElementById("totalPedido");
 
-	  // Obtener carrito desde localStorage
-	  const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+  const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
-	  if (carrito.length === 0) {
-	    lista.innerHTML = "<p>No hay productos en el carrito.</p>";
-	    totalPedido.textContent = "Total: $0.00";
-	    return;
-	  }
+  if (carrito.length === 0) {
+    lista.innerHTML = "<p>No hay productos en el carrito.</p>";
+    totalPedido.textContent = "Total: $0.00";
+    return;
+  }
 
-	  lista.innerHTML = "";
-	  let total = 0;
+  lista.innerHTML = "";
+  let total = 0;
 
-	  carrito.forEach(item => {
-	    // Usar propiedades en inglés según tu carrito
-	    const precio = parseFloat(item.price);
-	    const cantidad = parseInt(item.quantity);
+  carrito.forEach(item => {
+    const precio = parseFloat(item.price);
+    const cantidad = parseInt(item.quantity);
 
-	    if (!item.name || isNaN(precio) || isNaN(cantidad)) {
-	      console.warn("Item inválido en carrito:", item);
-	      return;
-	    }
+    if (!item.name || isNaN(precio) || isNaN(cantidad)) {
+      console.warn("Item inválido en carrito:", item);
+      return;
+    }
 
-	    const subtotal = precio * cantidad;
-	    total += subtotal;
+    const subtotal = precio * cantidad;
+    total += subtotal;
 
-	    const divPlatillo = document.createElement("div");
-	    divPlatillo.classList.add("platillo");
-	    divPlatillo.innerHTML = `<span>${cantidad}x ${item.name}</span><span>$${subtotal.toFixed(2)}</span>`;
-	    lista.appendChild(divPlatillo);
-	  });
+    const divPlatillo = document.createElement("div");
+    divPlatillo.classList.add("platillo");
+    divPlatillo.innerHTML = `<span>${cantidad}x ${item.name}</span><span>$${subtotal.toFixed(2)}</span>`;
+    lista.appendChild(divPlatillo);
+  });
 
-	  totalPedido.textContent = `Total: $${total.toFixed(2)}`;
-	}
+  totalPedido.textContent = `Total: $${total.toFixed(2)}`;
+}
 
-	document.getElementById("metodoPago").addEventListener("change", function() {
-	  const val = this.value;
-	  let msg = "";
-	  if(val === "Efectivo") msg = "Recuerda tener el monto exacto al momento de la entrega.";
-	  else if(val === "Tarjeta de débito") msg = "El repartidor llevará una terminal para el cobro.";
-	  else if(val === "Tarjeta de crédito") msg = "Aceptamos todas las tarjetas principales.";
-	  else if(val === "Transferencia bancaria") msg = "Recibirás instrucciones para transferir.";
-	  document.getElementById("infoMetodoPago").textContent = msg;
-	});
+// Mostrar carrito al cargar la página
+window.onload = mostrarCarrito;
 
-	document.getElementById("confirmar").addEventListener("click", () => {
-	  const direccion = document.getElementById("direccion").value.trim();
-	  const metodoPago = document.getElementById("metodoPago").value;
-	  const errorDireccion = document.getElementById("errorDireccion");
+document.getElementById("confirmar").addEventListener("click", async () => {
+  const direccion = document.getElementById("direccion").value.trim();
+  const metodoPago = document.getElementById("metodoPago").value;
+  const totalTexto = document.getElementById("totalPedido").textContent.replace("Total: $", "");
+  const total = parseFloat(totalTexto);
+  const errorDireccion = document.getElementById("errorDireccion");
 
-	  errorDireccion.style.display = direccion.length < 10 ? "block" : "none";
-	  if (direccion.length < 10) return;
+  const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+  const cliente = localStorage.getItem("cliente") || "Cliente Anónimo";
 
-	  if (!metodoPago || metodoPago === "Selecciona uno") {
-	    alert("Por favor selecciona un método de pago.");
-	    return;
-	  }
-	  
+  // Validaciones
+  if (direccion.length < 10) {
+    errorDireccion.style.display = "block";
+    return;
+  } else {
+    errorDireccion.style.display = "none";
+  }
 
-	  // Confirmar pedido y limpiar carrito
-	  alert(`Pedido confirmado!\nDirección: ${direccion}\nPago: ${metodoPago}\nTotal: ${document.getElementById("totalPedido").textContent.replace("Total: ", "")}`);
+  if (!metodoPago || metodoPago === "Selecciona uno") {
+    alert("Por favor selecciona un método de pago.");
+    return;
+  }
 
-	  localStorage.removeItem("carrito");
+  if (carrito.length === 0) {
+    alert("El carrito está vacío.");
+    return;
+  }
 
-	  // Redirigir a página principal o agradecimiento
-	  window.location.href = "Despedida.html";
-	});
+  // Obtener fecha actual en formato YYYY-MM-DD
+  const fecha = new Date().toISOString().slice(0, 10);
 
-	// Ejecutar al cargar la página
-	document.addEventListener("DOMContentLoaded", mostrarCarrito);
+  const detalle = carrito.map(item => ({
+    nombre: item.name,
+    cantidad: item.quantity,
+    precio: item.price
+  }));
 
+  const pedido = {
+    cliente: cliente,
+    direccion: direccion,
+    metodoPago: metodoPago,
+    total: total,
+    fecha: fecha,
+    detalle: detalle
+  };
+
+  try {
+    const respuesta = await fetch("PedidosServlet", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(pedido)
+    });
+
+    let data = {};
+    try {
+      data = await respuesta.json();
+    } catch (e) {
+      data.mensaje = "El servidor no respondió con un JSON válido.";
+    }
+
+    if (respuesta.ok) {
+      alert(`✅ Pedido confirmado\n${data.mensaje}\nDirección: ${direccion}\nPago: ${metodoPago}\nTotal: $${total.toFixed(2)}`);
+      localStorage.removeItem("carrito");
+      window.location.href = "Despedida.html";
+    } else {
+      alert("⚠ Error al guardar el pedido: " + data.mensaje);
+    }
+  } catch (error) {
+    alert("❌ Error en la conexión con el servidor: " + error.message);
+  }
+});
+
+function redirigir() {
+  const tipo = document.getElementById("registroSelect").value;
+  if (tipo === "usuario") window.location.href = "RegistroUsuario.html";
+  else if (tipo === "personal") window.location.href = "RegistroEmpleado.html";
+  else if (tipo === "admin") window.location.href = "InicioSesionAdmin.html";
+}
 </script>
 
 </body>
