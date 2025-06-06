@@ -13,7 +13,7 @@ public class MenuServlet extends HttpServlet {
     
     private static final String DB_URL = "jdbc:mysql://localhost:3306/sazon_db";
     private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "MXVN#1champion5";
+    private static final String DB_PASSWORD = "Madafaker2005";
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 

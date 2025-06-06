@@ -21,7 +21,7 @@ public class ConfiguracionServlet extends HttpServlet {
             throws ServletException, IOException {
         
 
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sazon_db","root","MXVN#1champion5")) {
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sazon_db","root","Madafaker2005")) {
             response.getWriter().println("¡Conexión a la DB exitosa!");
         } catch (SQLException e) {
             response.getWriter().println("Error de conexión: " + e.getMessage());

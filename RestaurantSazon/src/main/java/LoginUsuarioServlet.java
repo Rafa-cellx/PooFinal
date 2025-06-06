@@ -26,7 +26,7 @@ public class LoginUsuarioServlet extends HttpServlet {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
             Connection con = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/sazon_db", "root", "fer12320");
+                "jdbc:mysql://localhost:3306/sazon_db", "root", "Madafaker2005");
 
             String sql = "SELECT * FROM usuarios WHERE nombre = ? AND contrasena = ?";
             PreparedStatement ps = con.prepareStatement(sql);
