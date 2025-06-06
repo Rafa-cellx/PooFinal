@@ -22,67 +22,39 @@
             justify-content: space-between;
             align-items: center;
             font-family: 'Akhbar MT', sans-serif;
-            font-weight:bold;
-        }
-
-        .barra-navegacion .menu-links a {
-            margin-left: 16px;
-            color: white;
             font-weight: bold;
-            text-decoration: none;
         }
 
-        .barra-navegacion .menu-links a:hover {
-            text-decoration: underline;
-        }
-
-        .menu-registro {
-            position: relative;
-            display: inline-block;
-        }
-
-        .submenu {
-            display: none;
-            position: absolute;
-            right: 0;
-            background-color: #FFBA5D;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-            padding: 5px;
-            z-index: 100;
-            min-width: 130px;
-        }
-
-        .submenu a {
-            display: block;
-            padding: 5px 10px;
-            color: #333;
-            text-decoration: none;
-        }
-
-        .submenu a:hover {
-            background-color: rgba(255,255,255,0.3);
-        }
-
-        .menu-registro:hover .submenu {
-            display: block;
-        }
-		.titulo-carrito {
-		    background-color: rgba(255, 165, 0, 0.9); /* Naranja con poquita transparencia */
+       .barra-navegacion .chat a {
+	        background-color: #ffb347;
+	        color: white;
+	        padding: 5px 10px;
+	        border-radius: 5px;
+	        text-decoration: none;
+	        font-weight: bold;
+	    }
+	    
+	    .barra-navegacion .chat a:hover {
+	        background-color: #ffa500;
+	    }
+        .titulo-carrito {
+		    background-color: rgba(255, 165, 0, 0.9);
 		    color: white;
 		    font-size: 20px;
 		    font-weight: bold;
 		    padding: 10px 20px;
 		    border-radius: 10px 10px 0 0;
-		    margin-bottom: -10px;
 		    text-align: center;
 		    font-family: 'Akhbar MT', sans-serif;
-		    width: 600px;
-		    margin-top:0;
-	}
-		
+		    width: 100%;
+		    max-width: 600px;
+		    margin: 30px auto -10px; 
+		    box-sizing: border-box;
+		}
+
         .ventana {
             max-width: 600px;
-            margin: 40px auto;
+            margin: 20px auto;
             background-color: rgba(255,255,255,0.7);
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0,0,0,1);
@@ -101,6 +73,9 @@
             margin-bottom: 10px;
             display: flex;
             gap: 10px;
+            background-color: white;
+            border-radius: 5px;
+            align-items: center;
         }
 
         .item img {
@@ -115,103 +90,105 @@
         }
 
         .item-info h4 {
-       		color: saddlebrown;
+            color: saddlebrown;
             margin: 0;
             font-size: 17px;
         }
 
         .item-info p {
             margin: 2px 0;
-            font-size: 15px;
         }
 
-        .total {
-            text-align: right;
-            padding: 10px;
-            font-size: 20px;
-            border-top: 1px solid #ddd;
-        }
-
-        .total span:first-child {
-            font-weight: bold;
-            color: saddlebrown;
-        }
-
-        .total span:last-child {
-            font-weight: bold;
-            color: orangered;
-        }
-
-        .acciones {
-            display: flex;
-            justify-content: flex-end;
-            padding: 10px;
-            border-top: 1px solid #ddd;
-            gap: 10px;
-        }
-
-        .btn {
-            background-color: #c86d05;
-            border: none;
+        .eliminar-btn {
+            background-color: red;
             color: white;
-            font-weight: bold;
-            padding: 8px 20px;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .botones-final {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .botones-final a, .botones-final button {
+            background-color: #FFA500;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 10px;
             border-radius: 5px;
             text-decoration: none;
-            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
         }
 
-        .btn:hover {
-            background-color: #a55a04;
+        .botones-final a:hover, .botones-final button:hover {
+            background-color: #ff8c00;
         }
     </style>
 </head>
 <body>
-
-<!-- Barra superior -->
-<div class="barra-navegacion">
-    <div>El Sazón de Cantera y Plata</div>
-    <div class="menu-links">
-        <a href="Soporte.html">Chat con Soporte</a>
-        <div class="menu-registro">
-            <a href="#">Regístrate ▼</a>
-            <div class="submenu">
-                <a href="RegistroUsuario.html">Usuario</a>
-                <a href="RegistroEmpleado.html">Personal</a>
-                <a href="InicioSesionAdmin.html">Administrador</a>
-            </div>
+    <div class="barra-navegacion">
+        <div>El Sazón de Cantera y Plata</div>
+        <div class="chat">
+            <a href="Soporte.html">Chat con Soporte</a>
         </div>
     </div>
-</div>
 
-<!-- Ventana del carrito -->
-<div class="ventana">
-	<h2 class="titulo-carrito">🛒 Tu Carrito de Compras</h2>
-    <div class="contenido">
-        <!-- Producto 1 -->
-        <div class="item">
-            <img src="Imagenes/tacos.jpg" alt="Tacos al Pastor">
-            <div class="item-info">
-                <h4>Tacos al Pastor</h4>
-                <p><em>Deliciosos tacos con piña</em></p>
-                <p>Cantidad: 2</p>
-                <p>Precio: $25.00</p>
-                <p><strong>Subtotal: $50.00</strong></p>
-            </div>
+    <div class="titulo-carrito">Tu Carrito</div>
+    <div class="ventana">
+        <div class="contenido" id="carrito-contenido">
+            <!-- Platillos del carrito -->
         </div>
 
-
-    <!-- Total -->
-    <div class="total">
-        <span>Total:</span> <span>$65.00</span>
+        <div class="botones-final">
+            <a href="Menu.html">Volver al Menú</a>
+            <button onclick="window.location.href='Pago.html'">Pagar</button>
+        </div>
     </div>
 
-    <!-- Botones -->
-    <div class="acciones">
-        <a href="Pago.html" class="btn">Pagar</a>
-        <a href="Menu.html" class="btn">Volver al Menú</a>
-    </div>
-</div>
+    <script>
+        function renderCarrito() {
+            const contenedor = document.getElementById("carrito-contenido");
+            contenedor.innerHTML = "";
+            const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
+            if (carrito.length === 0) {
+                contenedor.innerHTML = "<p style='text-align: center;'>No hay platillos en el carrito.</p>";
+                return;
+            }
+
+            carrito.forEach((item, index) => {
+                const div = document.createElement("div");
+                div.classList.add("item");
+                div.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}">
+                    <div class="item-info">
+                        <h4>${item.name}</h4>
+                        <p>${item.description}</p>
+                        <p>Precio: $${item.price.toFixed(2)}</p>
+                        <p>Cantidad: ${item.quantity}</p>
+                        <p>Total: $${(item.price * item.quantity).toFixed(2)}</p>
+                    </div>
+                    <button class="eliminar-btn" data-index="${index}">❌</button>
+                `;
+                contenedor.appendChild(div);
+            });
+
+            document.querySelectorAll(".eliminar-btn").forEach(btn => {
+                btn.addEventListener("click", () => {
+                    const index = btn.getAttribute("data-index");
+                    carrito.splice(index, 1);
+                    localStorage.setItem("carrito", JSON.stringify(carrito));
+                    renderCarrito();
+                });
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", renderCarrito);
+    </script>
 </body>
 </html>

@@ -409,67 +409,68 @@
     </div>
     
     <script>
-  // Función para redirigir a una página
-  function redirigir(url, event) {
-    event.stopPropagation(); // Evita que el menú se cierre o otros eventos interfieran
-    window.location.href = url;
-  }
+    document.addEventListener("DOMContentLoaded", function () {
+        // Botones "+" y "-" para cambiar cantidad
+        document.querySelectorAll(".dish-card").forEach(card => {
+            const minusBtn = card.querySelectorAll(".quantity-btn")[0];
+            const plusBtn = card.querySelectorAll(".quantity-btn")[1];
+            const quantityDisplay = card.querySelector(".quantity-value");
 
-  // Función para el Chat con soporte
-  function chatSoporte() {
-    // Redirige a la página del chat 
-    window.location.href = 'Soporte.html'; 
-  }
+            minusBtn.addEventListener("click", () => {
+                let qty = parseInt(quantityDisplay.textContent);
+                if (qty > 0) quantityDisplay.textContent = qty - 1;
+            });
 
+            plusBtn.addEventListener("click", () => {
+                let qty = parseInt(quantityDisplay.textContent);
+                quantityDisplay.textContent = qty + 1;
+            });
+
+            // Botón AGREGAR
+            card.querySelector(".add-btn").addEventListener("click", () => {
+                const name = card.querySelector(".dish-name").textContent;
+                const price = parseFloat(card.querySelector(".dish-price").textContent.replace('$', ''));
+                const description = card.querySelector(".dish-description").textContent;
+                const image = card.querySelector(".dish-image").getAttribute("src");
+                const quantity = parseInt(quantityDisplay.textContent);
+
+                if (quantity > 0) {
+                    const item = { name, price, description, image, quantity };
+
+                    // Obtener carrito actual
+                    let cart = JSON.parse(localStorage.getItem("carrito")) || [];
+
+                    // Revisar si ya está en el carrito
+                    const existing = cart.find(p => p.name === name);
+                    if (existing) {
+                        existing.quantity += quantity;
+                    } else {
+                        cart.push(item);
+                    }
+
+                    // Guardar en localStorage
+                    localStorage.setItem("carrito", JSON.stringify(cart));
+
+                    // Notificación (opcional)
+                    alert(`Se agregaron ${quantity} ${name} al carrito`);
+                    quantityDisplay.textContent = 0; // Reinicia contador
+                }
+            });
+        });
+    });
+
+  // Ir al carrito
   function verCarrito() {
-    window.location.href = 'CarritoV.html';
+      window.location.href = "CarritoV.html"; 
   }
-  // Control básico para botones cantidad y agregar productos
-  const carrito = [];
 
-document.querySelectorAll('.dish-card').forEach(card => {
-  const btnMinus = card.querySelectorAll('.quantity-btn')[0];
-  const btnPlus = card.querySelectorAll('.quantity-btn')[1];
-  const quantityValue = card.querySelector('.quantity-value');
-  const addButton = card.querySelector('.add-btn');
-
-  btnMinus.addEventListener('click', () => {
-    let cantidad = parseInt(quantityValue.textContent);
-    if(cantidad > 0) {
-      quantityValue.textContent = cantidad - 1;
-    }
-  });
-
-  btnPlus.addEventListener('click', () => {
-    let cantidad = parseInt(quantityValue.textContent);
-    quantityValue.textContent = cantidad + 1;
-  });
-
-  addButton.addEventListener('click', () => {
-    let cantidad = parseInt(quantityValue.textContent);
-    if(cantidad > 0) {
-      const nombre = card.querySelector('.dish-name').textContent;
-      
-      // Revisa si el producto ya está en el carrito
-      const productoExistente = carrito.find(item => item.nombre === nombre);
-      if(productoExistente) {
-        // Si ya está, suma la cantidad
-        productoExistente.cantidad += cantidad;
-      } else {
-        // Si no, lo agrega
-        carrito.push({ nombre, cantidad });
-      }
-
-      alert(`Agregaste ${cantidad} unidad(es) de ${nombre} al carrito.`);
-      quantityValue.textContent = '0'; // Resetea la cantidad
-
-      // Opcional: guarda en localStorage para mantenerlo después de recargar
-      localStorage.setItem('carrito', JSON.stringify(carrito));
-    } else {
-      alert('Selecciona una cantidad mayor a cero.');
-    }
-  });
-});
+  function redirigir(pagina, e) {
+      e.stopPropagation();
+      window.location.href = pagina;
+  }
+  function chatSoporte() {
+  	 window.location.href = "Soporte.html";
+  }
 
 </script>
 
